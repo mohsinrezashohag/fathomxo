@@ -2,8 +2,7 @@ import ServicesHero from '@/src/components/services/hero';
 import OurServices from '@/src/components/services/our-services';
 import CTA from '@/src/components/shared/cta';
 import WhyChooseUs from '@/src/components/shared/why-choose-us';
-import type { ServicePost } from '@/src/interface';
-import getMarkDownData from '@/src/utils/getMarkDownData';
+import { services } from '@/src/data/services';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -12,7 +11,6 @@ export const metadata: Metadata = {
 };
 
 const page = async () => {
-  const services = getMarkDownData<ServicePost>('src/data/services');
 
   return (
     <>

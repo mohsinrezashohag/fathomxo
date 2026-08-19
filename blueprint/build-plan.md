@@ -23,7 +23,7 @@
   - [x] 1d. **Scroll and page-transition shell** - sync the existing Lenis provider with
     GSAP ScrollTrigger, then add the route-change transition, resolving to final state
     under `prefers-reduced-motion`
-- [ ] 2. **Content model** - typed content modules in `src/data` with Zod schemas in
+- [x] 2. **Content model** - typed content modules in `src/data` with Zod schemas in
   `src/interface`, validated at build time; migrates projects, services and team off
   the starter's markdown pipeline and removes `gray-matter`, `react-markdown` and
   `rehype-slug` once nothing imports them
@@ -31,7 +31,7 @@
     `src/interface`, and fail the build on a malformed entry
   - [x] 2b. **Brief content modules** - clients, the four service lines, pricing plans,
     FAQs and technologies, authored from the content brief against those schemas
-  - [ ] 2c. **Markdown retirement** - move projects and team to typed modules flagged
+  - [x] 2c. **Markdown retirement** - move projects and team to typed modules flagged
     as placeholder, repoint their consumers, and remove `gray-matter`,
     `react-markdown` and `rehype-slug`
 - [ ] 3. **Hero and 3D signature** - statement headline with an orchestrated load

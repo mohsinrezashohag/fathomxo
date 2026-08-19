@@ -2,8 +2,7 @@ import ProjectsHero from '@/src/components/projects/hero';
 import ProjectsGrid from '@/src/components/projects/projects-grid';
 import CTA from '@/src/components/shared/cta';
 import WhyChooseUs from '@/src/components/shared/why-choose-us';
-import type { ProjectPost } from '@/src/interface';
-import getMarkDownData from '@/src/utils/getMarkDownData';
+import { projects as allProjectEntries } from '@/src/data/projects';
 import type { Metadata } from 'next';
 
 const PROJECTS_PER_PAGE = 8;
@@ -19,7 +18,7 @@ interface ProjectsPageProps {
 
 const page = async ({ searchParams }: ProjectsPageProps) => {
   const params = await searchParams;
-  const allProjects = getMarkDownData<ProjectPost>('src/data/projects');
+  const allProjects = allProjectEntries;
   const totalPages = Math.max(1, Math.ceil(allProjects.length / PROJECTS_PER_PAGE));
   const pageParam = params?.page;
   let pageNum = 1;

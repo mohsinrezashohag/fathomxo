@@ -1,12 +1,12 @@
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { TextReveal } from '@/src/components/animation/text-reveal-animation';
 import { IconGradient, ServiceGradientIcon } from '@/src/components/shared/icon';
-import type { ServicePost } from '@/src/interface';
+import type { Service } from '@/src/interface';
 import { cn } from '@/src/utils/cn';
 import Link from 'next/link';
 
 interface OurServicesProps {
-  services: ServicePost[];
+  services: Service[];
 }
 
 const OurServices = ({ services }: OurServicesProps) => {
@@ -46,11 +46,11 @@ const OurServices = ({ services }: OurServicesProps) => {
                       <figure className="absolute top-0 left-1/2 size-full -translate-x-1/2">
                         <IconGradient />
                       </figure>
-                      <span className={cn('text-[28px] text-white', service.icon)}></span>
+                      <span className={cn('text-[28px] text-white', `ns-${service.iconKey}`)}></span>
                     </div>
                     <div>
                       <h2 className="text-sora-heading-6 font-normal text-white/90">
-                        {service.title}
+                        {service.name}
                       </h2>
                     </div>
                   </div>

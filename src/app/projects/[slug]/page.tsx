@@ -1,15 +1,12 @@
 import ProjectDetailsContent from '@/src/components/project-details/content';
 import ProjectDetailsHero from '@/src/components/project-details/hero';
-import type { ProjectPost } from '@/src/interface';
+import { projects } from '@/src/data/projects';
 import { generateMetadata as buildMetadata } from '@/src/utils/generateMetaData';
-import getMarkDownContent from '@/src/utils/getMarkDownContent';
-import getMarkDownData from '@/src/utils/getMarkDownData';
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
-  const projects = getMarkDownData<ProjectPost>('src/data/projects');
-  return projects?.map((p) => ({ slug: p?.slug })) ?? [];
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({
@@ -18,36 +15,20 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  try {
-    const result = getMarkDownContent('src/data/projects', slug);
-    const title = (result?.data?.title as string) ?? 'Project';
-    const description = (result?.data?.excerpt as string) ?? undefined;
-    return buildMetadata(`${title} - AI Solutions || Nexsas`, description, `/projects/${slug}`);
-  } catch {
-    return buildMetadata(
-      'Project Details - AI Solutions || Nexsas',
-      undefined,
-      `/projects/${slug}`
-    );
+  const project = projects.find((entry) => entry.slug === slug);
+
+  if (!project) {
+    return buildMetadata('Project Details - FathomXO', undefined, `/projects/${slug}`);
   }
+
+  return buildMetadata(`${project.title} - FathomXO`, project.summary, `/projects/${slug}`);
 }
 
 const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
+  const project = projects.find((entry) => entry.slug === slug);
 
-  let result: { data: Record<string, unknown>; content: string } | null = null;
-  try {
-    const raw = getMarkDownContent('src/data/projects', slug);
-    result = { data: raw.data as Record<string, unknown>, content: raw.content };
-  } catch {
-    notFound();
-  }
-
-  const project = {
-    ...result.data,
-    slug,
-    content: result.content,
-  } as ProjectPost;
+  if (!project) notFound();
 
   return (
     <>

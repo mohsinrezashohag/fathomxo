@@ -1,16 +1,16 @@
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { TextReveal } from '@/src/components/animation/text-reveal-animation';
 import { PrimaryLinkButton } from '@/src/components/shared/ui/button/primary-link-button';
-import type { ServicePost } from '@/src/interface';
-import Image from 'next/image';
+import type { Service } from '@/src/interface';
 
 interface ServiceDetailsHeroProps {
-  service: ServicePost;
+  service: Service;
 }
 
 const ServiceDetailsHero = ({ service }: ServiceDetailsHeroProps) => {
-  const ctaHref = service.ctaHref ?? '/contact';
-  const ctaText = service.ctaText ?? 'Get a Demo';
+  // The brief routes every service CTA to the brief form; feature 12 owns
+  // the real intake route.
+  const ctaHref = '/contact';
 
   return (
     <section className="bg-background-6 relative overflow-hidden pt-32 pb-18 xl:pt-40 2xl:pt-50">
@@ -18,7 +18,7 @@ const ServiceDetailsHero = ({ service }: ServiceDetailsHeroProps) => {
         <div className="mb-10 text-center lg:mb-20 xl:mb-28">
           <TextReveal>
             <h2 className="xl:text-sora-heading-2 lg:text-sora-heading-3 text-sora-heading-4 inline-block font-normal text-white/90">
-              {service.title} <span className="text-white/30">{service.titleItalic ?? ''}</span>
+              {service.name} <span className="text-white/30">{service.tagline}</span>
             </h2>
           </TextReveal>
 
@@ -29,23 +29,10 @@ const ServiceDetailsHero = ({ service }: ServiceDetailsHeroProps) => {
           </TextReveal>
           <RevealAnimation delay={0.3}>
             <div className="text-center">
-              <PrimaryLinkButton href={ctaHref}>{ctaText}</PrimaryLinkButton>
+              <PrimaryLinkButton href={ctaHref}>Send the brief</PrimaryLinkButton>
             </div>
           </RevealAnimation>
         </div>
-        {service.heroImage && (
-          <RevealAnimation delay={0.4}>
-            <figure className="mt-14 overflow-hidden rounded-[10px] md:mt-24 lg:mt-39">
-              <Image
-                src={service.heroImage}
-                alt={service.title}
-                width={1200}
-                height={600}
-                className="size-full object-cover"
-              />
-            </figure>
-          </RevealAnimation>
-        )}
       </div>
     </section>
   );

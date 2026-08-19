@@ -2,7 +2,7 @@ import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { PaginationNextIcon, PaginationPrevIcon } from '@/src/components/shared/icon';
 import { PaginationItem } from '@/src/components/shared/ui/pagination/pagination-item';
 import { PaginationWrapper } from '@/src/components/shared/ui/pagination/pagination-wrapper';
-import type { ProjectPost } from '@/src/interface';
+import type { Project } from '@/src/interface';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -12,7 +12,7 @@ function buildProjectPageUrl(page: number): string {
 }
 
 interface ProjectsGridProps {
-  projects: ProjectPost[];
+  projects: Project[];
   totalPages: number;
   currentPage: number;
 }
@@ -35,7 +35,7 @@ const ProjectsGrid = ({ projects, totalPages, currentPage }: ProjectsGridProps) 
                 >
                   <figure className="h-[350px] w-full overflow-hidden rounded-t-md transition-all duration-500 ease-in-out group-hover:scale-105 md:h-100 lg:h-125">
                     <Image
-                      src={project.heroImage as string}
+                      src={project.cover}
                       alt={project.title}
                       width={1260}
                       height={500}
@@ -47,7 +47,7 @@ const ProjectsGrid = ({ projects, totalPages, currentPage }: ProjectsGridProps) 
                       {project.title}
                     </h3>
                     <p className="text-tagline-2 mx-auto line-clamp-2 w-full max-w-[416px] font-normal text-white/50">
-                      {project.excerpt}
+                      {project.summary}
                     </p>
                   </div>
                 </Link>

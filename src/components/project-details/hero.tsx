@@ -1,11 +1,11 @@
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { TextReveal } from '@/src/components/animation/text-reveal-animation';
 import { PrimaryLinkButton } from '@/src/components/shared/ui/button/primary-link-button';
-import type { ProjectPost } from '@/src/interface';
+import type { Project } from '@/src/interface';
 import Image from 'next/image';
 
 interface ProjectDetailsHeroProps {
-  project: ProjectPost;
+  project: Project;
 }
 
 const ProjectDetailsHero = ({ project }: ProjectDetailsHeroProps) => {
@@ -15,13 +15,12 @@ const ProjectDetailsHero = ({ project }: ProjectDetailsHeroProps) => {
         <div className="mb-20 text-center xl:mb-28">
           <TextReveal>
             <h1 className="xl:text-sora-heading-2 lg:text-sora-heading-3 text-sora-heading-4 inline-block font-normal text-white/90">
-              {project.title} <br className="block sm:hidden" />
-              <span className="text-white/30">{project.titleItalic ?? ''}</span>
+              {project.title}
             </h1>
           </TextReveal>
           <TextReveal delay={0.2}>
             <p className="text-tagline-2 mx-auto mt-3 mb-14 max-w-xl font-normal text-white/60">
-              {project.excerpt}
+              {project.summary}
             </p>
           </TextReveal>
           <RevealAnimation delay={0.3}>
@@ -33,7 +32,7 @@ const ProjectDetailsHero = ({ project }: ProjectDetailsHeroProps) => {
         <RevealAnimation delay={0.4}>
           <figure className="mt-24 h-[380px] overflow-hidden rounded-[10px] md:h-[450px] lg:h-[650px] 2xl:mt-39">
             <Image
-              src={project.heroImage}
+              src={project.cover}
               alt="Project Details Hero"
               width={1200}
               height={600}
