@@ -12,7 +12,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${fontVariables} antialiased`}>
+      {/* Extensions (ColorZilla, Grammarly, and the like) inject attributes into
+          body before React hydrates; suppressHydrationWarning does not inherit
+          from html, so body needs its own. */}
+      <body className={`${fontVariables} antialiased`} suppressHydrationWarning>
         <Suspense>
           <SmoothScrollProvider>
             <Navbar />
