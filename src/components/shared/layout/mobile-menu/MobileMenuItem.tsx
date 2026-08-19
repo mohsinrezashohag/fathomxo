@@ -31,7 +31,9 @@ const MobileMenuItem = ({ id, title, children, hasSubmenu = false }: MobileMenuI
         aria-expanded={hasSubmenu ? isActive : undefined}
         aria-controls={hasSubmenu ? `submenu-${id}` : undefined}
       >
-        <span className="font-sora text-tagline-1 block font-normal text-white">{title}</span>
+        <span className="font-display text-ink block text-xl font-medium tracking-[var(--tracking-display)]">
+          {title}
+        </span>
         {hasSubmenu && (
           <span className={cn('transition-transform duration-300', isActive && 'rotate-90')}>
             <svg
@@ -43,7 +45,7 @@ const MobileMenuItem = ({ id, title, children, hasSubmenu = false }: MobileMenuI
             >
               <path
                 d="M10 12L14 8L10 4"
-                className="stroke-white"
+                className="stroke-ink"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"

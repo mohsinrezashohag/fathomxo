@@ -16,7 +16,7 @@
     easings, radius and container tokens as Tailwind v4 `@theme` tokens, with
     role-named font variables pointing at the template's existing Space Grotesk,
     Inter Tight and IBM Plex Mono
-  - [ ] 1b. **Site nav** - header on the new tokens: logo, primary links, brief CTA and
+  - [x] 1b. **Site nav** - header on the new tokens: logo, primary links, brief CTA and
     mobile menu, replacing the template's four mega menus
   - [ ] 1c. **Site footer** - footer on the new tokens, with links matching the real
     route set

@@ -7,7 +7,7 @@ import {
   PricingIcon,
   SupportIconV2,
   WhitePaperIconV2,
-} from '@/src/components/shared/icon/menu-icon';
+} from './menu-icons';
 import { cn } from '@/src/utils/cn';
 import type { ComponentType } from 'react';
 import PlatformMenuLink from './platform-menu-link';

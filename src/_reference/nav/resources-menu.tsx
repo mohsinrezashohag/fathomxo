@@ -7,7 +7,7 @@ import {
   SuccessIcon,
   SupportIcon,
   TutorialIcon,
-} from '@/src/components/shared/icon/menu-icon';
+} from './menu-icons';
 import { cn } from '@/src/utils/cn';
 import type { ComponentType } from 'react';
 import ResourcesMenuLink from './resources-menu-link';

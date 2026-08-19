@@ -176,20 +176,94 @@
   </head>
   <body>
     <header class="nav">
-      <div class="container nav__inner">
-        <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+      <div class="nav__inner">
+        <a class="nav__mark" href="home.html">F<span>XO</span></a>
         <nav>
           <ul class="nav__links">
-            <li><a href="case-study.html">Work</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="#studio">Studio</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li class="nav__item"><a href="case-study.html">Work</a></li>
+            <li class="nav__item">
+              <a href="#services"
+                >Services
+                <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                  <path
+                    d="M1 1L5 5L9 1"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <div class="nav__panel">
+                <div class="nav__panel-inner">
+                  <div>
+                    <p class="nav__panel-label">Service lines</p>
+                    <ul class="nav__panel-list">
+                      <li><a href="#services">E-commerce</a></li>
+                      <li><a href="#services">Website / App</a></li>
+                      <li><a href="#services">Landing page</a></li>
+                      <li><a href="#services">AI agents / automation</a></li>
+                    </ul>
+                  </div>
+                  <ul class="nav__cards">
+                    <li>
+                      <a href="case-study.html">
+                        <span class="nav__card-thumb"></span>
+                        <span class="nav__card-title">Transforming e-Commerce</span>
+                        <span class="nav__card-blurb"
+                          >Recommendations engine that lifted conversion 40%.</span
+                        >
+                      </a>
+                    </li>
+                    <li>
+                      <a href="case-study.html">
+                        <span class="nav__card-thumb"></span>
+                        <span class="nav__card-title">Automated customer support</span>
+                        <span class="nav__card-blurb"
+                          >Context-aware virtual agents answering in seconds.</span
+                        >
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="nav__item"><a href="pricing.html">Pricing</a></li>
+            <li class="nav__item"><a href="#studio">Studio</a></li>
+            <li class="nav__item"><a href="#faq">FAQ</a></li>
           </ul>
         </nav>
-        <a class="btn btn--accent" href="#brief">Send the brief</a>
+        <a class="nav__cta" href="#brief">Send the brief</a>
+        <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
       </div>
     </header>
+
+    <div class="mobile-nav" aria-hidden="true">
+      <div class="mobile-nav__top">
+        <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+        <button class="mobile-nav__close" aria-label="Close menu">&times;</button>
+      </div>
+      <ul class="mobile-nav__links">
+        <li class="nav__item"><a href="case-study.html">Work</a></li>
+        <li>
+          <a href="#services">Services</a>
+          <ul class="mobile-nav__sub">
+            <li><a href="#services">E-commerce</a></li>
+            <li><a href="#services">Website / App</a></li>
+            <li><a href="#services">Landing page</a></li>
+            <li><a href="#services">AI agents / automation</a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a href="pricing.html">Pricing</a></li>
+        <li class="nav__item"><a href="#studio">Studio</a></li>
+        <li class="nav__item"><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="mobile-nav__foot">
+        <p class="mobile-nav__contact needs-detail">hello@fathomxo.com</p>
+        <a class="btn btn--accent" href="#brief">Send the brief</a>
+      </div>
+    </div>
 
     <main>
       <section class="hero">
@@ -208,9 +282,7 @@
         <div class="container">
           <div class="statement-block">
             <p class="eyebrow">01 / What we believe</p>
-            <h2 class="statement">
-              Most agencies sell hours.<br /><em>We sell a decision.</em>
-            </h2>
+            <h2 class="statement">Most agencies sell hours.<br /><em>We sell a decision.</em></h2>
             <p class="lede">
               A template shop ships everyone the same skin. An offshore team disappears for six
               months. Neither one takes a position on what your product should be, because taking a
@@ -220,9 +292,7 @@
 
           <div class="statement-block">
             <p class="eyebrow">02 / How we work</p>
-            <h2 class="statement">
-              Shipped in weeks,<br /><em>not quarters.</em>
-            </h2>
+            <h2 class="statement">Shipped in weeks,<br /><em>not quarters.</em></h2>
             <p class="lede">
               Fixed scope, published prices, one team. You get a real number within a day of sending
               the brief, and something running long before the invoice lands.
@@ -304,17 +374,17 @@
           <div class="footer__col">
             <h3>Work</h3>
             <ul>
-              <li><a href="case-study.html">Case studies</a></li>
+              <li class="nav__item"><a href="case-study.html">Case studies</a></li>
               <li><a href="#services">Services</a></li>
-              <li><a href="pricing.html">Pricing</a></li>
+              <li class="nav__item"><a href="pricing.html">Pricing</a></li>
             </ul>
           </div>
           <div class="footer__col">
             <h3>Studio</h3>
             <ul>
-              <li><a href="#studio">About</a></li>
-              <li><a href="#studio">Team</a></li>
-              <li><a href="#faq">FAQ</a></li>
+              <li class="nav__item"><a href="#studio">About</a></li>
+              <li class="nav__item"><a href="#studio">Team</a></li>
+              <li class="nav__item"><a href="#faq">FAQ</a></li>
             </ul>
           </div>
           <div class="footer__col">
@@ -327,9 +397,26 @@
         </div>
         <div class="footer__bottom">
           <span>&copy; 2026 FathomXO. All rights reserved.</span>
-          <span class="muted">Contact details marked with a dashed rule need your real values.</span>
+          <span class="muted"
+            >Contact details marked with a dashed rule need your real values.</span
+          >
         </div>
       </div>
     </footer>
+
+    <script>
+      // Mockup-only view toggle; the real nav uses React state.
+      const panel = document.querySelector('.mobile-nav');
+      const toggle = document.querySelector('.nav__toggle');
+      const open = (on) => {
+        panel.classList.toggle('is-open', on);
+        panel.setAttribute('aria-hidden', String(!on));
+        toggle.setAttribute('aria-expanded', String(on));
+        document.body.style.overflow = on ? 'hidden' : '';
+      };
+      toggle.addEventListener('click', () => open(true));
+      panel.querySelector('.mobile-nav__close').addEventListener('click', () => open(false));
+      document.addEventListener('keydown', (e) => e.key === 'Escape' && open(false));
+    </script>
   </body>
 </html>

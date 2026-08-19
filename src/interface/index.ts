@@ -1,3 +1,11 @@
+// navigation
+export interface NavLink {
+  label: string;
+  href: string;
+  /** Present only on items that open a dropdown. */
+  children?: NavLink[];
+}
+
 // pricing
 
 export interface FeatureCategory {
@@ -83,15 +91,3 @@ export interface ProjectPost {
   [key: string]: unknown;
 }
 
-// mobile menu
-export interface MobileMenuSubItem {
-  id: string;
-  label: string;
-  href: string;
-}
-
-export interface MobileMenuData {
-  id: string;
-  title: string;
-  submenu: MobileMenuSubItem[];
-}

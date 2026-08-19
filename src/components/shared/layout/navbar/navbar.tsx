@@ -1,224 +1,132 @@
 'use client';
+
 import RevealAnimation from '@/src/components/animation/reveal-animation';
-import MobileMenu from '@/src/components/shared/layout/mobile-menu/MobileMenu';
-import { DefaultLinkButton } from '@/src/components/shared/ui/button/default-link-button';
-import { MobileMenuProvider } from '@/src/context/MobileMenuContext';
-import { mobileMenuData } from '@/src/data/mobile-meu';
-import { useNavbarScroll } from '@/src/hooks/useScrollHeader';
+import { AccentLinkButton } from '@/src/components/shared/ui/button';
+import symbolMark from '@/src/assets/images/logos/svg/symbol-dark.svg';
+import { navCta, navLinks } from '@/src/data/navigation';
 import { cn } from '@/src/utils/cn';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import CompanyMenu from './company-menu';
+import MobileMenu, { MobileMenuGroup } from '@/src/components/shared/layout/mobile-menu/MobileMenu';
+import { MobileMenuProvider } from '@/src/context/MobileMenuContext';
+import { useNavbarScroll } from '@/src/hooks/useScrollHeader';
 import MobileMenuButton from './mobile-menu-button';
-import PlanAndSupportMenu from './plan-and-support-menu';
-import PlatformMenu from './platform-menu';
-import ResourcesMenu from './resources-menu';
+import NavDropdown from './nav-dropdown';
 
-const navItemLineClasses =
-  'nav-item-line absolute top-0 left-1/2 h-[0.9px] w-0 -translate-x-1/2 rounded-full bg-radial-[circle,#FFFFFF_0%,#7C8EA52E_100%] opacity-100 transition-all duration-500 ease-out group-hover/nav-item:w-42';
-const navItemGradientClasses =
-  'nav-item-gradient absolute top-0 left-1/2 h-[89%] w-[calc(100%+120px)] -translate-x-1/2 bg-radial-[circle_at_center] from-[#8D59FF66] from-40% to-[#8D59FF00] to-100% opacity-0 blur-[14px] transition-all duration-500 ease-out group-hover/nav-item:opacity-80';
-const navLinkTextClasses =
-  'nav-item-text text-tagline-3 font-ibm-plex-mono leading-[21.7px] font-normal text-white/60 capitalize transition-colors duration-500 group-hover/nav-item:text-white';
+/**
+ * The hairline that grows above a hovered item, and the accent bloom behind it.
+ * Ported from the starter's header with the brand accent in place of its purple;
+ * the two together are what make the pill read as lit rather than flat.
+ */
+export const navItemLine =
+  'pointer-events-none absolute top-0 left-1/2 h-px w-0 -translate-x-1/2 rounded-full bg-[linear-gradient(90deg,transparent,var(--color-ink),transparent)] transition-all duration-500 ease-out group-hover/nav-item:w-24';
 
-interface NavbarProps {
-  showTopNav?: boolean;
-}
+export const navItemGlow =
+  'pointer-events-none absolute top-0 left-1/2 h-[89%] w-[calc(100%+120px)] -translate-x-1/2 bg-radial-[circle_at_top] from-[var(--color-accent-glow)] from-30% to-transparent to-100% opacity-0 blur-[14px] transition-opacity duration-500 ease-out group-hover/nav-item:opacity-100';
 
-const Navbar = ({ showTopNav = false }: NavbarProps) => {
+export const navLinkText =
+  'font-mono text-ink-muted text-xs tracking-[var(--tracking-mono)] uppercase transition-colors duration-500 group-hover/nav-item:text-ink';
+
+const focusRing =
+  'focus-visible:outline-accent focus-visible:outline-2 focus-visible:outline-offset-2';
+
+/** The drawer's grouped shape, derived from the one nav source rather than a
+ *  second data file. That split is what let the template's desktop and mobile
+ *  menus drift into different structures. */
+const drawerGroups: MobileMenuGroup[] = [
+  ...navLinks.map((link) => ({
+    id: link.label.toLowerCase(),
+    title: link.label,
+    submenu: (link.children ?? []).map((child) => ({
+      id: `${link.label}-${child.label}`.toLowerCase().replace(/\s+/g, '-'),
+      label: child.label,
+      href: child.href,
+    })),
+  })),
+  { id: 'brief', title: navCta.label, submenu: [] },
+];
+
+const Navbar = () => {
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const { isScrolled } = useNavbarScroll(150);
-  const [menuDropdownId, setMenuDropdownId] = useState<string | null>(null);
-
-  const handleMenuHover = (dropdownId?: string | null) => {
-    setMenuDropdownId(dropdownId ?? null);
-  };
+  const pathname = usePathname();
 
   return (
     <MobileMenuProvider>
+      {/* A floating pill, not a full-width bar: it overlays the page, so the
+          96-200px of top padding every hero already carries stays correct. */}
       <header
-        onMouseLeave={() => handleMenuHover(null)}
+        onMouseLeave={() => setOpenDropdown(null)}
         className={cn(
-          'fixed top-6 left-1/2 z-30 mx-auto w-full max-w-[350px] -translate-x-1/2 transition-all duration-500 ease-in-out md:max-w-[640px] lg:max-w-[818px]',
-          showTopNav && 'top-13.5',
+          'fixed top-6 left-1/2 z-[var(--z-nav)] w-full max-w-[350px] -translate-x-1/2 transition-all duration-500 ease-in-out md:max-w-[640px] lg:max-w-[900px]',
           isScrolled && 'top-2'
         )}
       >
+        {/* The pill rises up on load as part of the entrance sequence; feature 1d
+            folds this into the orchestrated GSAP timeline. */}
         <RevealAnimation direction="up" offset={100} delay={0.8} instant>
-          <nav
-            className={cn(
-              'bg-background-6 border-stroke-3/18 flex items-center justify-between rounded-full border py-1.5 pr-5 pl-2 lg:gap-12 lg:py-0 lg:pr-1.5 lg:pl-1.5'
-            )}
-          >
-            <Link href="/" className="block size-11" aria-label="Nexsas home">
-              <figure className="size-full">
-                <Image
-                  src="/images/logo/logo-white-small.svg"
-                  alt="Nexsas"
-                  width={44}
-                  height={44}
-                  className="size-full"
-                />
-              </figure>
-              <span className="sr-only">Nexsas</span>
+          <nav className="border-hairline bg-surface/95 flex items-center justify-between gap-4 rounded-full border py-1.5 pr-1.5 pl-1.5 backdrop-blur-xl lg:gap-8">
+            <Link
+              href="/"
+              aria-label="FathomXO home"
+              className={cn(
+                'bg-surface-raised grid size-11 shrink-0 place-items-center rounded-full',
+                focusRing
+              )}
+            >
+              <Image src={symbolMark} alt="" width={26} height={17} className="w-[26px]" priority />
             </Link>
 
-            <ul className="relative hidden items-center gap-6 lg:flex lg:gap-8">
-              {/* Company */}
-              <li
-                className="group/nav-item relative cursor-pointer py-4"
-                data-menu="company-mega-menu"
-                onMouseEnter={() => handleMenuHover('company-mega-menu')}
-              >
-                <div className="pointer-events-none absolute inset-0">
-                  <div className={navItemLineClasses} />
-                  <div className={navItemGradientClasses} />
-                </div>
-                <Link href="#" className="relative z-5 flex items-center gap-1.5">
-                  <span className={navLinkTextClasses}>Company</span>
-                  <span className="block origin-center translate-y-px transition-all duration-500 group-hover/nav-item:rotate-180">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="5"
-                      viewBox="0 0 10 5"
-                      fill="none"
-                    >
-                      <path
-                        d="M1.19922 0.5L5.19922 4.5L9.19922 0.5"
-                        className="stroke-white/60 transition-colors duration-500 group-hover/nav-item:stroke-white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-                <CompanyMenu
-                  menuDropdownId={menuDropdownId}
-                  setMenuDropdownId={setMenuDropdownId}
-                />
-              </li>
+            <ul className="hidden items-center gap-8 lg:flex">
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                const itemClassName = cn(
+                  'group/nav-item relative flex items-center py-4',
+                  isActive && '[&_span]:text-ink'
+                );
 
-              {/* Platform */}
-              <li
-                className="group/nav-item relative py-4"
-                data-menu="platform-mega-menu"
-                onMouseEnter={() => handleMenuHover('platform-mega-menu')}
-              >
-                <div className="pointer-events-none absolute inset-0">
-                  <div className={navItemLineClasses} />
-                  <div className={navItemGradientClasses} />
-                </div>
-                <Link href="#" className="relative z-5 flex items-center gap-1.5">
-                  <span className={navLinkTextClasses}>Platform</span>
-                  <span className="block origin-center translate-y-px transition-all duration-500 group-hover/nav-item:rotate-180">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="5"
-                      viewBox="0 0 10 5"
-                      fill="none"
-                    >
-                      <path
-                        d="M1.19922 0.5L5.19922 4.5L9.19922 0.5"
-                        className="stroke-white/60 transition-colors duration-500 group-hover/nav-item:stroke-white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-                <PlatformMenu
-                  menuDropdownId={menuDropdownId}
-                  setMenuDropdownId={setMenuDropdownId}
-                />
-              </li>
+                if (link.children?.length) {
+                  return (
+                    <NavDropdown
+                      key={link.label}
+                      link={link}
+                      isActive={isActive}
+                      isOpen={openDropdown === link.label}
+                      onOpen={() => setOpenDropdown(link.label)}
+                      onClose={() => setOpenDropdown(null)}
+                      itemClassName={itemClassName}
+                    />
+                  );
+                }
 
-              {/* Resources */}
-              <li
-                className="group/nav-item relative py-4"
-                data-menu="resources-dropdown-menu"
-                onMouseEnter={() => handleMenuHover('resources-dropdown-menu')}
-              >
-                <div className="pointer-events-none absolute inset-0">
-                  <div className={navItemLineClasses} />
-                  <div className={navItemGradientClasses} />
-                </div>
-                <Link href="#" className="relative z-5 flex items-center gap-1.5">
-                  <span className={navLinkTextClasses}>Resources</span>
-                  <span className="block origin-center translate-y-px transition-all duration-500 group-hover/nav-item:rotate-180">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="5"
-                      viewBox="0 0 10 5"
-                      fill="none"
+                return (
+                  <li key={link.label} className={itemClassName}>
+                    <span className={navItemLine} />
+                    <span className={navItemGlow} />
+                    <Link
+                      href={link.href}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={cn('relative z-1 rounded', focusRing)}
                     >
-                      <path
-                        d="M1.19922 0.5L5.19922 4.5L9.19922 0.5"
-                        className="stroke-white/60 transition-colors duration-500 group-hover/nav-item:stroke-white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-                <ResourcesMenu
-                  menuDropdownId={menuDropdownId}
-                  setMenuDropdownId={setMenuDropdownId}
-                />
-              </li>
-
-              {/* Plans & Support */}
-              <li
-                className="group/nav-item relative py-4"
-                data-menu="plan-and-support-mega-menu"
-                onMouseEnter={() => handleMenuHover('plan-and-support-mega-menu')}
-              >
-                <div className="pointer-events-none absolute inset-0">
-                  <div className={navItemLineClasses} />
-                  <div className={navItemGradientClasses} />
-                </div>
-                <Link href="#" className="relative z-5 flex items-center gap-1.5">
-                  <span className={navLinkTextClasses}>Plans & Support</span>
-                  <span className="block origin-center translate-y-px transition-all duration-500 group-hover/nav-item:rotate-180">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="5"
-                      viewBox="0 0 10 5"
-                      fill="none"
-                    >
-                      <path
-                        d="M1.19922 0.5L5.19922 4.5L9.19922 0.5"
-                        className="stroke-white/60 transition-colors duration-500 group-hover/nav-item:stroke-white"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </Link>
-                <PlanAndSupportMenu
-                  menuDropdownId={menuDropdownId}
-                  setMenuDropdownId={setMenuDropdownId}
-                />
-              </li>
+                      <span className={navLinkText}>{link.label}</span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
 
-            <div className="hidden lg:block">
-              <DefaultLinkButton
-                href="/contact"
-                className="shadow-[0_3px_18px_0_rgba(141,89,255,0.80)]"
-              >
-                Try now
-              </DefaultLinkButton>
-            </div>
+            <AccentLinkButton href={navCta.href} displayClassName="hidden lg:inline-block">
+              {navCta.label}
+            </AccentLinkButton>
 
             <MobileMenuButton />
           </nav>
         </RevealAnimation>
       </header>
-      <MobileMenu menuData={mobileMenuData} />
+
+      <MobileMenu menuData={drawerGroups} />
     </MobileMenuProvider>
   );
 };

@@ -1,5 +1,5 @@
 'use client';
-import logoSmall from '@/public/images/logo/logo-white-small.svg';
+import logoSmall from '@/src/assets/images/logos/svg/symbol-dark.svg';
 import { useMobileMenuContext } from '@/src/context/MobileMenuContext';
 import { cn } from '@/src/utils/cn';
 import Image from 'next/image';
@@ -30,7 +30,7 @@ const MobileMenu = ({ menuData }: { menuData: MobileMenuGroup[] }) => {
   return (
     <aside
       className={cn(
-        'scroll-bar bg-background-13 fixed top-0 right-0 z-9999 h-screen w-full translate-x-full transition-all duration-300 sm:w-1/2 sm:rounded-l-3xl xl:hidden',
+        'scroll-bar bg-canvas border-hairline fixed top-0 right-0 z-[var(--z-menu)] h-screen w-full translate-x-full border-l transition-all duration-300 sm:w-1/2 sm:rounded-l-3xl lg:hidden',
         isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
       )}
     >
@@ -39,7 +39,7 @@ const MobileMenu = ({ menuData }: { menuData: MobileMenuGroup[] }) => {
           <Link href="/">
             <span className="sr-only">Home</span>
             <figure className="max-w-[44px]">
-              <Image src={logoSmall} alt="Nexsas" width={44} height={44} className="block w-full" />
+              <Image src={logoSmall} alt="" width={44} height={44} className="block w-full" />
             </figure>
           </Link>
           <MenuCloseButton />
@@ -60,7 +60,7 @@ const MobileMenu = ({ menuData }: { menuData: MobileMenuGroup[] }) => {
                       href={subItem.href}
                       onClick={closeMenu}
                       className={cn(
-                        'font-inter-tight text-tagline-3 ml-4 block text-left text-white/70 transition-all duration-500 ease-in-out',
+                        'text-ink-secondary hover:text-ink ml-4 block text-left text-sm transition-all duration-500 ease-in-out',
                         idx === 0 ? 'py-1.5' : 'py-2.5',
                         isActiveLink(subItem.href) ? 'font-semibold' : 'font-normal'
                       )}
