@@ -6,7 +6,6 @@
   --font-manrope: 'Manrope', sans-serif;
   --font-sora: 'Sora', sans-serif;
   --font-space-grotesk: 'Space Grotesk', sans-serif;
-  --font-funnel-display: 'Funnel Display', sans-serif;
 
   /* =============== COLORS =============== */
   --color-background-1: #3d4753;
@@ -181,19 +180,6 @@
   --text-sg-heading-6: 1.25rem;
   --text-sg-heading-6--line-height: 140%;
   --text-sg-heading-6--letter-spacing: -0.6px;
-  /* FUNNEL DISPLAY FONT */
-  --text-fd-heading-1: 4rem;
-  --text-fd-heading-1--line-height: 120%;
-  --text-fd-heading-2: 3rem;
-  --text-fd-heading-2--line-height: 120%;
-  --text-fd-heading-3: 2.5rem;
-  --text-fd-heading-3--line-height: 120%;
-  --text-fd-heading-4: 2rem;
-  --text-fd-heading-4--line-height: 130%;
-  --text-fd-heading-5: 1.5rem;
-  --text-fd-heading-5--line-height: 140%;
-  --text-fd-heading-6: 1.25rem;
-  --text-fd-heading-6--line-height: 140%;
   /* TAGLINE FONT */
   --text-tagline-1: 1.125rem;
   --text-tagline-1--line-height: 150%;

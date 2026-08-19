@@ -70,30 +70,6 @@
   @apply font-sora;
 }
 
-@utility text-fd-heading-1 {
-  @apply font-funnel-display;
-}
-
-@utility text-fd-heading-2 {
-  @apply font-funnel-display;
-}
-
-@utility text-fd-heading-3 {
-  @apply font-funnel-display;
-}
-
-@utility text-fd-heading-4 {
-  @apply font-funnel-display;
-}
-
-@utility text-fd-heading-5 {
-  @apply font-funnel-display;
-}
-
-@utility text-fd-heading-6 {
-  @apply font-funnel-display;
-}
-
 @utility text-sg-heading-1 {
   @apply font-space-grotesk;
 }

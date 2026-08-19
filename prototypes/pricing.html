@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FathomXO - pricing mockup</title>
+    <!-- Mockup-only: the real app loads these through next/font/google. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+      .page-head {
+        padding-block: var(--space-24) var(--space-12);
+      }
+
+      /* ---- service-line tabs --------------------------------------------
+         The active tab is the one accent in this viewport. Inactive tabs are
+         hairline-bordered only, so the accent never competes with itself. */
+      .tabs {
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+        margin-top: var(--space-8);
+      }
+
+      .tab {
+        min-height: 44px;
+        padding: var(--space-3) var(--space-6);
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--hairline-strong);
+        background: transparent;
+        color: var(--text-secondary);
+        font-family: var(--font-body);
+        font-size: var(--text-14);
+        cursor: pointer;
+        transition:
+          color var(--dur-hover) var(--ease),
+          background var(--dur-hover) var(--ease);
+      }
+
+      .tab:hover {
+        color: var(--text);
+        background: var(--surface);
+      }
+
+      .tab[aria-selected='true'] {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-ink);
+        font-weight: 600;
+      }
+
+      /* ---- tiers ---------------------------------------------------------- */
+      .tiers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-6);
+        margin-top: var(--space-16);
+      }
+
+      @media (max-width: 940px) {
+        .tiers {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .tier {
+        border: 1px solid var(--hairline);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        padding: var(--space-8);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+
+      /* The recommended tier is marked by a stronger hairline and a mono label,
+         not by a second accent fill. One accent per viewport. */
+      .tier--recommended {
+        border-color: var(--hairline-strong);
+        position: relative;
+      }
+
+      .tier__flag {
+        position: absolute;
+        top: calc(var(--space-4) * -1);
+        left: var(--space-8);
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        background: var(--canvas);
+        border: 1px solid var(--hairline-strong);
+        border-radius: var(--radius-pill);
+        padding: var(--space-1) var(--space-3);
+        color: var(--text);
+      }
+
+      .tier__name {
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        color: var(--text-muted);
+      }
+
+      .tier__price {
+        font-family: var(--font-display);
+        font-size: var(--text-44);
+        letter-spacing: var(--tracking-display);
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .tier__price small {
+        display: block;
+        font-family: var(--font-body);
+        font-size: var(--text-14);
+        letter-spacing: normal;
+        color: var(--text-muted);
+        margin-top: var(--space-2);
+      }
+
+      .tier ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: var(--space-3);
+        font-size: var(--text-14);
+        color: var(--text-secondary);
+        border-top: 1px solid var(--hairline);
+        padding-top: var(--space-6);
+      }
+
+      .tier li::before {
+        content: '—';
+        color: var(--text-faint);
+        margin-right: var(--space-2);
+      }
+
+      .tier .btn {
+        margin-top: auto;
+        justify-content: center;
+      }
+
+      .note {
+        margin-top: var(--space-12);
+        font-size: var(--text-14);
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+        <nav>
+          <ul class="nav__links">
+            <li><a href="case-study.html">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="pricing.html" aria-current="page">Pricing</a></li>
+            <li><a href="#studio">Studio</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--accent" href="#brief">Send the brief</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="container page-head">
+        <p class="eyebrow">Pricing</p>
+        <h1 class="h2" style="margin-top: var(--space-4)">
+          Published prices, so you can stop guessing.
+        </h1>
+        <p class="lede" style="margin-top: var(--space-6)">
+          Every tier is fixed scope. You get the number before the call, not after it.
+        </p>
+
+        <div class="tabs" role="tablist" aria-label="Service line">
+          <button class="tab" role="tab" aria-selected="false">E-commerce</button>
+          <button class="tab" role="tab" aria-selected="true">Website / App</button>
+          <button class="tab" role="tab" aria-selected="false">Landing page</button>
+          <button class="tab" role="tab" aria-selected="false">AI agents</button>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="tiers">
+          <article class="tier">
+            <div>
+              <p class="tier__name">Starter</p>
+              <p class="tier__price">৳85,000<small>one-off, 2-3 weeks</small></p>
+            </div>
+            <ul>
+              <li>Up to 5 pages</li>
+              <li>Responsive from 360px</li>
+              <li>Basic SEO and analytics</li>
+              <li>One round of revisions</li>
+            </ul>
+            <a class="btn btn--ghost" href="#brief">Start here</a>
+          </article>
+
+          <article class="tier tier--recommended">
+            <span class="tier__flag">Most chosen</span>
+            <div>
+              <p class="tier__name">Essential</p>
+              <p class="tier__price">৳2,40,000<small>one-off, 4-6 weeks</small></p>
+            </div>
+            <ul>
+              <li>Up to 15 pages plus a CMS</li>
+              <li>Custom design system</li>
+              <li>Motion and interaction pass</li>
+              <li>Performance budget enforced</li>
+              <li>Two rounds of revisions</li>
+            </ul>
+            <a class="btn btn--accent" href="#brief">Send the brief</a>
+          </article>
+
+          <article class="tier">
+            <div>
+              <p class="tier__name">Grow</p>
+              <p class="tier__price">৳45,000<small>per month, retainer</small></p>
+            </div>
+            <ul>
+              <li>Everything in Essential</li>
+              <li>Hosting and uptime monitoring</li>
+              <li>Monthly iteration cycle</li>
+              <li>Automation upkeep</li>
+              <li>Priority response</li>
+            </ul>
+            <a class="btn btn--ghost" href="#brief">Talk retainers</a>
+          </article>
+        </div>
+
+        <p class="note">
+          Prices exclude VAT. Anything outside these tiers gets quoted from the brief within one
+          working day.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+            <p class="muted" style="margin-top: var(--space-4); max-width: 34ch">
+              A studio shipping opinionated, production-grade software.
+            </p>
+            <p class="muted" style="margin-top: var(--space-6); font-size: var(--text-14)">
+              <span class="needs-detail">hello@fathomxo.com</span><br />
+              <span class="needs-detail">Dhaka, Bangladesh</span>
+            </p>
+          </div>
+          <div class="footer__col">
+            <h3>Work</h3>
+            <ul>
+              <li><a href="case-study.html">Case studies</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3>Studio</h3>
+            <ul>
+              <li><a href="#studio">About</a></li>
+              <li><a href="#studio">Team</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3>Start</h3>
+            <ul>
+              <li><a href="#brief">Send the brief</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>&copy; 2026 FathomXO. All rights reserved.</span>
+          <span class="muted">Contact details marked with a dashed rule need your real values.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

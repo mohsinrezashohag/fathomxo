@@ -19,7 +19,7 @@ const themeColors = [
 /** Theme fonts from src/styles/variable.css */
 const themeFonts = [
   "inter-tight", "ibm-plex-mono", "instrument-serif", "manrope", "sora",
-  "space-grotesk", "funnel-display",
+  "space-grotesk",
 ] as const;
 
 /** Theme typography (text-* sizes) from src/styles/variable.css */
@@ -29,7 +29,6 @@ const themeTextSizes = [
   "sora-heading-1", "sora-heading-2", "sora-heading-3", "sora-heading-4", "sora-heading-5", "sora-heading-6",
   "manrope-heading-1", "manrope-heading-2", "manrope-heading-3", "manrope-heading-4", "manrope-heading-5", "manrope-heading-6",
   "sg-heading-1", "sg-heading-2", "sg-heading-3", "sg-heading-4", "sg-heading-5", "sg-heading-6",
-  "fd-heading-1", "fd-heading-2", "fd-heading-3", "fd-heading-4", "fd-heading-5", "fd-heading-6",
   "tagline-1", "tagline-2", "tagline-3", "tagline-4",
 ] as const;
 

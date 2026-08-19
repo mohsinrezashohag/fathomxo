@@ -135,7 +135,7 @@ Matches what is already in the repo — no stack changes are proposed.
 - **Motion:** GSAP + ScrollTrigger for reveals and the hero load sequence, Lenis for smooth scroll. **One animation runtime only — Framer Motion / Motion is not used and must not be added.** Under `prefers-reduced-motion` Lenis is disabled and every ScrollTrigger resolves to its final state
 - **Carousels:** none. Swiper is removed; the case-study gallery uses CSS scroll-snap
 - **3D:** React Three Fiber + drei for the hero object, lazily loaded, with a pre-rendered WebP poster for mobile, low-power devices and no-WebGL browsers
-- **Fonts:** Clash Display (statement type), Satoshi (body), JetBrains Mono (micro-caps and data) — all self-hosted via `next/font/local`, Latin subset, `swap`
+- **Fonts:** Space Grotesk (statement type, shared with the wordmark), Inter Tight (body), IBM Plex Mono (micro-caps and data) — all via `next/font/google`, Latin subset, `swap`. The template's existing families are the brand set; no self-hosted faces and no new font dependencies
 - **Forms:** React Hook Form + Zod — one schema shared by client and route handler; Cloudflare Turnstile on the brief
 - **Email:** Resend with React Email templates (internal alert + auto-reply)
 - **Content:** typed modules in `src/data`, no external CMS, no vendor lock-in. The starter's markdown pipeline (`gray-matter`, `react-markdown`, `rehype-slug`) survives the teardown because it still feeds `/`, `/about`, `/projects/[slug]` and `/services/[slug]`; feature 2 migrates those routes and removes it
@@ -207,9 +207,9 @@ claim and a template shop cannot copy.
 - **Contrast floor:** 4.5:1 for body copy and 3:1 for interactive borders against
   the canvas. On accent fills, use the dark canvas colour for label text rather than
   white — a mid-tone accent will not pass with white on top.
-- **Type:** **Clash Display** for statement type at 56–120px, tracking `-0.03em`,
-  weights mixed inside a single sentence to carry emphasis. **Satoshi** for body at
-  16–20px, line-height 1.6. **JetBrains Mono** at 11–13px, uppercase, tracking
+- **Type:** **Space Grotesk** for statement type at 56–120px, tracking `-0.03em`,
+  weights mixed inside a single sentence to carry emphasis. **Inter Tight** for body at
+  16–20px, line-height 1.6. **IBM Plex Mono** at 11–13px, uppercase, tracking
   `0.12em`, for eyebrows, section labels, counters and table headers — the utility
   face is what makes the page read as engineered rather than decorated. Scale:
   `12 / 14 / 16 / 20 / 24 / 32 / 44 / 60 / 84 / 120`.

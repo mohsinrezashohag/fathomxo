@@ -1,0 +1,114 @@
+/* FathomXO brand tokens.
+   Ported from prototypes/theme.css. Every colour traces to the four hexes in
+   src/assets/images/logos/README.txt or derives from them by alpha or color-mix;
+   no other hex ships.
+
+   `static` matters: Tailwind drops theme variables nothing references, and these
+   are unused until the shell is rebuilt, so a bare @theme block would emit
+   nothing at all. */
+
+@theme static {
+  /* ---- surfaces ---------------------------------------------------------
+     Canvas is the darkest value so the lit hero object has the deepest ground
+     to sit in; surface is one step up for cards and raised panels. */
+  --color-canvas: #0c0c15;
+  --color-surface: #12121c;
+  --color-surface-raised: color-mix(in srgb, var(--color-surface) 96%, var(--color-ink));
+
+  /* Hairlines are the light token at low alpha, never a separate grey, so they
+     stay in the same family as text. Measured against --color-canvas:
+       0.09 -> 1.21:1  decorative section rules only
+       0.38 -> 3.25:1  clears the 3:1 floor for interactive borders
+     Do not drop --color-hairline-strong below 0.36 (3.03:1) or buttons, tabs
+     and inputs stop meeting contrast. */
+  --color-hairline: rgba(242, 240, 238, 0.09);
+  --color-hairline-strong: rgba(242, 240, 238, 0.38);
+
+  /* ---- ink --------------------------------------------------------------
+     One light token, stepped by alpha. Measured against --color-canvas:
+       1.00 -> 17.12:1
+       0.72 ->  9.03:1
+       0.56 ->  5.80:1  the floor for body copy
+       0.36 ->  3.03:1  decorative only, fails the 4.5:1 body floor */
+  --color-ink: #f2f0ee;
+  --color-ink-secondary: rgba(242, 240, 238, 0.72);
+  --color-ink-muted: rgba(242, 240, 238, 0.56);
+  --color-ink-faint: rgba(242, 240, 238, 0.36);
+
+  /* ---- accent -----------------------------------------------------------
+     A light source only: focus rings, active tab, one accent per viewport, the
+     3D rig. Never a gradient behind text.
+     Accent on canvas measures 5.16:1. On an accent fill, canvas-coloured ink
+     also gives 5.16:1 while white gives only 3.77:1, which is why labels on
+     accent use --color-accent-ink. */
+  --color-accent: #e2560a;
+  --color-accent-ink: #0c0c15;
+  --color-accent-glow: rgba(226, 86, 10, 0.24);
+
+  /* ---- type -------------------------------------------------------------
+     Families are named by role, not by face, so swapping one later is a single
+     token edit rather than a repo-wide rename. All three are already loaded by
+     src/utils/font.ts; Space Grotesk is the wordmark's typeface, so statements
+     and the logo share a voice. */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --text-12: 0.75rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-32: 2rem;
+  --text-44: 2.75rem;
+  --text-60: 3.75rem;
+  --text-84: 5.25rem;
+  --text-120: 7.5rem;
+
+  --tracking-display: -0.03em;
+  --tracking-mono: 0.12em;
+  --leading-body: 1.6;
+  --leading-display: 0.98;
+
+  /* ---- shape ------------------------------------------------------------
+     Named by role rather than size. Tailwind's own --radius-sm/md/lg/xl are
+     deliberately left alone: template components lean on them 70 times, and
+     redefining --radius-lg would resize every card on the surviving pages. */
+  --radius-control: 12px;
+  --radius-card: 20px;
+  --radius-pill: 999px;
+
+  /* ---- motion -----------------------------------------------------------
+     One shared curve across the site. */
+  --ease-brand: cubic-bezier(0.625, 0.05, 0, 1);
+
+  /* ---- layout ------------------------------------------------------------
+     Matches the existing .main-container utility, so both can converge later. */
+  --container-site: 1290px;
+}
+
+/* Z-index and duration are not Tailwind theme namespaces, so they live as plain
+   custom properties and get consumed as z-[var(--z-nav)] and
+   duration-[var(--dur-reveal)]. The 122 existing ad-hoc z-* usages migrate as
+   1b-1d rebuild each surface. */
+:root {
+  --z-base: 0;
+  --z-raised: 10;
+  --z-nav: 100;
+  --z-menu: 200;
+  --z-modal: 300;
+
+  /* Hovers are instant, reveals 400-600ms. */
+  --dur-hover: 120ms;
+  --dur-reveal: 520ms;
+  --dur-slow: 900ms;
+}
+
+/* Everything resolves to its final state when motion is unwanted. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-hover: 0ms;
+    --dur-reveal: 0ms;
+    --dur-slow: 0ms;
+  }
+}

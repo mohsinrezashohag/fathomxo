@@ -1,0 +1,340 @@
+/* FathomXO theme - the durable output of /prototype.
+   Port this block into src/styles/variable.css as Tailwind v4 @theme tokens in
+   feature 1a. Colour values trace to src/assets/images/logos/README.txt; nothing
+   here invents a hex outside that file or a neutral derived from it. */
+
+:root {
+  /* ---- surfaces ---------------------------------------------------------
+     canvas is the darkest value so the lit hero object has the deepest ground
+     to sit in; surface is one step up for cards and raised panels. */
+  --canvas: #0c0c15; /* page ground        */
+  --surface: #12121c; /* cards, panels, nav */
+  /* Derived, not invented: every neutral traces back to a README token. */
+  --surface-raised: color-mix(in srgb, var(--surface) 96%, var(--text));
+
+  /* Hairlines are the light token at low alpha, never a separate grey, so they
+     stay in the same family as text. Measured against --canvas:
+       0.09 -> 1.21:1  decorative section rules only
+       0.38 -> 3.25:1  clears the plan's 3:1 floor for interactive borders
+     Do not drop --hairline-strong below 0.36 (3.03:1) or buttons, tabs and
+     inputs stop meeting contrast. */
+  --hairline: rgba(242, 240, 238, 0.09);
+  --hairline-strong: rgba(242, 240, 238, 0.38);
+
+  /* ---- text -------------------------------------------------------------
+     One light token, stepped by alpha. Measured against --canvas:
+       1.00 -> 17.12:1
+       0.72 ->  9.03:1
+       0.56 ->  5.80:1  the floor for body copy
+       0.36 ->  3.03:1  decorative only, fails the 4.5:1 body floor */
+  --text: #f2f0ee;
+  --text-secondary: rgba(242, 240, 238, 0.72);
+  --text-muted: rgba(242, 240, 238, 0.56);
+  --text-faint: rgba(242, 240, 238, 0.36);
+
+  /* ---- accent -----------------------------------------------------------
+     Used ONLY as a light source: focus rings, active tab, one accent per
+     viewport, the 3D rig. Never a gradient behind text.
+     Accent on canvas measures 5.16:1. On an accent fill, canvas-coloured ink
+     also gives 5.16:1 while white gives only 3.77:1 - which is why the plan
+     forbids white labels on accent. */
+  --accent: #e2560a;
+  --accent-ink: #0c0c15;
+  --accent-glow: rgba(226, 86, 10, 0.24);
+
+  /* ---- type -------------------------------------------------------------
+     The template's existing Google families are the brand set - no self-hosted
+     faces. Space Grotesk is the wordmark's typeface, so statements and the logo
+     share a voice. */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Ten steps, from the plan. */
+  --text-12: 0.75rem;
+  --text-14: 0.875rem;
+  --text-16: 1rem;
+  --text-20: 1.25rem;
+  --text-24: 1.5rem;
+  --text-32: 2rem;
+  --text-44: 2.75rem;
+  --text-60: 3.75rem;
+  --text-84: 5.25rem;
+  --text-120: 7.5rem;
+
+  --tracking-display: -0.03em;
+  --tracking-mono: 0.12em;
+  --leading-body: 1.6;
+  --leading-display: 0.98;
+
+  /* ---- spacing ----------------------------------------------------------
+     The template has no spacing scale at all; this is the gap feature 1a fills. */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --container: 1290px; /* matches the existing .main-container utility */
+  --gutter: 1.25rem;
+
+  /* ---- radius + z ------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --z-base: 0;
+  --z-raised: 10;
+  --z-nav: 100;
+  --z-menu: 200;
+  --z-modal: 300;
+
+  /* ---- motion -----------------------------------------------------------
+     One shared curve across the site. Hovers are instant, reveals 400-600ms. */
+  --ease: cubic-bezier(0.625, 0.05, 0, 1);
+  --dur-hover: 120ms;
+  --dur-reveal: 520ms;
+  --dur-slow: 900ms;
+}
+
+/* Everything resolves to its final state when motion is unwanted. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-hover: 0ms;
+    --dur-reveal: 0ms;
+    --dur-slow: 0ms;
+  }
+}
+
+/* ======================================================================
+   Shared primitives used by every mockup. These are prototype-only helpers;
+   the real app rebuilds them as components in features 1b-1d.
+   ====================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--text-16);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+/* Full-bleed sections separated by hairline rules, not padding alone. */
+.section {
+  border-top: 1px solid var(--hairline);
+  padding-block: var(--space-24);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-12);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-muted);
+}
+
+.statement {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-display);
+  line-height: var(--leading-display);
+  font-size: clamp(var(--text-44), 7vw, var(--text-120));
+  margin: 0;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.05;
+  font-size: clamp(var(--text-32), 4.5vw, var(--text-60));
+  margin: 0;
+}
+
+.lede {
+  font-size: var(--text-20);
+  color: var(--text-secondary);
+  max-width: 58ch;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+/* Buttons. The accent fill takes canvas-coloured ink, never white. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px; /* tap-target floor */
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  font-family: var(--font-body);
+  font-size: var(--text-14);
+  cursor: pointer;
+  transition: background var(--dur-hover) var(--ease);
+}
+
+.btn--accent {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+.btn--accent:hover {
+  background: color-mix(in srgb, var(--accent) 88%, var(--text));
+}
+
+.btn--ghost:hover {
+  background: var(--surface-raised);
+}
+
+/* Focus is always the accent, always visible. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- nav ------------------------------------------------------------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-nav);
+  background: color-mix(in srgb, var(--canvas) 88%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  height: 72px;
+}
+
+.nav__mark {
+  font-family: var(--font-display);
+  font-size: var(--text-20);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+}
+
+.nav__mark span {
+  color: var(--accent);
+}
+
+.nav__links {
+  display: flex;
+  gap: var(--space-8);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: var(--text-14);
+}
+
+.nav__links a {
+  color: var(--text-secondary);
+  transition: color var(--dur-hover) var(--ease);
+}
+
+.nav__links a:hover,
+.nav__links a[aria-current='page'] {
+  color: var(--text);
+}
+
+@media (max-width: 860px) {
+  .nav__links {
+    display: none;
+  }
+}
+
+/* ---- footer ---------------------------------------------------------- */
+.footer {
+  border-top: 1px solid var(--hairline);
+  padding-block: var(--space-24) var(--space-8);
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: var(--space-12);
+}
+
+@media (max-width: 860px) {
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.footer__col h3 {
+  font-family: var(--font-mono);
+  font-size: var(--text-12);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-mono);
+  color: var(--text-muted);
+  font-weight: 400;
+  margin: 0 0 var(--space-4);
+}
+
+.footer__col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--space-3);
+  font-size: var(--text-14);
+}
+
+.footer__col a {
+  color: var(--text-secondary);
+  transition: color var(--dur-hover) var(--ease);
+}
+
+.footer__col a:hover {
+  color: var(--text);
+}
+
+.footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-top: var(--space-16);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--hairline);
+  font-size: var(--text-12);
+  color: var(--text-muted);
+}
+
+.needs-detail {
+  border-bottom: 1px dashed var(--hairline-strong);
+}

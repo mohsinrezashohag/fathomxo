@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FathomXO - case study mockup</title>
+    <!-- Mockup-only: the real app loads these through next/font/google. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+      .cs-head {
+        padding-block: var(--space-24) var(--space-12);
+      }
+
+      .cs-title {
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: var(--tracking-display);
+        line-height: 1.02;
+        font-size: clamp(var(--text-44), 6vw, var(--text-84));
+        margin: var(--space-4) 0 0;
+        max-width: 18ch;
+      }
+
+      /* Facts read as a data table, which is what the mono face is for. */
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--space-6);
+        margin-top: var(--space-16);
+        border-top: 1px solid var(--hairline);
+        padding-top: var(--space-6);
+      }
+
+      @media (max-width: 860px) {
+        .facts {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .facts dt {
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        color: var(--text-muted);
+      }
+
+      .facts dd {
+        margin: var(--space-2) 0 0;
+        font-size: var(--text-16);
+      }
+
+      /* ---- long-form body ------------------------------------------------
+         Measure is capped so body copy stays readable at the 1290px container. */
+      .prose {
+        max-width: 68ch;
+      }
+
+      .prose h2 {
+        font-family: var(--font-display);
+        font-weight: 600;
+        letter-spacing: var(--tracking-display);
+        font-size: var(--text-32);
+        line-height: 1.15;
+        margin: var(--space-16) 0 var(--space-4);
+      }
+
+      .prose h2:first-child {
+        margin-top: 0;
+      }
+
+      .prose p {
+        color: var(--text-secondary);
+        margin: 0 0 var(--space-4);
+      }
+
+      .stack {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        margin: var(--space-6) 0 0;
+        padding: 0;
+      }
+
+      .stack li {
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        border: 1px solid var(--hairline-strong);
+        border-radius: var(--radius-pill);
+        padding: var(--space-2) var(--space-4);
+        color: var(--text-secondary);
+      }
+
+      /* ---- outcome ------------------------------------------------------- */
+      .outcomes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--space-8);
+        margin-top: var(--space-8);
+      }
+
+      @media (max-width: 860px) {
+        .outcomes {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .outcome b {
+        display: block;
+        font-family: var(--font-display);
+        font-size: var(--text-60);
+        letter-spacing: var(--tracking-display);
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .outcome span {
+        display: block;
+        margin-top: var(--space-2);
+        color: var(--text-muted);
+        font-size: var(--text-14);
+      }
+
+      /* ---- gallery -------------------------------------------------------
+         CSS scroll-snap, no carousel library. This is the pattern the plan
+         names as Swiper's replacement. */
+      .gallery {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: min(560px, 78vw);
+        gap: var(--space-4);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: var(--space-4);
+        margin-top: var(--space-8);
+        scrollbar-width: thin;
+      }
+
+      .gallery figure {
+        scroll-snap-align: start;
+        margin: 0;
+      }
+
+      .gallery .frame {
+        aspect-ratio: 16 / 10;
+        border-radius: var(--radius);
+        border: 1px solid var(--hairline);
+        background:
+          radial-gradient(70% 70% at 30% 20%, var(--accent-glow) 0%, transparent 70%),
+          var(--surface);
+        display: grid;
+        place-items: center;
+      }
+
+      .gallery figcaption {
+        margin-top: var(--space-3);
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        color: var(--text-faint);
+      }
+
+      .quote {
+        border-left: 2px solid var(--accent);
+        padding-left: var(--space-6);
+        margin: var(--space-16) 0 0;
+        max-width: 60ch;
+      }
+
+      .quote p {
+        font-family: var(--font-display);
+        font-size: var(--text-24);
+        line-height: 1.35;
+        letter-spacing: var(--tracking-display);
+        margin: 0;
+      }
+
+      .quote footer {
+        margin-top: var(--space-4);
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+        <nav>
+          <ul class="nav__links">
+            <li><a href="case-study.html" aria-current="page">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="#studio">Studio</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--accent" href="#brief">Send the brief</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="container cs-head">
+        <p class="eyebrow">Case study / E-commerce</p>
+        <h1 class="cs-title">Rongdhonu sells three times faster than its old storefront.</h1>
+
+        <dl class="facts">
+          <div><dt>Client</dt><dd>Rongdhonu</dd></div>
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Service line</dt><dd>E-commerce</dd></div>
+          <div><dt>Duration</dt><dd>7 weeks</dd></div>
+        </dl>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="prose">
+            <h2>The problem</h2>
+            <p>
+              Rongdhonu ran a hosted storefront that took eleven seconds to load on the mid-range
+              Androids most of their customers use. Stock counts lived in a spreadsheet that someone
+              reconciled by hand every evening, so oversells were routine and refunds ate the
+              margin on their best-selling lines.
+            </p>
+
+            <h2>The approach</h2>
+            <p>
+              We rebuilt the storefront headless, moved the catalogue behind a typed content layer,
+              and wired inventory to their existing warehouse system so counts update on every
+              order rather than once a day. The checkout was cut from five steps to two.
+            </p>
+            <p>
+              Everything shipped behind a first-load budget. A page that broke it did not go out,
+              which meant saying no to two libraries the old site depended on.
+            </p>
+
+            <ul class="stack">
+              <li>Next.js</li>
+              <li>TypeScript</li>
+              <li>Postgres</li>
+              <li>Stripe</li>
+              <li>Vercel</li>
+            </ul>
+          </div>
+
+          <div style="margin-top: var(--space-16)">
+            <p class="eyebrow">The outcome</p>
+            <div class="outcomes">
+              <div class="outcome"><b>1.4s</b><span>Largest contentful paint on 4G, from 11s</span></div>
+              <div class="outcome"><b>3.1&times;</b><span>Conversion rate against the old storefront</span></div>
+              <div class="outcome"><b>0</b><span>Oversells since inventory sync went live</span></div>
+            </div>
+          </div>
+
+          <div class="gallery" aria-label="Project gallery">
+            <figure>
+              <div class="frame"><span class="eyebrow">Storefront</span></div>
+              <figcaption>01 / Catalogue and filtering</figcaption>
+            </figure>
+            <figure>
+              <div class="frame"><span class="eyebrow">Checkout</span></div>
+              <figcaption>02 / Two-step checkout</figcaption>
+            </figure>
+            <figure>
+              <div class="frame"><span class="eyebrow">Ops</span></div>
+              <figcaption>03 / Inventory dashboard</figcaption>
+            </figure>
+          </div>
+
+          <blockquote class="quote">
+            <p>
+              They argued with us about two features and were right about both. That is the part we
+              could not get from anyone else.
+            </p>
+            <footer>Nusrat Jahan, Founder, Rongdhonu</footer>
+          </blockquote>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+            <p class="muted" style="margin-top: var(--space-4); max-width: 34ch">
+              A studio shipping opinionated, production-grade software.
+            </p>
+            <p class="muted" style="margin-top: var(--space-6); font-size: var(--text-14)">
+              <span class="needs-detail">hello@fathomxo.com</span><br />
+              <span class="needs-detail">Dhaka, Bangladesh</span>
+            </p>
+          </div>
+          <div class="footer__col">
+            <h3>Work</h3>
+            <ul>
+              <li><a href="case-study.html">Case studies</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3>Studio</h3>
+            <ul>
+              <li><a href="#studio">About</a></li>
+              <li><a href="#studio">Team</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3>Start</h3>
+            <ul>
+              <li><a href="#brief">Send the brief</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>&copy; 2026 FathomXO. All rights reserved.</span>
+          <span class="muted">Contact details marked with a dashed rule need your real values.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

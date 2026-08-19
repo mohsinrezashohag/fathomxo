@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FathomXO - home mockup</title>
+    <!-- Mockup-only: the real app loads these through next/font/google. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+      /* ---- hero ---------------------------------------------------------
+         The one centred block on the site. Everything below is left-aligned. */
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding-block: var(--space-24);
+      }
+
+      .hero__object {
+        width: min(340px, 62vw);
+        aspect-ratio: 1;
+        margin-inline: auto;
+        margin-bottom: var(--space-12);
+        border-radius: var(--radius-lg);
+        display: grid;
+        place-items: center;
+        /* Stand-in for the R3F hero object: the accent reads as a light source
+           behind a dark form, which is the effect the real rig must produce. */
+        background:
+          radial-gradient(60% 60% at 50% 40%, var(--accent-glow) 0%, transparent 70%),
+          var(--surface);
+        border: 1px solid var(--hairline);
+      }
+
+      .hero__symbol {
+        font-family: var(--font-display);
+        font-size: var(--text-84);
+        font-weight: 700;
+        letter-spacing: var(--tracking-display);
+        color: var(--accent);
+      }
+
+      .hero__note {
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        color: var(--text-faint);
+        margin-top: var(--space-4);
+      }
+
+      .hero__actions {
+        display: flex;
+        gap: var(--space-3);
+        justify-content: center;
+        margin-top: var(--space-8);
+        flex-wrap: wrap;
+      }
+
+      /* ---- positioning statements --------------------------------------- */
+      .statement-block + .statement-block {
+        margin-top: var(--space-24);
+      }
+
+      .statement em {
+        font-style: normal;
+        font-weight: 300;
+        color: var(--text-muted);
+      }
+
+      .statement-block .lede {
+        margin-top: var(--space-6);
+      }
+
+      /* ---- client roster ------------------------------------------------
+         A list, never a logo wall. */
+      .roster {
+        list-style: none;
+        margin: var(--space-12) 0 0;
+        padding: 0;
+      }
+
+      .roster li {
+        border-top: 1px solid var(--hairline);
+      }
+
+      .roster li:last-child {
+        border-bottom: 1px solid var(--hairline);
+      }
+
+      .roster a {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr auto;
+        gap: var(--space-6);
+        align-items: baseline;
+        padding-block: var(--space-6);
+        transition: background var(--dur-hover) var(--ease);
+      }
+
+      .roster a:hover {
+        background: var(--surface);
+      }
+
+      .roster__name {
+        font-family: var(--font-display);
+        font-size: clamp(var(--text-24), 3vw, var(--text-44));
+        letter-spacing: var(--tracking-display);
+        font-weight: 500;
+      }
+
+      .roster__what {
+        color: var(--text-muted);
+        font-size: var(--text-16);
+      }
+
+      .roster__industry {
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        color: var(--text-faint);
+      }
+
+      @media (max-width: 860px) {
+        .roster a {
+          grid-template-columns: 1fr;
+          gap: var(--space-2);
+        }
+      }
+
+      /* ---- launch banner ------------------------------------------------- */
+      .banner {
+        border: 1px solid var(--hairline-strong);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        padding: var(--space-12);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--space-8);
+        flex-wrap: wrap;
+      }
+
+      .countdown {
+        display: flex;
+        gap: var(--space-6);
+      }
+
+      .countdown div {
+        text-align: center;
+      }
+
+      .countdown b {
+        display: block;
+        font-family: var(--font-mono);
+        font-size: var(--text-32);
+        font-weight: 500;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .countdown span {
+        font-family: var(--font-mono);
+        font-size: var(--text-12);
+        text-transform: uppercase;
+        letter-spacing: var(--tracking-mono);
+        color: var(--text-faint);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="container nav__inner">
+        <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+        <nav>
+          <ul class="nav__links">
+            <li><a href="case-study.html">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="#studio">Studio</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn--accent" href="#brief">Send the brief</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero__object"><span class="hero__symbol">X0</span></div>
+          <h1 class="statement">Software with<br />a point of view.</h1>
+          <p class="hero__note">Poster frame stands in for the real-time 3D object</p>
+          <div class="hero__actions">
+            <a class="btn btn--accent" href="#brief">Send the brief</a>
+            <a class="btn btn--ghost" href="case-study.html">See the work</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="statement-block">
+            <p class="eyebrow">01 / What we believe</p>
+            <h2 class="statement">
+              Most agencies sell hours.<br /><em>We sell a decision.</em>
+            </h2>
+            <p class="lede">
+              A template shop ships everyone the same skin. An offshore team disappears for six
+              months. Neither one takes a position on what your product should be, because taking a
+              position is the part that is hard to bill by the hour.
+            </p>
+          </div>
+
+          <div class="statement-block">
+            <p class="eyebrow">02 / How we work</p>
+            <h2 class="statement">
+              Shipped in weeks,<br /><em>not quarters.</em>
+            </h2>
+            <p class="lede">
+              Fixed scope, published prices, one team. You get a real number within a day of sending
+              the brief, and something running long before the invoice lands.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="work">
+        <div class="container">
+          <p class="eyebrow">Selected work</p>
+          <ul class="roster">
+            <li>
+              <a href="case-study.html">
+                <span class="roster__name">Rongdhonu</span>
+                <span class="roster__what">Headless storefront and inventory sync</span>
+                <span class="roster__industry">E-commerce</span>
+              </a>
+            </li>
+            <li>
+              <a href="case-study.html">
+                <span class="roster__name">Shifa Clinic</span>
+                <span class="roster__what">Booking system and patient reminders</span>
+                <span class="roster__industry">Healthcare</span>
+              </a>
+            </li>
+            <li>
+              <a href="case-study.html">
+                <span class="roster__name">Tasmia Foods</span>
+                <span class="roster__what">Order automation across four channels</span>
+                <span class="roster__industry">D2C</span>
+              </a>
+            </li>
+            <li>
+              <a href="case-study.html">
+                <span class="roster__name">Nirapod</span>
+                <span class="roster__what">Claims triage agent and ops dashboard</span>
+                <span class="roster__industry">Insurtech</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="banner">
+            <div>
+              <p class="eyebrow">Launching soon</p>
+              <h2 class="h2" style="margin-top: var(--space-3)">Fathom Desk</h2>
+              <p class="muted" style="margin: var(--space-2) 0 0">
+                Shared inbox and automation for small teams.
+              </p>
+            </div>
+            <div class="countdown" aria-label="Time until launch">
+              <div><b>14</b><span>Days</span></div>
+              <div><b>06</b><span>Hrs</span></div>
+              <div><b>22</b><span>Min</span></div>
+            </div>
+            <a class="btn btn--accent" href="#brief">Get early access</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__col">
+            <a class="nav__mark" href="home.html">FATHOM<span>XO</span></a>
+            <p class="muted" style="margin-top: var(--space-4); max-width: 34ch">
+              A studio shipping opinionated, production-grade software.
+            </p>
+            <p class="muted" style="margin-top: var(--space-6); font-size: var(--text-14)">
+              <span class="needs-detail">hello@fathomxo.com</span><br />
+              <span class="needs-detail">Dhaka, Bangladesh</span>
+            </p>
+          </div>
+          <div class="footer__col">
+            <h3>Work</h3>
+            <ul>
+              <li><a href="case-study.html">Case studies</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="pricing.html">Pricing</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3>Studio</h3>
+            <ul>
+              <li><a href="#studio">About</a></li>
+              <li><a href="#studio">Team</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__col">
+            <h3>Start</h3>
+            <ul>
+              <li><a href="#brief">Send the brief</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>&copy; 2026 FathomXO. All rights reserved.</span>
+          <span class="muted">Contact details marked with a dashed rule need your real values.</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

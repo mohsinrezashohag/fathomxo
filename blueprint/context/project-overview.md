@@ -206,9 +206,10 @@ Matches the repo; no stack changes proposed.
   scroll-snap
 - **React Three Fiber + drei** - hero 3D object, lazily loaded, pre-rendered
   WebP poster for mobile, low-power, and no-WebGL (to be added)
-- **Fonts** - Clash Display (statement), Satoshi (body), JetBrains Mono
-  (micro-caps and data), all self-hosted via `next/font/local`, Latin subset,
-  `swap`
+- **Fonts** - Space Grotesk (statement, shared with the wordmark), Inter Tight
+  (body), IBM Plex Mono (micro-caps and data), all via `next/font/google`, Latin
+  subset, `swap`. The template's existing families are the brand set; no
+  self-hosted faces and no new font dependencies
 - **React Hook Form + Zod** - brief form, one schema shared client/server;
   Cloudflare Turnstile for spam (to be added)
 - **Resend + React Email** - internal alert and branded auto-reply (to be added)
@@ -244,9 +245,9 @@ closer to a product studio than an agency.
   gradient behind text. Any hex not traceable to that file does not ship.
 - **Contrast floor**: 4.5:1 body, 3:1 interactive borders; on accent fills, use
   the dark canvas colour for label text, not white.
-- **Type**: Clash Display for statements at 56-120px, tracking `-0.03em`,
-  mixed weights inside a sentence. Satoshi for body at 16-20px, line-height
-  1.6. JetBrains Mono at 11-13px uppercase, tracking `0.12em`, for eyebrows,
+- **Type**: Space Grotesk for statements at 56-120px, tracking `-0.03em`,
+  mixed weights inside a sentence. Inter Tight for body at 16-20px, line-height
+  1.6. IBM Plex Mono at 11-13px uppercase, tracking `0.12em`, for eyebrows,
   labels, counters, table headers. Scale:
   `12 / 14 / 16 / 20 / 24 / 32 / 44 / 60 / 84 / 120`.
 - **Layout**: full-bleed dark sections separated by hairline rules, left-aligned
@@ -302,11 +303,6 @@ team (+ member detail), brief intake (route named in its spec),
   `src/components/shared/ui/card/team-card.tsx`. The plan now says team content
   is kept and restyled by feature 11. The branch is unmerged and every file is
   recoverable from `main`; restore them before `/complete`.
-- **Font files**: Clash Display and Satoshi are Fontshare faces and JetBrains
-  Mono is open source, but `next/font/local` needs the files committed to the
-  repo; none are present yet. Sourcing them (with licence files) lands in
-  feature 1, which also replaces the six `next/font/google` families the
-  template currently loads in `src/utils/font.ts`.
 - **Prettier vs line endings**: `.prettierrc` sets `endOfLine: "lf"` but the
   working tree is CRLF throughout, so `prettier --check` fails on files nobody
   has touched. A `.gitattributes` with `* text=auto eol=lf` would settle it;

@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '../styles/variable';
+@import '../styles/brand';
 @import '../styles/common';
 @import '../styles/typography';
 @import '../styles/icon-fonts';
