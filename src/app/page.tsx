@@ -1,4 +1,3 @@
-import Blog from '@/src/components/home/blog';
 import EmpoweringBusiness from '@/src/components/home/empowering-business';
 import FAQ from '@/src/components/home/faq';
 import Hero from '@/src/components/home/hero';
@@ -28,7 +27,6 @@ const page = () => {
       <InnovativeSolutions />
       <Projects />
       <Testimonial />
-      <Blog />
       <FAQ />
       <Subscribe />
       <CTA />

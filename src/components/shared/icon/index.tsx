@@ -121,46 +121,6 @@ const LocationIcon: FC<IconProps> = ({ className }) => (
   </svg>
 );
 
-const GoogleIcon: FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    className={cn('size-6 shrink-0 fill-none', className)}
-    aria-hidden
-  >
-    <path
-      d="M21.7541 12.2199C21.7541 11.4182 21.6878 10.8332 21.5441 10.2266H12.2031V13.8449H17.6861C17.5756 14.744 16.9786 16.0982 15.6521 17.0082L15.6335 17.1293L18.5869 19.3715L18.7915 19.3916C20.6708 17.6907 21.7541 15.1882 21.7541 12.2199Z"
-      fill="#4285F4"
-    />
-    <path
-      d="M12.2002 21.7514C14.8864 21.7514 17.1415 20.8847 18.7886 19.3897L15.6492 17.0063C14.8091 17.5805 13.6815 17.9813 12.2002 17.9813C9.56932 17.9813 7.33635 16.2805 6.54036 13.9297L6.42369 13.9394L3.35266 16.2686L3.3125 16.378C4.94853 19.563 8.30907 21.7514 12.2002 21.7514Z"
-      fill="#34A853"
-    />
-    <path
-      d="M6.53907 13.9306C6.32904 13.3239 6.20749 12.6739 6.20749 12.0023C6.20749 11.3305 6.32904 10.6806 6.52802 10.0739L6.52246 9.94471L3.41294 7.57812L3.3112 7.62555C2.63691 8.94723 2.25 10.4314 2.25 12.0023C2.25 13.5731 2.63691 15.0572 3.3112 16.3789L6.53907 13.9306Z"
-      fill="#FBBC05"
-    />
-    <path
-      d="M12.2003 6.01997C14.0685 6.01997 15.3286 6.8108 16.0472 7.47168L18.855 4.785C17.1306 3.21417 14.8865 2.25 12.2003 2.25C8.3091 2.25 4.94854 4.43832 3.3125 7.62329L6.52933 10.0717C7.33638 7.72083 9.56936 6.01997 12.2003 6.01997Z"
-      fill="#EB4335"
-    />
-  </svg>
-);
-
-const FacebookBrandIcon: FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
-    className={cn('size-6 shrink-0 fill-none', className)}
-    aria-hidden
-  >
-    <path
-      d="M22.5 12.0642C22.5 6.22974 17.799 1.5 12 1.5C6.20101 1.5 1.5 6.22974 1.5 12.0642C1.5 17.337 5.33968 21.7075 10.3594 22.5V15.1179H7.69336V12.0642H10.3594V9.73675C10.3594 7.08911 11.927 5.62663 14.3254 5.62663C15.4738 5.62663 16.6758 5.83296 16.6758 5.83296V8.43274H15.3518C14.0475 8.43274 13.6406 9.24713 13.6406 10.0834V12.0642H16.5527L16.0872 15.1179H13.6406V22.5C18.6603 21.7075 22.5 17.337 22.5 12.0642Z"
-      fill="#0C63D4"
-    />
-  </svg>
-);
-
 const PlayIcon: FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -600,77 +560,6 @@ const BlurSvg: FC<IconProps & { idPrefix: string }> = ({ idPrefix, className }) 
   </svg>
 );
 
-const GradientSvg: FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={380}
-    height={134}
-    viewBox="0 0 380 134"
-    fill="none"
-    className={cn('pointer-events-none select-none', className)}
-  >
-    <g filter="url(#filter0_f_9805_101317)" style={{ mixBlendMode: 'plus-lighter' }}>
-      <ellipse cx={199} cy="-17.5" rx={115} ry="67.5" fill="#8D59FF" />
-    </g>
-    <g opacity="0.6" filter="url(#filter1_f_9805_101317)" style={{ mixBlendMode: 'plus-lighter' }}>
-      <ellipse cx="205.5" cy={-1} rx="67.5" ry={21} fill="white" />
-    </g>
-    <defs>
-      <filter
-        id="filter0_f_9805_101317"
-        x={0}
-        y={-169}
-        width={398}
-        height={303}
-        filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
-        <feFlood floodOpacity={0} result="BackgroundImageFix" />
-        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-        <feGaussianBlur stdDeviation={42} result="effect1_foregroundBlur_9805_101317" />
-      </filter>
-      <filter
-        id="filter1_f_9805_101317"
-        x={87}
-        y={-73}
-        width={237}
-        height={144}
-        filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
-        <feFlood floodOpacity={0} result="BackgroundImageFix" />
-        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-        <feGaussianBlur stdDeviation="25.5" result="effect1_foregroundBlur_9805_101317" />
-      </filter>
-    </defs>
-  </svg>
-);
-
-const SearchIcon: FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    className={cn('size-6 shrink-0 stroke-white', className)}
-  >
-    <path
-      d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path d="M20.9984 20.9984L16.6484 16.6484" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const CrossIcon: FC<IconProps> = ({ className }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 256 256"
-    className={cn('size-5 shrink-0 stroke-white', className)}
-  >
-    <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z" />
-  </svg>
-);
-
 const CheckIcon: FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -925,18 +814,14 @@ export {
   ContactAddressIcon,
   ContactEmailIcon,
   ContactPhoneIcon,
-  CrossIcon,
   DetailsLocationIcon,
   DownArrowIcon,
   DownArrowLongIcon,
   DurationIcon,
   ExpandIcon,
-  FacebookBrandIcon,
   FacebookIcon,
   FinanceIcon,
   GloveIcon,
-  GoogleIcon,
-  GradientSvg,
   HealthcareIcon,
   IconGradient,
   InfinityIcon,
@@ -950,7 +835,6 @@ export {
   PlayIcon,
   ProjectServicesIcon,
   RetailEcommerceIcon,
-  SearchIcon,
   ServiceGradientIcon,
   StarIcon,
   TimerIcon,

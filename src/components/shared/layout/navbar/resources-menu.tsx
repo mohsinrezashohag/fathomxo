@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  BlogIcon,
   ContactIcon,
   FaqIcon,
   GlossaryIcon,
@@ -20,7 +19,6 @@ type ResourceLink = {
 };
 
 const resourceLinks: ResourceLink[] = [
-  { label: 'Blog', href: '/blog', icon: BlogIcon },
   { label: 'Tutorial', href: '#', icon: TutorialIcon },
   { label: 'FAQ', href: '/faq', icon: FaqIcon },
   { label: 'Glossary', href: '#', icon: GlossaryIcon },

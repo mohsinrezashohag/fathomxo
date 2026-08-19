@@ -1,7 +1,5 @@
 'use client';
 
-import nsImg424 from '@/public/images/ns-img-424.jpg';
-import nsImg425 from '@/public/images/ns-img-425.jpg';
 import {
   AnalyticsIconV2,
   CareerIconV2,
@@ -11,8 +9,6 @@ import {
   WhitePaperIconV2,
 } from '@/src/components/shared/icon/menu-icon';
 import { cn } from '@/src/utils/cn';
-import Image from 'next/image';
-import Link from 'next/link';
 import type { ComponentType } from 'react';
 import PlatformMenuLink from './platform-menu-link';
 
@@ -70,7 +66,7 @@ const PlatformMenu = ({ menuDropdownId, setMenuDropdownId }: PlatformMenuProps) 
         )}
       >
         <div className="grid grid-cols-12 items-start gap-y-6 md:gap-x-6">
-          <div className="col-span-12 grid grid-cols-12 gap-x-6 lg:col-span-6">
+          <div className="col-span-12 grid grid-cols-12 gap-x-6">
             <div className="col-span-12 xl:col-span-6">
               <div>
                 <p className="text-tagline-2 p-3 font-medium text-white/60">Overview</p>
@@ -95,62 +91,6 @@ const PlatformMenu = ({ menuDropdownId, setMenuDropdownId }: PlatformMenuProps) 
                   ))}
                 </ul>
               </div>
-            </div>
-          </div>
-          <div className="col-span-12 grid grid-cols-12 gap-x-6 lg:col-span-6">
-            <div className="col-span-12 xl:col-span-6">
-              <article className="border-stroke-3/18 group space-y-3 rounded-2xl border p-3">
-                <Link
-                  onClick={handleClose}
-                  href="/blog/the-future-of-automation-ai-agency"
-                  className="block"
-                >
-                  <figure className="h-[250px] w-full max-w-[400px] overflow-hidden rounded-lg">
-                    <Image
-                      src={nsImg424}
-                      alt="Featured"
-                      className="size-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                    />
-                  </figure>
-                </Link>
-                <div className="space-y-2">
-                  <Link href="/blog/the-future-of-automation-ai-agency" className="block">
-                    <p className="font-sora text-tagline-2 line-clamp-1 font-normal text-white">
-                      The Future of Automation
-                    </p>
-                    <p className="text-tagline-4 font-normal text-white/60">
-                      What every AI agency should know.
-                    </p>
-                  </Link>
-                </div>
-              </article>
-            </div>
-            <div className="col-span-12 xl:col-span-6">
-              <article className="border-stroke-3/18 group space-y-3 rounded-2xl border p-3">
-                <Link
-                  onClick={handleClose}
-                  href="/blog/beginners-guide-automating-workflows-ai"
-                  className="block"
-                >
-                  <figure className="h-[250px] w-full max-w-[400px] overflow-hidden rounded-lg">
-                    <Image
-                      src={nsImg425}
-                      alt="Featured"
-                      className="size-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
-                    />
-                  </figure>
-                </Link>
-                <div className="space-y-2">
-                  <Link href="/blog/beginners-guide-automating-workflows-ai" className="block">
-                    <p className="font-sora text-tagline-2 line-clamp-1 font-normal text-white">
-                      A beginner&apos;s guide to automating workflows
-                    </p>
-                    <p className="text-tagline-4 font-normal text-white/60">
-                      Automating workflows with AI.
-                    </p>
-                  </Link>
-                </div>
-              </article>
             </div>
           </div>
         </div>

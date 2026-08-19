@@ -116,33 +116,6 @@ dialog.modal-overlay.modal-close {
   }
 }
 
-/* =========================== Blog details markdown (HTML structure) =========================== */
-.blog-details-markdown {
-  h3 {
-    @apply font-sora text-sora-heading-5 mt-10 font-normal text-white first:mt-0 md:mt-[70px];
-  }
-  p {
-    @apply text-tagline-2 font-inter-tight font-normal text-white/60;
-  }
-
-  ul {
-    @apply mt-4 space-y-2;
-    li {
-      @apply font-inter-tight text-tagline-3 flex items-center gap-x-2 font-normal text-white/80 before:block before:size-[7px] before:shrink-0 before:rounded-full before:bg-white before:content-[''];
-    }
-  }
-
-  blockquote {
-    @apply bg-background-6 border-stroke-1/11 before:bg-opai-purple my-10 flex items-center gap-x-6 rounded-lg border p-6 before:block before:h-[90px] before:w-[2px] before:shrink-0 before:rounded-full before:content-[''] sm:my-[70px];
-    p {
-      @apply font-inter-tight text-tagline-1 text-[20px] text-white/90;
-    }
-  }
-  h3 + p {
-    @apply mt-1;
-  }
-}
-
 /* team details markdown style  */
 .team-details-markdown {
   @apply mx-auto w-full max-w-[850px];

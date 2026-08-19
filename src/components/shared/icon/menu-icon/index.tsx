@@ -493,22 +493,6 @@ const DownloadIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const BlogIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className={cn('stroke-secondary size-4', className)}
-    viewBox="0 0 16 16"
-    fill="none"
-  >
-    <path
-      d="M4.875 14.6161H1.125C0.95924 14.6161 0.800269 14.5503 0.683058 14.4331C0.565848 14.3159 0.5 14.1569 0.5 13.9911V10.5C0.5 10.4179 0.516166 10.3367 0.547575 10.2608C0.578984 10.185 0.625022 10.1161 0.683059 10.0581L10.0581 0.683058C10.1753 0.565848 10.3342 0.5 10.5 0.5C10.6658 0.5 10.8247 0.565848 10.9419 0.683058L14.4331 4.17418C14.5503 4.29139 14.6161 4.45036 14.6161 4.61612C14.6161 4.78188 14.5503 4.94085 14.4331 5.05806L4.875 14.6161Z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path d="M8 2.74109L12.375 7.11609" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
 const TutorialIcon = ({ className }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -631,50 +615,6 @@ const SupportIconV2 = ({ className }: { className?: string }) => (
     <path
       d="M11.75 7.55615C11.9916 7.55615 12.1875 7.75203 12.1875 7.99365C12.1875 8.23528 11.9916 8.43115 11.75 8.43115C11.5084 8.43115 11.3125 8.23528 11.3125 7.99365C11.3125 7.75203 11.5084 7.55615 11.75 7.55615Z"
       fill="#12161F"
-    />
-  </svg>
-);
-
-const LoginIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 17 17"
-    fill="none"
-    className={cn('stroke-secondary size-[17px]', className)}
-  >
-    <path
-      d="M5.27861 8.21139C4.79681 7.00965 4.74472 5.67841 5.13115 4.44269C5.51757 3.20698 6.3188 2.14259 7.39941 1.42943C8.48002 0.716267 9.77372 0.398085 11.0618 0.528665C12.35 0.659244 13.5535 1.23057 14.469 2.14608C15.3845 3.06159 15.9558 4.26513 16.0864 5.55325C16.217 6.84137 15.8988 8.13508 15.1856 9.21568C14.4725 10.2963 13.4081 11.0975 12.1724 11.4839C10.9367 11.8704 9.60542 11.8183 8.40368 11.3365L8.40373 11.3364L7.375 12.3651H5.5V14.2401H3.625V16.1151H0.5V12.9901L5.27875 8.21133L5.27861 8.21139Z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      opacity="0.5"
-      d="M12.0625 4.86505C12.2351 4.86505 12.375 4.72514 12.375 4.55255C12.375 4.37996 12.2351 4.24005 12.0625 4.24005C11.8899 4.24005 11.75 4.37996 11.75 4.55255C11.75 4.72514 11.8899 4.86505 12.0625 4.86505Z"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M12.0625 5.49005C12.5803 5.49005 13 5.07032 13 4.55255C13 4.03478 12.5803 3.61505 12.0625 3.61505C11.5447 3.61505 11.125 4.03478 11.125 4.55255C11.125 5.07032 11.5447 5.49005 12.0625 5.49005Z"
-      className="fill-secondary"
-    />
-  </svg>
-);
-
-const SignUpIcon = ({ className }: { className?: string }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    className={cn('stroke-secondary h-[16px] w-[17px]', className)}
-    viewBox="0 0 17 16"
-    fill="none"
-  >
-    <path
-      d="M8.0791 10.5C10.8405 10.5 13.0791 8.26142 13.0791 5.5C13.0791 2.73858 10.8405 0.5 8.0791 0.5C5.31768 0.5 3.0791 2.73858 3.0791 5.5C3.0791 8.26142 5.31768 10.5 8.0791 10.5Z"
-      strokeMiterlimit={10}
-    />
-    <path
-      d="M0.5 14.8743C1.26841 13.5442 2.37329 12.4398 3.70366 11.672C5.03403 10.9042 6.54303 10.5 8.07907 10.5C9.61512 10.5 11.1241 10.9043 12.4545 11.6721C13.7848 12.44 14.8897 13.5444 15.6581 14.8744"
-      strokeLinecap="round"
-      strokeLinejoin="round"
     />
   </svg>
 );
@@ -1082,7 +1022,6 @@ export {
   AffiliateProgramIcon,
   AnalyticsIcon,
   AnalyticsIconV2,
-  BlogIcon,
   BrandKitIcon,
   CareerIcon,
   CareerIconV2,
@@ -1103,7 +1042,6 @@ export {
   IntegrationIcon,
   IntegrationIconV2,
   LegalNoticeIcon,
-  LoginIcon,
   ManifestoIcon,
   PressIcon,
   PricingIcon,
@@ -1113,7 +1051,6 @@ export {
   RefundPolicyIcon,
   SecurityIcon,
   ServiceIcon,
-  SignUpIcon,
   SuccessIcon,
   SupportIcon,
   SupportIconV2,

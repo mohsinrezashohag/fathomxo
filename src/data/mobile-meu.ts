@@ -8,7 +8,6 @@ export const mobileMenuData: MobileMenuData[] = [
       { id: 'about-us', label: 'About Us', href: '/about' },
       { id: 'services', label: 'Our Services', href: '/services' },
       { id: 'features', label: 'Product Features', href: '#' },
-      { id: 'blog', label: 'Blog & News', href: '/blog' },
     ],
   },
   {
@@ -17,8 +16,6 @@ export const mobileMenuData: MobileMenuData[] = [
     submenu: [
       { id: 'affiliate', label: 'Affiliate', href: '#' },
       { id: 'referral', label: 'Referral', href: '#' },
-      { id: 'login', label: 'Login', href: '/login' },
-      { id: 'create-account', label: 'Create Account', href: '/signup' },
       { id: 'download', label: 'Download', href: '#' },
       { id: 'integration', label: 'Integration', href: '#' },
     ],

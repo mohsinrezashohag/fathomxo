@@ -40,18 +40,21 @@ a static poster frame on low-end devices without breaking layout or message.
 
 ## Template teardown (pre-build, before feature 1)
 
-The starter template's `blog`, `login`, `signup`, and `team` routes, their
-component folders, and the `swiper` dependency are deleted before feature 1.
-Dead template code is worse than missing code: it is the nearest example in the
-repo, so later features risk copying its conventions.
+The starter's `blog`, `login`, and `signup` routes, their components, and the
+`swiper` dependency are deleted before feature 1. Dead template code is worse
+than missing code: it is the nearest example in the repo, so later features risk
+copying its conventions.
+
+**Team content is kept, not removed.** The team route, its About section, its
+content, and its member images are real content; feature 11 restyles them to the
+brand system.
 
 **The markdown chain stays for now.** `gray-matter`, `react-markdown`, and
-`rehype-slug` still feed `/`, `/about`, `/projects/[slug]`, and
-`/services/[slug]`, so removing them here would break the build. Feature 2
-migrates those routes to typed modules and removes the dependencies, and
-`coding-standards.md` is updated to describe typed TS content modules once that
-lands. Git history keeps the removed routes if a Post-MVP blog wants the pattern
-back.
+`rehype-slug` still feed `/`, `/about`, `/projects/[slug]`, `/services/[slug]`,
+and the team pages. Feature 2 migrates projects, services, and team to typed
+modules and removes the dependencies, and `coding-standards.md` is updated to
+describe typed TS content modules once that lands. Git history keeps the removed
+routes if a Post-MVP blog wants the pattern back.
 
 ## Features
 
@@ -61,9 +64,9 @@ site's proof-of-capability moment.
 1. **Design system and shell** - brand tokens into `src/styles`, type scale,
    motion tokens, nav, footer, page-transition shell.
 2. **Content model** - typed content modules in `src/data`, Zod schemas in
-   `src/interface`, validated at build time; migrates projects and services off
-   the starter's markdown pipeline and removes `gray-matter`, `react-markdown`,
-   `rehype-slug` once nothing imports them.
+   `src/interface`, validated at build time; migrates projects, services, and
+   team off the starter's markdown pipeline and removes `gray-matter`,
+   `react-markdown`, `rehype-slug` once nothing imports them.
 3. **Hero and 3D signature** - statement headline, orchestrated load sequence,
    symbol-derived 3D object with poster-frame fallback.
 4. **Positioning sections** - scroll-revealed oversized statements down the home page.
@@ -73,16 +76,18 @@ site's proof-of-capability moment.
 8. **Pricing tabs** - one tab per service line, BDT tiers, recommended state, CTAs.
 9. **Launch campaign banner** - countdown and progress bar for an active release.
 10. **FAQ** - searchable entries, category rail, accordion answers.
-11. **Project brief intake** - multi-step qualified form, shared validation, spam protection.
-12. **Brief notifications** - route handler sending internal alert and branded auto-reply.
-13. **SEO and social** - metadata, structured data, sitemap, robots, dynamic OG
+11. **Studio and team** - who FathomXO is, plus team members with photos, roles,
+    and titles, restyled from the existing content to the brand system.
+12. **Project brief intake** - multi-step qualified form, shared validation, spam protection.
+13. **Brief notifications** - route handler sending internal alert and branded auto-reply.
+14. **SEO and social** - metadata, structured data, sitemap, robots, dynamic OG
     images, favicon/PWA icons, cookieless analytics.
-14. **Performance and accessibility pass** - JS budget, reduced motion, contrast,
+15. **Performance and accessibility pass** - JS budget, reduced motion, contrast,
     keyboard paths, low-end fallbacks.
-15. **Deployment readiness** - Vercel config, env vars, health check, domain,
+16. **Deployment readiness** - Vercel config, env vars, health check, domain,
     production build verification.
 
-Post-MVP (16-25): lead persistence (Postgres), admin auth (magic link), lead
+Post-MVP (17-26): lead persistence (Postgres), admin auth (magic link), lead
 inbox, content editing, insights/articles, Bangla toggle, discovery call
 booking, client portal, referral programme, careers.
 
@@ -96,8 +101,7 @@ schemas in `src/interface`. A copy or price change is a pull request. Only the
 lead payload leaves the browser. When persistence lands Post-MVP, the Postgres
 schema mirrors these shapes one-to-one.
 
-These shapes are load-bearing: feature 2 defines them, and features 5-10
-consume them.
+These shapes are load-bearing: feature 2 defines them, features 5-11 consume them.
 
 ### Client
 
@@ -153,6 +157,15 @@ consume them.
 
 - `clientSlug` (client ref)
 - `quote`, `authorName`, `authorRole` (string)
+
+### TeamMember
+
+Powers feature 11 (Studio and team).
+
+- `name`, `role`, `title` (string)
+- `photo` (image ref)
+- `order` (number), `published` (boolean)
+- `socials` (link[], optional)
 
 ### Lead (runtime, not stored in MVP)
 
@@ -258,8 +271,9 @@ non-sequences, glass cards over blurred gradients, stock 3D blobs, autoplaying
 background video.
 
 Main routes: home (hero, positioning, roster, banner), case study pages
-(`projects/[slug]`), services index + detail per line, pricing, FAQ, brief
-intake (route named in its spec), `GET /api/health`.
+(`projects/[slug]`), services index + detail per line, pricing, FAQ, studio /
+team (+ member detail), brief intake (route named in its spec),
+`GET /api/health`.
 
 ## Deployment
 
@@ -282,8 +296,18 @@ intake (route named in its spec), `GET /api/health`.
 
 > Resolve these in the plans, then re-run `/overview`.
 
+- **The `fix/template-teardown` branch contradicts this plan on team content.**
+  The branch deleted `src/app/team/[slug]`, `src/components/team-details/`,
+  `src/data/team/` (6 markdown files), `src/components/about/team.tsx`, and
+  `src/components/shared/ui/card/team-card.tsx`. The plan now says team content
+  is kept and restyled by feature 11. The branch is unmerged and every file is
+  recoverable from `main`; restore them before `/complete`.
 - **Font files**: Clash Display and Satoshi are Fontshare faces and JetBrains
   Mono is open source, but `next/font/local` needs the files committed to the
   repo; none are present yet. Sourcing them (with licence files) lands in
   feature 1, which also replaces the six `next/font/google` families the
   template currently loads in `src/utils/font.ts`.
+- **Prettier vs line endings**: `.prettierrc` sets `endOfLine: "lf"` but the
+  working tree is CRLF throughout, so `prettier --check` fails on files nobody
+  has touched. A `.gitattributes` with `* text=auto eol=lf` would settle it;
+  worth its own `/fix` rather than a repo-wide reformat inside a feature.

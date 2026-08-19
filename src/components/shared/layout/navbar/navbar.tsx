@@ -207,7 +207,7 @@ const Navbar = ({ showTopNav = false }: NavbarProps) => {
 
             <div className="hidden lg:block">
               <DefaultLinkButton
-                href="/login"
+                href="/contact"
                 className="shadow-[0_3px_18px_0_rgba(141,89,255,0.80)]"
               >
                 Try now

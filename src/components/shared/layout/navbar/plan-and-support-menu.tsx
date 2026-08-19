@@ -6,11 +6,9 @@ import {
   AffiliateProgramIcon,
   GDPRIcon,
   LegalNoticeIcon,
-  LoginIcon,
   PrivacyIcon,
   ReferralProgramIcon,
   RefundPolicyIcon,
-  SignUpIcon,
   TermsConditionsIcon,
 } from '@/src/components/shared/icon/menu-icon';
 import { cn } from '@/src/utils/cn';
@@ -27,13 +25,6 @@ type PlanSupportLink = {
 };
 
 const accountLinks: PlanSupportLink[] = [
-  { title: 'Login', description: 'Sign in to your account', href: '/login', icon: LoginIcon },
-  {
-    title: 'Create Account',
-    description: 'Sign up for a new account',
-    href: '/signup',
-    icon: SignUpIcon,
-  },
   {
     title: 'Referral Program',
     description: 'Earn rewards by referring others',
