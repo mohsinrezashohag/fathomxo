@@ -10,7 +10,7 @@
 
 ## MVP
 
-- [ ] 1. **Design system and shell** - map the brand tokens into `src/styles`, set
+- [x] 1. **Design system and shell** - map the brand tokens into `src/styles`, set
   the type scale and motion tokens, and build the nav, footer and page-transition shell
   - [x] 1a. **Brand token layer** - FathomXO colours, the 12-120 type scale, motion
     easings, radius and container tokens as Tailwind v4 `@theme` tokens, with
@@ -20,7 +20,7 @@
     mobile menu, replacing the template's four mega menus
   - [x] 1c. **Site footer** - footer on the new tokens, with links matching the real
     route set
-  - [ ] 1d. **Scroll and page-transition shell** - sync the existing Lenis provider with
+  - [x] 1d. **Scroll and page-transition shell** - sync the existing Lenis provider with
     GSAP ScrollTrigger, then add the route-change transition, resolving to final state
     under `prefers-reduced-motion`
 - [ ] 2. **Content model** - typed content modules in `src/data` with Zod schemas in
