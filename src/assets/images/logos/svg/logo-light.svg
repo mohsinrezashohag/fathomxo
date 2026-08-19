@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 152" width="340" height="152">
+  <g transform="translate(95,6) scale(1.5)">
+    <circle cx="62" cy="32" r="23" fill="none" stroke="#E2560A" stroke-width="9"></circle>
+    <path d="M8 12 L42 52 M42 12 L8 52" fill="none" stroke="#12121C" stroke-width="9" stroke-linecap="round"></path>
+  </g>
+  <text x="170" y="140" text-anchor="middle" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="26" letter-spacing="10" fill="#12121C">FATHOMXO</text>
+</svg>
