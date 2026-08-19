@@ -32,12 +32,12 @@ const Testimonial = () => {
           <Marquee speed={40} pauseOnHover>
             {testimonialsData.map((item) => (
               <TestimonialCard
-                key={item.id}
+                key={item.authorName}
                 quote={item.quote}
-                name={item.name}
-                role={item.role}
-                imageSrc={item.imageSrc}
-                imageAlt={item.imageAlt}
+                name={item.authorName}
+                role={item.authorRole}
+                imageSrc={item.avatar}
+                imageAlt={item.avatarAlt}
                 className="mx-4 shrink-0"
               />
             ))}

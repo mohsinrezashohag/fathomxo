@@ -27,6 +27,13 @@
   `src/interface`, validated at build time; migrates projects, services and team off
   the starter's markdown pipeline and removes `gray-matter`, `react-markdown` and
   `rehype-slug` once nothing imports them
+  - [x] 2a. **Schema layer** - install Zod, define the nine content schemas in
+    `src/interface`, and fail the build on a malformed entry
+  - [ ] 2b. **Brief content modules** - clients, the four service lines, pricing plans,
+    FAQs and technologies, authored from the content brief against those schemas
+  - [ ] 2c. **Markdown retirement** - move projects and team to typed modules flagged
+    as placeholder, repoint their consumers, and remove `gray-matter`,
+    `react-markdown` and `rehype-slug`
 - [ ] 3. **Hero and 3D signature** - statement headline with an orchestrated load
   sequence and the symbol-derived 3D object, plus its poster-frame fallback
 - [ ] 4. **Positioning sections** - scroll-revealed oversized statements carrying the

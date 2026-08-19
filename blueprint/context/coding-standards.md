@@ -2,7 +2,7 @@
 
 > Tuned by `/onboard` to the real stack: Next.js 16 (App Router) + React 19 +
 > TypeScript (strict) + Tailwind CSS v4, Bun as package manager, GSAP/Lenis for
-> animation, file-based markdown content. Edit as conventions evolve.
+> animation, typed content modules validated by Zod. Edit as conventions evolve.
 
 ## TypeScript
 
@@ -40,8 +40,8 @@
 - Utils: `src/utils/[utility].ts` (`cn.ts` combines clsx + tailwind-merge)
 - Hooks: `src/hooks/`
 - React context providers: `src/context/`
-- Content and data: `src/data/` (markdown folders for blog, projects, services,
-  team; TS files for structured data like pricing and FAQ)
+- Content and data: `src/data/` (typed TS modules validated by Zod; `projects`
+  and `team` are still markdown until feature 2c)
 - Styles: CSS partials in `src/styles/`, imported by `src/app/globals.css`
 - Path alias: `@/*` maps to the repo root (for example `@/src/components/...`),
   `@/public/*` for public assets
@@ -62,20 +62,56 @@
 - No inline `style` attributes (GSAP setting styles at runtime is fine)
 - Prettier with `prettier-plugin-tailwindcss` keeps class order consistent
 - Animation: GSAP with `@gsap/react` (`useGSAP`), Lenis for smooth scrolling,
-  Swiper for carousels; keep animation logic in client leaf components
+  driven from `gsap.ticker` so ScrollTrigger reads the smoothed position. No
+  carousel library: use CSS scroll-snap. Keep animation logic in client leaf
+  components
 
 > TODO: document the dark/light mode policy once the theme approach is settled.
 
 ## Content
 
-There is no database. Content is file-based and lives in `src/data/`:
+There is no database. Content is file-based and lives in `src/data/`, as typed
+TypeScript modules validated by Zod.
 
-- Markdown with frontmatter (parsed by `gray-matter`) for blog, projects,
-  services, and team entries; rendered with `react-markdown` + `rehype-slug`
-- Loaded through `src/utils/getMarkDownData.ts` and `getMarkDownContent.ts`
-- Structured data (pricing, FAQ, footer, testimonials) as typed TS files
-- New content types follow the same pattern: markdown folder or TS data file
-  plus an interface in `src/interface/index.ts`
+**Every content module validates at load time.** A schema lives in
+`src/interface/index.ts`, the module parses its entries through it, and a
+malformed entry fails `bun run build` rather than rendering a broken card:
+
+```ts
+import { testimonialSchema } from '@/src/interface';
+import { parseContent } from '@/src/interface/content';
+
+export const testimonialsData = parseContent(
+  testimonialSchema,
+  [{ quote: '...', authorName: '...', authorRole: '...' }],
+  'testimonials-data.ts'
+);
+```
+
+Rules that keep this honest:
+
+- **Parse in the module, never in a component.** Parsing at module load fails
+  the build. Parsing on render fails on the visitor's machine.
+- **Infer types, never hand-write them beside a schema.** Use
+  `export type Client = z.infer<typeof clientSchema>;`. A hand-written
+  interface next to a schema is how the two drift.
+- **Schemas are `.strict()`**, so a typo in a content file is an error rather
+  than a silently dropped key.
+- **Pass a real label** to `parseContent` - the filename. The error names the
+  module, entry index and field path, because whoever fixes it is editing a
+  data file, not reading a stack trace.
+- **Placeholder content is flagged, never disguised.** Clients, projects and
+  team members carry `placeholder`. Nothing with `placeholder: true` may ship
+  to production.
+- A new content type means a schema in `src/interface/index.ts` plus a module
+  in `src/data/` that parses through it.
+
+**Markdown is legacy and on the way out.** `src/data/projects` and
+`src/data/team` are still markdown with frontmatter, read through
+`src/utils/getMarkDownData.ts` and `getMarkDownContent.ts` and rendered with
+`react-markdown` + `rehype-slug`. Feature 2c migrates them to typed modules and
+removes `gray-matter`, `react-markdown` and `rehype-slug`. Do not add new
+markdown content.
 
 > TODO: if a database or CMS is added later, document the ORM/client and
 > migration conventions here first.
@@ -87,8 +123,9 @@ There is no database. Content is file-based and lives in `src/data/`:
   content
 - Validate user input at the boundary when forms get a real backend
 
-> TODO: choose a validation approach (for example Zod) when the first real form
-> submission or backend is built; none is installed yet.
+Zod is installed and validates content modules (see Content). Feature 12 reuses
+it for the brief form, sharing one schema between the client and the route
+handler.
 
 ## Error Handling
 

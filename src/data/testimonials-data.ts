@@ -1,56 +1,53 @@
-export interface TestimonialItem {
-  id: string;
-  quote: string;
-  name: string;
-  role: string;
-  imageSrc?: string;
-  imageAlt?: string;
-}
+import { testimonialSchema } from '@/src/interface';
+import { parseContent } from '@/src/interface/content';
 
-export const testimonialsData: TestimonialItem[] = [
-  {
-    id: '1',
-    quote:
-      'Committed, innovative, and results-oriented—exactly what we needed. Their creative strategies consistently introduce new concepts. With a deep dedication to quality.',
-    name: 'Lena Torres',
-    role: 'CMO',
-    imageSrc: '/images/opai-avatar-img-01.png',
-    imageAlt: 'Lena Torres',
-  },
-  {
-    id: '2',
-    quote:
-      "The team's expertise and hands-on approach made the entire integration seamless and surprisingly fast. Highly recommend!",
-    name: 'Maya Chen',
-    role: 'CTO, Fintech Innovators',
-    imageSrc: '/images/opai-avatar-img-02.png',
-    imageAlt: 'Maya Chen',
-  },
-  {
-    id: '3',
-    quote:
-      'From day one, Nexsas felt like an extension of our internal team. Their tools and support are truly next-level.',
-    name: 'Derek Singh',
-    role: 'Head of Product, E-commerce Platform',
-    imageSrc: '/images/opai-avatar-img-03.png',
-    imageAlt: 'Derek Singh',
-  },
-  {
-    id: '4',
-    quote:
-      'We went from idea to execution in weeks—not months. The automation is saving us countless hours every month.',
-    name: 'Laura Fernandez',
-    role: 'Operations Lead, SaaS Company',
-    imageSrc: '/images/opai-avatar-img-04.png',
-    imageAlt: 'Laura Fernandez',
-  },
-  {
-    id: '5',
-    quote:
-      'What impressed me most was the flexibility. Nexsas adapted to our workflow instead of forcing us to change.',
-    name: 'Jonas Müller',
-    role: 'Growth Manager, Logistics Startup',
-    imageSrc: '/images/opai-avatar-img-05.png',
-    imageAlt: 'Jonas Müller',
-  },
-];
+/**
+ * Validated at module load, so a malformed entry fails `bun run build` rather
+ * than rendering a broken card for a visitor.
+ */
+export const testimonialsData = parseContent(
+  testimonialSchema,
+  [
+    {
+      quote:
+        'Committed, innovative, and results-oriented—exactly what we needed. Their creative strategies consistently introduce new concepts. With a deep dedication to quality.',
+      authorName: 'Lena Torres',
+      authorRole: 'CMO',
+      avatar: '/images/opai-avatar-img-01.png',
+      avatarAlt: 'Lena Torres',
+    },
+    {
+      quote:
+        "The team's expertise and hands-on approach made the entire integration seamless and surprisingly fast. Highly recommend!",
+      authorName: 'Maya Chen',
+      authorRole: 'CTO, Fintech Innovators',
+      avatar: '/images/opai-avatar-img-02.png',
+      avatarAlt: 'Maya Chen',
+    },
+    {
+      quote:
+        'From day one, Nexsas felt like an extension of our internal team. Their tools and support are truly next-level.',
+      authorName: 'Derek Singh',
+      authorRole: 'Head of Product, E-commerce Platform',
+      avatar: '/images/opai-avatar-img-03.png',
+      avatarAlt: 'Derek Singh',
+    },
+    {
+      quote:
+        'We went from idea to execution in weeks—not months. The automation is saving us countless hours every month.',
+      authorName: 'Laura Fernandez',
+      authorRole: 'Operations Lead, SaaS Company',
+      avatar: '/images/opai-avatar-img-04.png',
+      avatarAlt: 'Laura Fernandez',
+    },
+    {
+      quote:
+        'What impressed me most was the flexibility. Nexsas adapted to our workflow instead of forcing us to change.',
+      authorName: 'Jonas Müller',
+      authorRole: 'Growth Manager, Logistics Startup',
+      avatar: '/images/opai-avatar-img-05.png',
+      avatarAlt: 'Jonas Müller',
+    },
+  ],
+  'testimonials-data.ts'
+);
