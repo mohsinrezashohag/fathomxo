@@ -26,6 +26,21 @@ const FacebookIcon: FC<IconProps> = ({ className }) => (
   </svg>
 );
 
+const GitHubIcon: FC<IconProps> = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    aria-hidden
+    className={cn('size-5 fill-none stroke-[#CED7DE]', className)}
+  >
+    <path
+      d="M7.5 16.25c-4.167 1.25-4.167-2.083-5.833-2.5m11.666 5v-3.229a2.79 2.79 0 0 0-.783-2.163c2.616-.291 5.366-1.283 5.366-5.833a4.53 4.53 0 0 0-1.25-3.125 4.22 4.22 0 0 0-.075-3.142s-.983-.291-3.258 1.234a11.13 11.13 0 0 0-5.833 0C5.225 1.967 4.242 2.258 4.242 2.258a4.22 4.22 0 0 0-.075 3.142 4.53 4.53 0 0 0-1.25 3.15c0 4.516 2.75 5.508 5.366 5.833a2.79 2.79 0 0 0-.783 2.138V19.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 const InstagramIcon: FC<IconProps> = ({ className }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -825,6 +840,7 @@ export {
   HealthcareIcon,
   IconGradient,
   InfinityIcon,
+  GitHubIcon,
   InstagramIcon,
   LegalRealEstateIcon,
   LightningIcon,

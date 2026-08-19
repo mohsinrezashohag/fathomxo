@@ -18,7 +18,7 @@
     Inter Tight and IBM Plex Mono
   - [x] 1b. **Site nav** - header on the new tokens: logo, primary links, brief CTA and
     mobile menu, replacing the template's four mega menus
-  - [ ] 1c. **Site footer** - footer on the new tokens, with links matching the real
+  - [x] 1c. **Site footer** - footer on the new tokens, with links matching the real
     route set
   - [ ] 1d. **Scroll and page-transition shell** - sync the existing Lenis provider with
     GSAP ScrollTrigger, then add the route-change transition, resolving to final state

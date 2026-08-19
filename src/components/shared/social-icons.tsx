@@ -1,7 +1,7 @@
 import { cn } from '@/src/utils/cn';
 import Link from 'next/link';
 import type { ComponentType, FC } from 'react';
-import { FacebookIcon, InstagramIcon, LinkedInIcon, XIcon, YouTubeIcon } from './icon';
+import { FacebookIcon, GitHubIcon, InstagramIcon, LinkedInIcon, XIcon, YouTubeIcon } from './icon';
 
 export type SocialIconComponent = ComponentType<{ className?: string }>;
 
@@ -10,6 +10,7 @@ const socialIconsMap: Record<string, SocialIconComponent> = {
   Instagram: InstagramIcon,
   X: XIcon,
   LinkedIn: LinkedInIcon,
+  GitHub: GitHubIcon,
   YouTube: YouTubeIcon,
 };
 

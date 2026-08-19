@@ -6,6 +6,20 @@ export interface NavLink {
   children?: NavLink[];
 }
 
+// footer
+export interface FooterLinkGroup {
+  title: string;
+  links: NavLink[];
+}
+
+export interface FooterSocialLink {
+  /** Must match a key in socialIconsMap. */
+  name: string;
+  href: string;
+  /** No real handle yet; must be false before launch. */
+  placeholder?: boolean;
+}
+
 // pricing
 
 export interface FeatureCategory {
@@ -90,4 +104,3 @@ export interface ProjectPost {
   showHomepage?: boolean;
   [key: string]: unknown;
 }
-

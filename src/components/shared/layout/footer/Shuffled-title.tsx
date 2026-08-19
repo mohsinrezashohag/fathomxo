@@ -23,7 +23,7 @@ const ShuffledTitle = () => {
       element.style.whiteSpace = 'nowrap';
 
       const textNode = spanElement || element;
-      const originalText = textNode.textContent ?? ' NEXSAS ';
+      const originalText = textNode.textContent ?? ' FATHOMXO ';
       let startTime: number | null = null;
 
       const animate = (currentTime: number) => {
@@ -60,6 +60,12 @@ const ShuffledTitle = () => {
         requestAnimationFrame(animate);
       };
 
+      // Scrambling letters is exactly the kind of motion reduced-motion users
+      // ask not to see, so resolve straight to the wordmark instead.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
       const scrollTrigger = ScrollTrigger.create({
         trigger: element,
         start: 'top 100%',
@@ -78,10 +84,10 @@ const ShuffledTitle = () => {
     <div className="py-12 lg:py-16">
       <h2
         ref={titleRef}
-        className="text-it-heading-4 font-inter-tight footer-title-2 text-center font-bold tracking-[22.48px] text-nowrap sm:text-[60px] sm:leading-[120px] sm:tracking-[27.48px] md:tracking-[45.48px] lg:pl-5 lg:text-[80px] lg:tracking-[64.48px] xl:pl-10 xl:text-[112px] xl:leading-[168px] 2xl:tracking-[75.48px]"
+        className="font-display footer-title text-32 text-center font-bold tracking-[22.48px] text-nowrap sm:text-[60px] sm:leading-[120px] sm:tracking-[27.48px] md:tracking-[45.48px] lg:pl-5 lg:text-[80px] lg:tracking-[64.48px] xl:pl-10 xl:text-[112px] xl:leading-[168px] 2xl:tracking-[75.48px]"
         aria-hidden
       >
-        <span ref={spanRef} className="text-opai-purple!"> NEXSAS </span>
+        <span ref={spanRef}> FATHOMXO </span>
       </h2>
     </div>
   );

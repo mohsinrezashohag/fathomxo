@@ -22,10 +22,14 @@ body {
   @apply relative overflow-hidden before:absolute before:bottom-0 before:left-0 before:h-px before:w-full before:origin-right before:scale-x-0 before:bg-white before:transition-transform before:duration-500 before:content-[''] hover:before:origin-left hover:before:scale-x-100;
 }
 
+/* The giant footer wordmark is ghosted rather than solid, so it reads as a
+   watermark and does not compete with the links above it. Derived from the ink
+   token, not white, so it stays traceable to the brand file. */
 .footer-title {
-  background: var(
-    --Gradient-12,
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.2) 100%)
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-ink) 6%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 22%, transparent) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
