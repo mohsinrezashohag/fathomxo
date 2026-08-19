@@ -29,7 +29,7 @@
   `rehype-slug` once nothing imports them
   - [x] 2a. **Schema layer** - install Zod, define the nine content schemas in
     `src/interface`, and fail the build on a malformed entry
-  - [ ] 2b. **Brief content modules** - clients, the four service lines, pricing plans,
+  - [x] 2b. **Brief content modules** - clients, the four service lines, pricing plans,
     FAQs and technologies, authored from the content brief against those schemas
   - [ ] 2c. **Markdown retirement** - move projects and team to typed modules flagged
     as placeholder, repoint their consumers, and remove `gray-matter`,
