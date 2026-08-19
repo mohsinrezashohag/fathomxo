@@ -35,8 +35,8 @@
   linking through to its case study
 - [ ] 6. **Case study pages** - problem, approach, stack, outcome and gallery for a
   single project
-- [ ] 7. **Services** - the four service lines with deliverables, and a detail page
-  per line
+- [ ] 7. **Services** - the four service lines with deliverables, a detail page
+  per line, and the technology capability badges
 - [ ] 8. **Pricing tabs** - one tab per service line with BDT tiers, recommended
   state and CTAs
 - [ ] 9. **Launch campaign banner** - countdown and progress bar for an active

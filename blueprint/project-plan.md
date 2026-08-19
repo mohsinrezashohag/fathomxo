@@ -70,7 +70,7 @@ poster frame without breaking layout or message.
 - Dark, token-driven design system and site shell (nav, footer, page transitions)
 - Hero with a real-time 3D signature object and an orchestrated load sequence
 - Scroll-revealed positioning statements — the studio's point of view in oversized type
-- Client roster as a typographic list, each line linking to its case study
+- Client trust marquee of names, plus a client roster as a typographic list, each line linking to its case study
 - Case study pages: problem, approach, stack, outcome, visuals
 - Services across the four lines (E-commerce, Website / App, Landing Page, AI Agents / Automation)
 - Tabbed pricing, one tab per service line, tiers in BDT with a clear CTA
@@ -98,13 +98,14 @@ request rather than a migration. Only the lead payload leaves the browser.
 
 | Module | Purpose | Key fields |
 | --- | --- | --- |
-| `clients` | Roster entries on the home page | name, descriptor, industry, order, published |
+| `clients` | Roster and trust marquee | name, descriptor, industry, order, published, placeholder |
 | `projects` | Case studies, one-to-many from clients | slug, title, summary, problem, approach, outcome, stack[], serviceLine, cover, gallery[], date |
 | `services` | The four service lines | slug, name, tagline, description, deliverables[], iconKey, order |
-| `pricingPlans` | Tiers per service line | serviceSlug, name, priceBdt, period, recommended, features[], ctaLabel, ctaHref |
+| `pricingPlans` | One or more plans per service line | serviceSlug, name, priceBdt, startingFrom, period, recommended, features[], ctaLabel, ctaHref |
 | `faqs` | FAQ entries plus their categories | category, question, answer, order, published |
 | `campaigns` | Launch banner and countdown | title, subtitle, targetDate, ctaLabel, ctaHref, active |
 | `testimonials` | Optional proof on service pages | clientSlug, quote, authorName, authorRole |
+| `technologies` | Capability badges on the services surface | name, category, order |
 | `team` | Studio members on the About / team page | name, role, title, photo, order, published, optional socials[] |
 
 **Runtime data**
@@ -116,6 +117,11 @@ request rather than a migration. Only the lead payload leaves the browser.
 
 Rules later feature specs must respect:
 
+- A service line carries **1..n pricing plans**: e-commerce has three tiers,
+  the other lines one. The tab renders three-up or a single wide card by count.
+  `startingFrom` carries the `+` in `৳60,000+`; `priceBdt: 0` is the free tier.
+- Placeholder content is flagged, never disguised as real. Nothing with
+  `placeholder: true` may ship to production.
 - **No PII in analytics.** No IP, no user ID, no fingerprint.
 - Lead email and phone are sensitive: never rendered on a public route, never in an
   OG image, never logged in plaintext.
@@ -229,11 +235,15 @@ claim and a template shop cannot copy.
 - **Voice:** direct, plain verbs, lightly irreverent — never profane. Confident
   about the work, not rude about competitors. Buttons say what happens ("Send the
   brief", "See the work"), empty states invite action, errors explain the fix.
-  Sentence case throughout, except mono micro-caps.
+  Lowercase editorial headings for statements ("building software that actually
+  works."), sentence case for body, mono micro-caps for labels. Short sentences.
+  No corporate buzzwords: no "innovative solutions", no "digital transformation".
 - **Quality floor:** responsive from 360px, visible keyboard focus in the accent,
   tap targets ≥44px, and every section readable with motion disabled.
 
-Anti-patterns, named so feature specs don't drift into them: no logo-wall carousel,
+Anti-patterns, named so feature specs don't drift into them: no logo-*wall*
+carousel (a typographic client-*name* marquee is fine; the ban is on grids of
+logos that say nothing),
 no `01 / 02 / 03` markers on content that isn't a sequence, no glass cards over
 blurred gradients, no stock 3D blob unrelated to the mark, no autoplaying
 background video.

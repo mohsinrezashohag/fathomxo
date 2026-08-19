@@ -56,6 +56,12 @@ modules and removes the dependencies, and `coding-standards.md` is updated to
 describe typed TS content modules once that lands. Git history keeps the removed
 routes if a Post-MVP blog wants the pattern back.
 
+## Content source
+
+Site copy - hero, positioning, services, pricing, FAQ, footer - comes from
+[../reference/content-brief.md](../reference/content-brief.md). Features 3-10
+each take their slice; feature 2 turns it into typed modules.
+
 ## Features
 
 MVP, in build order. The headline feature is **3: Hero and 3D signature** - the
@@ -70,9 +76,11 @@ site's proof-of-capability moment.
 3. **Hero and 3D signature** - statement headline, orchestrated load sequence,
    symbol-derived 3D object with poster-frame fallback.
 4. **Positioning sections** - scroll-revealed oversized statements down the home page.
-5. **Client roster** - typographic client list, each row linking to its case study.
+5. **Client roster** - client trust marquee plus a typographic list, each row
+   linking to its case study.
 6. **Case study pages** - problem, approach, stack, outcome, gallery per project.
-7. **Services** - four service lines with deliverables and a detail page per line.
+7. **Services** - four service lines with deliverables, a detail page per line,
+   and the technology capability badges.
 8. **Pricing tabs** - one tab per service line, BDT tiers, recommended state, CTAs.
 9. **Launch campaign banner** - countdown and progress bar for an active release.
 10. **FAQ** - searchable entries, category rail, accordion answers.
@@ -110,6 +118,7 @@ These shapes are load-bearing: feature 2 defines them, features 5-11 consume the
 - `industry` (string)
 - `order` (number) - roster sort
 - `published` (boolean) - unpublished stays in repo, never deleted
+- `placeholder` (boolean) - not a real client; must be false before launch
 - One-to-many with Project
 
 ### Project (case study)
@@ -134,8 +143,13 @@ These shapes are load-bearing: feature 2 defines them, features 5-11 consume the
 
 ### PricingPlan
 
+A service line carries **1..n plans**: e-commerce has three tiers, the other
+lines one. The tab renders three-up or a single wide card by count.
+
 - `serviceSlug` (service ref) - tab grouping
-- `name` (string), `priceBdt` (number), `period` (string)
+- `name` (string), `priceBdt` (number) - `0` is the free tier
+- `startingFrom` (boolean) - renders the `+` in `৳60,000+`
+- `period` (string)
 - `recommended` (boolean)
 - `features` (string[])
 - `ctaLabel`, `ctaHref` (string)
@@ -157,6 +171,12 @@ These shapes are load-bearing: feature 2 defines them, features 5-11 consume the
 
 - `clientSlug` (client ref)
 - `quote`, `authorName`, `authorRole` (string)
+
+### Technology
+
+Capability badges on the services surface (feature 7).
+
+- `name` (string), `category` (string), `order` (number)
 
 ### TeamMember
 
@@ -188,6 +208,8 @@ Emailed to the team only; never persisted, never on a public route.
 - Every content module validates against its Zod schema at build time; a
   malformed entry fails the build.
 - Unpublish by flag, never by deletion.
+- Placeholder content is flagged, never disguised as real. Nothing with
+  `placeholder: true` may ship to production.
 
 ## Tech stack
 
@@ -262,12 +284,14 @@ closer to a product studio than an agency.
   `prefers-reduced-motion`: Lenis off, triggers resolve to final state, 3D
   object becomes its poster.
 - **Voice**: direct, plain verbs, lightly irreverent, never profane. Buttons say
-  what happens ("Send the brief", "See the work"). Sentence case except mono
-  micro-caps.
+  what happens ("Send the brief", "See the work"). Lowercase editorial headings
+  for statements ("building software that actually works."), sentence case for
+  body, mono micro-caps for labels. Short sentences. No corporate buzzwords.
 - **Quality floor**: responsive from 360px, visible accent focus, tap targets
   >= 44px, every section readable with motion disabled.
 
-**Anti-patterns (do not ship)**: logo-wall carousel, `01 / 02 / 03` markers on
+**Anti-patterns (do not ship)**: logo-*wall* carousel (a typographic
+client-*name* marquee is fine; the ban is on grids of logos that say nothing), `01 / 02 / 03` markers on
 non-sequences, glass cards over blurred gradients, stock 3D blobs, autoplaying
 background video.
 
