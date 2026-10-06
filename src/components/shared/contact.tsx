@@ -1,6 +1,5 @@
 'use client';
 
-import opai2 from '@/public/images/gradient/opai-2.png';
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { TextReveal } from '@/src/components/animation/text-reveal-animation';
 import {
@@ -10,7 +9,6 @@ import {
   ContactPhoneIcon,
 } from '@/src/components/shared/icon';
 import { useButtonSplitText } from '@/src/hooks/use-button-split-text';
-import Image from 'next/image';
 import { useRef } from 'react';
 
 const Contact = () => {
@@ -18,23 +16,23 @@ const Contact = () => {
   useButtonSplitText(submitButtonWrapperRef);
 
   return (
-    <section className="bg-background-6 relative overflow-hidden py-10 pb-20 md:py-28 lg:py-39">
-      <div className="main-container relative z-20 space-y-10 md:space-y-19">
+    <section className="border-hairline bg-canvas relative border-t py-20 md:py-24 lg:py-28">
+      <div className="main-container relative z-20 space-y-10 md:space-y-12">
         <div className="space-y-2 text-center">
           <TextReveal>
-            <h2 className="font-sora md:text-sora-heading-3 text-sora-heading-4 lg:text-sora-heading-2 font-normal tracking-[-2.4px] text-white/90 max-md:leading-[110%]">
-              Let&apos;s <span className="font-normal text-white/30"> connect </span>
+            <h2 className="font-display text-ink mx-auto max-w-[18ch] text-[clamp(var(--text-32),4.5vw,var(--text-60))] leading-[1.05] font-semibold tracking-[var(--tracking-display)]">
+              tell us what you are building.
             </h2>
           </TextReveal>
           <TextReveal delay={0.2}>
-            <p className="text-tagline-2 font-inter-tight text-white/60">
-              Have a project in mind? Let&apos;s make it a reality.
+            <p className="text-ink-secondary text-20 mx-auto mt-4 max-w-[54ch] leading-[var(--leading-body)]">
+              Scope, budget band, timeline. You get a real number back, usually within a day.
             </p>
           </TextReveal>
         </div>
 
         <RevealAnimation delay={0.3}>
-          <div className="bg-background-6 ring-background-4 mx-auto flex max-w-[1290px] flex-col gap-[42px] rounded-lg p-3 ring-8 sm:p-7 lg:flex-row lg:p-[42px]">
+          <div className="bg-surface border-hairline mx-auto flex max-w-[1290px] flex-col gap-[42px] rounded-[var(--radius-card)] border p-6 sm:p-8 lg:flex-row lg:p-[42px]">
             {/* Contact Method Section */}
             <div className="flex w-full flex-col gap-6 lg:w-[510px]">
               <RevealAnimation delay={0.4} direction="left">
@@ -46,10 +44,10 @@ const Contact = () => {
                     <div className="flex flex-col gap-1">
                       <p className="text-it-heading-6 text-white/90">Email</p>
                       <a
-                        href="mailto:support@Nexsas.com"
+                        href="mailto:hello@fathomxo.com"
                         className="text-tagline-2 font-inter-tight text-white/60"
                       >
-                        support@Nexsas.com
+                        hello@fathomxo.com
                       </a>
                     </div>
                   </div>
@@ -199,13 +197,6 @@ const Contact = () => {
           </div>
         </RevealAnimation>
       </div>
-
-      {/* Bottom Gradient Background */}
-      <RevealAnimation delay={0.4}>
-        <div className="absolute left-0 z-4 hidden h-[696px] w-full min-[1930px]:bottom-64! lg:-bottom-75 lg:block 2xl:bottom-18">
-          <Image src={opai2} alt="Bottom blend mode" />
-        </div>
-      </RevealAnimation>
     </section>
   );
 };

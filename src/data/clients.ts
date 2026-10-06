@@ -2,39 +2,42 @@ import { clientSchema } from '@/src/interface';
 import { parseContent } from '@/src/interface/content';
 
 /**
- * Client names from section 5 of the content brief, which flags them as
- * example placeholders rather than real engagements.
+ * The verified client roster. Detail on both companies is in the addendum at
+ * the end of the content brief.
  *
- * `descriptor` and `industry` are required by the schema but absent from the
- * brief. They deliberately read as unfilled rather than plausible: a convincing
- * invention survives review and can ship, which is exactly what the plan's rule
- * against claiming work FathomXO has not done is there to prevent.
+ * The nine example names section 5 of the brief shipped with (Enscentea,
+ * Corvien, AJ Supplies and the rest) were never real clients and have been
+ * removed rather than left flagged: an invented roster that outnumbers the real
+ * one nine to two is the kind of thing that survives review and ships.
  *
- * Every entry is `placeholder: true`. Nothing with that flag may reach
- * production - replace the descriptors and industries with real ones, or drop
- * the entry, before launch.
+ * `descriptor` is the one-line engagement shown beside the name on the roster.
+ * Both are written from what each client's live site actually is, so they stay
+ * within what can be pointed at; neither claims a result, a metric or a scope
+ * beyond the build itself.
  */
-const NEEDS_REAL_DETAIL = 'TODO: describe the real engagement';
-const NEEDS_REAL_INDUSTRY = 'TODO: industry';
-
 export const clients = parseContent(
   clientSchema,
   [
-    'Enscentea',
-    'Aetheria Selfcare',
-    'Corvien',
-    'AJ Supplies',
-    'Parbo Foundation',
-    'Fermion Studio',
-    'Learnova',
-    'NADS Group',
-    'Elegant Panjabi',
-  ].map((name, index) => ({
-    name,
-    descriptor: NEEDS_REAL_DETAIL,
-    industry: NEEDS_REAL_INDUSTRY,
-    order: index,
-    placeholder: true,
-  })),
+    {
+      name: 'Redwave Marketing',
+      descriptor: 'Built their marketing site, from the sales-led homepage to careers intake.',
+      industry: 'Field sales and direct marketing',
+      order: 0,
+    },
+    {
+      name: 'X-Factor Academic Solutions',
+      descriptor:
+        'Built their academic services platform, with published check pricing and a quote flow.',
+      industry: 'Education and academic services',
+      order: 1,
+    },
+    {
+      name: 'Boichitro BD',
+      descriptor:
+        'Built their multivendor electronics marketplace, from vendor catalogues to checkout.',
+      industry: 'Consumer electronics and computer retail',
+      order: 2,
+    },
+  ],
   'clients.ts'
 );

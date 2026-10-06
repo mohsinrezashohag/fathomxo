@@ -7,9 +7,9 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   ...generateMetadata(),
-  title: 'Pricing - AI Solutions || Nexsas',
+  title: 'Pricing - FathomXO',
   description:
-    'Transparent pricing designed to scale with your business. No hidden fees, no surprises.',
+    'Published prices in BDT for e-commerce, websites and apps, landing pages and AI automation.',
 };
 
 const page = () => {

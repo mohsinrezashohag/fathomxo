@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="">
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#F2F0EE" fill-opacity="0.10"/>
+    </pattern>
+    <radialGradient id="bloom" cx="72%" cy="28%" r="55%">
+      <stop offset="0%" stop-color="#E2560A" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#E2560A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0C0C15"/>
+  <rect width="1200" height="900" fill="url(#dots)"/>
+  <rect width="1200" height="900" fill="url(#bloom)"/>
+  <g fill="none" stroke="#F2F0EE" stroke-opacity="0.22" stroke-width="2">
+    <rect x="250" y="300" width="240" height="300" rx="20"/>
+    <rect x="530" y="260" width="240" height="340" rx="20"/>
+    <rect x="810" y="300" width="240" height="300" rx="20"/>
+    <path d="M280 660 h180 M560 660 h180 M840 660 h180" stroke-opacity="0.14"/>
+  </g>
+  <rect x="530" y="260" width="240" height="340" rx="20" fill="none" stroke="#E2560A" stroke-width="2.5"/>
+  <circle cx="650" cy="430" r="34" fill="none" stroke="#E2560A" stroke-width="9"/>
+</svg>

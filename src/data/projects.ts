@@ -2,191 +2,174 @@ import { projectSchema } from '@/src/interface';
 import { parseContent } from '@/src/interface/content';
 
 /**
- * Case studies, migrated from the starter's markdown so the pipeline could be
- * removed. This is template copy, not FathomXO work: every entry is
- * `placeholder: true` and feature 6 replaces it.
+ * Case studies. Three are the studio's real clients; four are demo work that
+ * exists so the projects grid and the home page are not empty while the real
+ * write-ups are gathered.
  *
- * Field mapping from the markdown: `problem` and `approach` come from the body's
- * `### Challenge` and `### Our Solution` sections, `outcome` from
- * `closingParagraph`, `stack` from `details.services`. `gallery` is empty - the
- * frontmatter's `before` and `after` keys were text bullets for a before/after
- * component, not images, so they are dropped rather than forced into a field
- * that means something else.
+ * **Every entry is `placeholder: true` and none may ship.** The three client
+ * entries are real companies, but their problem, approach and outcome are
+ * inferred from what each live site demonstrably is, not from the engagement
+ * itself, so they need confirming or rewriting. The four demo entries are
+ * invented scenarios with invented client names, written to be plausible for
+ * this market rather than impressive: no metric anyone would have to defend,
+ * and no result FathomXO has not produced.
  *
- * `serviceSlug` has no source. These projects predate the four service lines,
- * so each is assigned the closest match. Provisional, like the rest of it.
+ * Covers are the brand SVGs in `public/images/covers`, one per service line.
+ * They are around 1.3 KB each and replace the starter's grey 1000x999
+ * dimension placeholders; a real screenshot per project replaces them in
+ * feature 6.
  */
+/** Real client screenshots, cropped to 16:9 and served as WebP. */
+const SHOT = (slug: string) => `/images/work/${slug}.webp`;
+
+const COVER = {
+  'e-commerce': '/images/covers/e-commerce.svg',
+  'website-app': '/images/covers/website-app.svg',
+  /* X-Factor is a website-app build too, but its case is published pricing, so
+     it gets the pricing-table variant rather than a second identical tile. */
+  'website-app-pricing': '/images/covers/website-app-alt.svg',
+  'landing-page': '/images/covers/landing-page.svg',
+  'ai-agents-automation': '/images/covers/ai-agents-automation.svg',
+} as const;
+
 export const projects = parseContent(
   projectSchema,
   [
     {
-      slug: 'ai-driven-supply-chain-efficiency',
-      title: 'AI-Driven Supply Chain Efficiency',
-      summary: 'Reducing delays and improving logistics through real-time predictive analytics.',
-      problem:
-        'Our client, a global logistics provider, struggled with: - **Reactive operations:** Teams responded to issues after they occurred. - **Static inventory:** Stock levels were not tied to real demand or lead times. - **Blind spots:** Limited view of supplier reliability and carrier performance. - **Fixed routing:** Schedules and routes did not adapt to traffic or demand. - **Cost and waste:** Expedited shipping and excess inventory hurt margins. They wanted real-time visibility and predictive tools to get ahead of problems.',
-      approach:
-        'We implemented: - **Demand & Disruption Prediction —** Models that forecast demand and flag supply risks early. - **Inventory Optimization —** Right-sized stock by node and product. - **Performance Analytics —** Live scorecards for suppliers and carriers. - **Dynamic Routing & Scheduling —** Optimization that updates with new data and constraints.',
-      outcome:
-        'Supply chains become resilient when data and AI work together. Predictive analytics surface risks early, while optimization keeps inventory, routing, and capacity aligned with demand—reducing cost and improving delivery.',
-      stack: ['AI', 'Supply Chain'],
-      serviceSlug: 'ai-agents-automation',
-      clientName: 'Global Logistics Inc',
-      cover: '/images/opai-img-483.jpg',
-      gallery: [],
-      date: '2025',
-      showHomepage: false,
-      placeholder: true,
-    },
-    {
-      slug: 'ai-ecommerce-smart-shopping',
-      title: 'Transforming e-Commerce',
+      slug: 'redwave-marketing-site',
+      title: 'Two audiences, one site',
       summary:
-        "Nexsas boosted a top online retailer's conversions by 40% with AI-powered recommendations, enhancing shopping experiences and driving revenue growth.",
+        'A marketing site for a Canadian field-sales agency that has to win brand partnerships and recruit sales reps at the same time.',
       problem:
-        'Our client, a top-tier e-commerce brand, faced critical challenges: - **Low conversion rates:** Despite high traffic, the website struggled to convert visitors into customers. - **Static pricing models:** Limited flexibility in adapting to market trends and customer demand. - **Lack of insights:** Difficulty in predicting customer behavior to optimize offerings. Implement intelligent solutions that adapt in real time to customer needs and market changes.',
+        'Redwave sells two things to two completely different people. Brands are shopping for a partner who can run face-to-face campaigns across Canadian cities. Sales reps are looking for a job. A single homepage that tries to talk to both convinces neither, and the recruiting pitch drags down the credibility of the partnership pitch.',
       approach:
-        'To address these challenges, we implemented: - **Personalized Suggestions —** AI analyzed behavior to recommend relevant products. - **Dynamic Pricing —** Real-time price adjustments boosted profitability. - **Predictive Insights —** Analytics guided smarter marketing and inventory decisions.',
+        'We split the paths at the top of the site rather than the bottom. The homepage leads with the growth argument and the two calls to action sit side by side, so a brand and a candidate diverge in the first screen. Partnerships and Services carry the commercial case; Careers is a separate intake with its own form. FAQ absorbs the questions that were costing the team email round trips.',
       outcome:
-        "With AI precision, e-commerce platforms now understand every customer's intent and behavior. Product recommendations adapt in real time, marketing campaigns auto-optimize for maximum ROI, and customer interactions feel personal at every touchpoint. The result—higher engagement, stronger conversions, and a seamless shopping experience powered by intelligent automation.",
-      stack: ['AI Solutions', 'E-commerce'],
-      serviceSlug: 'e-commerce',
-      clientName: 'Alex Jonson',
-      cover: '/images/opai-img-488.jpg',
-      gallery: [],
+        'Both audiences have a route through the site that does not fight the other, and applications arrive through a structured intake instead of a generic contact form.',
+      stack: ['Next.js', 'Tailwind CSS', 'Responsive layout', 'Careers intake'],
+      serviceSlug: 'website-app',
+      clientName: 'Redwave Marketing',
+      cover: SHOT('redwave-marketing-site'),
       date: '2025',
       showHomepage: true,
       placeholder: true,
     },
     {
-      slug: 'ai-powered-retail-insights',
-      title: 'AI-Powered Retail Insights',
-      summary: 'Transforming customer behavior data into smart merchandising decisions.',
+      slug: 'x-factor-academic-platform',
+      title: 'Pricing in the open',
+      summary:
+        'An academic services platform that publishes what a check costs instead of making every student ask.',
       problem:
-        'Our client, a national retail chain, struggled with: - **Fragmented data:** Customer signals lived in separate systems and were hard to combine. - **Slow reporting:** By the time reports were ready, the opportunity had often passed. - **Intuition-led decisions:** Buyers and planners relied on experience rather than evidence. - **Poor promotion ROI:** Difficulty measuring which campaigns actually drove sales. They needed a single, AI-powered view of customer behavior to guide merchandising at scale.',
+        'Academic support is a market where nobody publishes a price, so every enquiry starts with a negotiation and most students never send the first message. X-Factor also serves students worldwide across many fields, which makes a single service page read as either too vague to trust or too long to finish.',
       approach:
-        'We delivered: - **Unified Data Platform —** Ingested and normalized behavior data from all touchpoints. - **Predictive Merchandising —** AI recommended which products to feature and where. - **Demand Forecasting —** Models predicted demand by store and category. - **Attribution & Reporting —** Automated dashboards linked campaigns to outcomes.',
+        'Checks and pricing became a first-class section rather than a hidden quote. The service list is grouped so a student finds their own case fast, How it works removes the guesswork about turnaround, and the quote flow hands off to WhatsApp because that is where this audience actually replies.',
       outcome:
-        'Retailers now have a single source of truth for customer behavior. Merchandising, marketing, and operations teams align on the same metrics, and every decision is backed by AI-driven insights that improve margins and customer satisfaction.',
-      stack: ['AI Analytics', 'Retail'],
+        'A student can price a Turnitin or AI check, understand the process, and open a conversation without filling in a form and waiting.',
+      stack: ['Next.js', 'Tailwind CSS', 'Quote flow', 'WhatsApp handoff'],
+      serviceSlug: 'website-app',
+      clientName: 'X-Factor Academic Solutions',
+      cover: SHOT('x-factor-academic-platform'),
+      date: '2025',
+      showHomepage: false,
+      placeholder: true,
+    },
+    {
+      slug: 'boichitro-bd-marketplace',
+      title: 'Fifteen categories, many sellers',
+      summary:
+        'A multivendor electronics marketplace where every seller runs its own catalogue and the buyer still sees one shop.',
+      problem:
+        'Boichitro has sold computers and electronics since 2016, across fifteen categories from motherboards to home appliances. Orders arrived by phone, which caps the business at how many calls a day the team can take, and every seller added to the operation multiplied the stock and pricing that one person had to keep straight. Buyers of components also do not buy the way buyers of clothes do: they compare specifications and prices side by side before committing, and a catalogue that cannot support that loses them to whoever can.',
+      approach:
+        'A multivendor catalogue where each seller owns its own listings, stock and orders, presented to the buyer as a single storefront rather than fifteen sub-shops. Search is scoped by category because a query for "monitor" means something different under Gaming than under Office Equipment. Compare and wishlist are first-class rather than afterthoughts, since that is how this category is actually shopped. Checkout runs through SSLCommerz, and phone and WhatsApp stay on every page: the audience still wants to talk to someone before spending on a build.',
+      outcome:
+        'Sellers manage their own listings without going through one person, and a buyer can compare parts and check out without picking up the phone. The phone is still there for the ones who want it.',
+      stack: [
+        'Multivendor catalogue',
+        'Category-scoped search',
+        'Compare and wishlist',
+        'SSLCommerz',
+        'WhatsApp support',
+      ],
       serviceSlug: 'e-commerce',
-      clientName: 'Retail Corp',
-      cover: '/images/opai-img-480.jpg',
-      gallery: [],
+      clientName: 'Boichitro BD',
+      cover: SHOT('boichitro-bd-marketplace'),
       date: '2025',
       showHomepage: true,
       placeholder: true,
     },
     {
-      slug: 'automated-ai-customer-support',
-      title: 'Automated AI Customer Support',
-      summary: 'Delivering faster, context-aware responses through intelligent virtual agents.',
+      slug: 'rongdhonu-threads-storefront',
+      title: 'Off Facebook, onto a storefront',
+      summary:
+        'DEMO. A Dhaka menswear label moving from comment-and-inbox selling to a storefront with cash on delivery and courier pickup.',
       problem:
-        'Our client, a global support organization, dealt with: - **Volume and wait times:** Peak and after-hours demand overwhelmed available agents. - **Generic answers:** Scripts did not use account or interaction history. - **Knowledge gaps:** Information lived in many places and was hard to find. - **Low first-contact resolution:** Many cases required multiple contacts or escalations. - **Rising cost per contact:** Adding agents was not sustainable. They needed AI that could answer in context and escalate smartly.',
+        'Orders arrived as Facebook comments and inbox messages. Stock lived in one head rather than a system, the same panjabi sold twice on a good day, and every delivery meant retyping an address into a courier panel. Growth made all three worse rather than better.',
       approach:
-        'We implemented: - **Context-Aware Virtual Agents —** Bots that use account data and conversation history to personalize replies. - **24/7 Availability —** Automated handling for common questions and simple tasks. - **Smart Escalation —** Clear handoff to humans with full context when the bot cannot resolve. - **Unified Knowledge Base —** One source of truth for both AI and human agents. - **Analytics & Tuning —** Dashboards to improve answers and spot gaps.',
+        'A storefront with real inventory behind it, cash on delivery as the default rather than an afterthought, and courier booking wired in so an order becomes a consignment without a copy-paste. The admin view answers the only two questions the team asks: what came in today, and what has not shipped.',
       outcome:
-        'Support organizations can now scale without proportionally scaling headcount. AI handles routine, context-aware conversations and escalates intelligently—improving speed, consistency, and satisfaction while freeing agents for complex and high-value interactions.',
-      stack: ['AI', 'Customer Experience'],
-      serviceSlug: 'ai-agents-automation',
-      clientName: 'ServiceFirst Global',
-      cover: '/images/opai-img-487.jpg',
-      gallery: [],
+        'Orders land in one place with stock attached, and dispatch stops depending on whoever remembers.',
+      stack: ['Next.js', 'PostgreSQL', 'bKash', 'Cash on delivery', 'Courier API'],
+      serviceSlug: 'e-commerce',
+      clientName: 'Rongdhonu Threads',
+      cover: COVER['e-commerce'],
       date: '2025',
       showHomepage: false,
       placeholder: true,
     },
     {
-      slug: 'autonomous-manufacturing-workflow',
-      title: 'Autonomous Manufacturing Workflow',
-      summary: 'Streamlining production lines with computer vision and robotic automation.',
+      slug: 'shifa-diagnostics-booking',
+      title: 'Booking without the phone queue',
+      summary:
+        'DEMO. A diagnostic centre where appointments and report delivery moved off the front desk phone.',
       problem:
-        'Our client, a precision manufacturer, dealt with: - **Manual inspection:** Quality checks were slow and subjective. - **Reactive maintenance:** Equipment failed before teams could act. - **Rigid schedules:** Production plans could not easily adapt to changes. - **Weak traceability:** Hard to link defects or delays to specific batches or machines. - **Scrap and rework:** Defects often found late in the process. They needed vision, prediction, and automation that fit into existing lines and systems.',
+        'Every test booking went through one phone line, which meant a queue in the morning and missed calls for the rest of the day. Reports were collected in person even when the patient only needed a PDF, so the counter stayed busy with people who did not need to be there.',
       approach:
-        'We implemented: - **In-Line Vision —** Cameras and models that inspect parts and assemblies in real time. - **Predictive Maintenance —** Sensor and log data used to forecast failures and plan maintenance. - **Adaptive Scheduling —** Optimization that considers orders, materials, and machine status. - **Traceability & Digital Twin —** End-to-end lineage and a digital model of the line for simulation.',
+        'Slot-based booking per test with the prep instructions attached, so patients arrive ready. Reports are delivered through a link tied to the booking rather than an account nobody would create. The front desk keeps a view of the day that matches what it used to keep on paper.',
       outcome:
-        'Manufacturing gains a nervous system: vision systems that see defects, models that predict failures, and workflows that adjust in real time. The result is higher throughput, better quality, and less waste.',
-      stack: ['AI', 'Industrial Automation'],
-      serviceSlug: 'ai-agents-automation',
-      clientName: 'Precision Manufacturing Co',
-      cover: '/images/opai-img-485.jpg',
-      gallery: [],
-      date: '2025',
-      showHomepage: false,
-      placeholder: true,
-    },
-    {
-      slug: 'custom-edtech-learning-system',
-      title: 'Custom EdTech Learning System',
-      summary: 'Tailoring lessons and progress tracking based on individual learning patterns.',
-      problem:
-        'Our client, an online education provider, faced: - **Static content:** Everyone saw the same sequence regardless of level or need. - **Completion over mastery:** Progress was measured by finishing modules, not by understanding. - **Limited visibility:** Instructors had little insight into who was stuck or bored. - **Generic recommendations:** No systematic way to suggest what to study next. - **Uneven outcomes:** Engagement and completion varied widely across learners. They wanted a platform that could personalize at scale and track real mastery.',
-      approach:
-        'We delivered: - **Personalized Paths —** Content and sequence adapt to each learner’s level and goals. - **Mastery Tracking —** Progress tied to skills and competencies, not just clicks. - **Instructor Dashboards —** Real-time views of progress, struggle, and engagement. - **Smart Recommendations —** Next best lesson or practice based on performance and gaps. - **Engagement Signals —** Alerts when learners disengage or need support.',
-      outcome:
-        'EdTech platforms can now offer truly adaptive learning. AI analyzes behavior and performance to tailor content, pace, and support—so every learner gets a path that fits, and educators get the insights they need to intervene and celebrate progress.',
-      stack: ['AI', 'EdTech'],
+        'The morning queue is for tests, not for asking about tests, and collecting a report stops being a trip.',
+      stack: ['Next.js', 'PostgreSQL', 'SMS notifications', 'Role-based access'],
       serviceSlug: 'website-app',
-      clientName: 'LearnForward Academy',
-      cover: '/images/opai-img-484.jpg',
-      gallery: [],
+      clientName: 'Shifa Diagnostics',
+      cover: COVER['website-app'],
       date: '2025',
       showHomepage: false,
       placeholder: true,
     },
     {
-      slug: 'intelligent-financial-forecasting',
-      title: 'Intelligent Financial Forecasting',
-      summary: 'Automating revenue predictions and risk analysis with precision-driven AI models.',
+      slug: 'shikhi-academy-launch',
+      title: 'A launch page that holds a waitlist',
+      summary:
+        'DEMO. One page for a course launch, built to turn a social audience into a waitlist before the product existed.',
       problem:
-        'Our client, a financial services firm, dealt with: - **Manual forecasting:** Revenue and demand models lived in spreadsheets. - **Slow scenarios:** New assumptions or stress tests took days to run. - **Stale risk views:** Risk metrics were not updated with market and portfolio changes. - **Siloed assumptions:** Different teams used different drivers and methods. - **Bottlenecks:** Central FP&A could not keep up with ad hoc requests. They needed automated, repeatable forecasting and risk analysis that stayed current and aligned.',
+        'The course was six weeks from release and the entire audience lived on Facebook and Instagram. The link in bio pointed at nothing, so interest from every post evaporated. Whatever went up had to load fast on mobile data and make the offer clear in one screen.',
       approach:
-        'We delivered: - **Automated Forecasting —** Pipelines that pull data, run models, and publish forecasts. - **Scenario & Stress Testing —** Flexible what-if and stress scenarios on demand. - **Risk Dashboards —** Real-time risk metrics tied to positions and markets. - **Governance & Explainability —** Clear assumptions and audit trails for compliance.',
+        'A single page: what the course is, who it is for, what it costs, and one thing to do. Waitlist capture at the top and the bottom, curriculum in between for the people who read. Built mobile-first because that is the entire audience, and kept under budget so it opens before anyone leaves.',
       outcome:
-        'Finance teams can now run forecasts and risk analyses on demand. AI handles the heavy lifting on data and modeling, while humans focus on strategy, assumptions, and communication to stakeholders.',
-      stack: ['AI', 'Financial Analytics'],
+        'Every post points somewhere that captures intent instead of a bio link that goes nowhere.',
+      stack: ['Next.js', 'Tailwind CSS', 'Waitlist capture', 'Analytics'],
+      serviceSlug: 'landing-page',
+      clientName: 'Shikhi Academy',
+      cover: COVER['landing-page'],
+      date: '2025',
+      showHomepage: false,
+      placeholder: true,
+    },
+    {
+      slug: 'taja-bazar-order-assistant',
+      title: 'The where-is-my-order bot',
+      summary:
+        'DEMO. An online grocer whose support inbox was mostly one question, answered by an assistant instead of two people.',
+      problem:
+        'Most messages to the grocer were the same question: where is my order. Two people answered it all day by looking up an order id and typing the same sentence, which meant the messages that actually needed a human waited behind the ones that did not.',
+      approach:
+        'An assistant on the channels customers already use, wired to the order system so it answers from real status rather than a script. Anything it cannot answer, and anything about a refund, goes to a person with the conversation attached. It never guesses a delivery time it cannot see.',
+      outcome:
+        'Routine status questions resolve without a person, and the queue that reaches the team is the part that needed them.',
+      stack: ['Next.js', 'WhatsApp Business API', 'Order status integration', 'Human handoff'],
       serviceSlug: 'ai-agents-automation',
-      clientName: 'Summit Finance',
-      cover: '/images/opai-img-482.jpg',
-      gallery: [],
-      date: '2025',
-      showHomepage: false,
-      placeholder: true,
-    },
-    {
-      slug: 'smart-city-traffic-management',
-      title: 'Smart City Traffic Management',
-      summary: 'Predicting congestion and optimizing routes using high-accuracy AI algorithms.',
-      problem:
-        'Our client, a major city, faced: - **Static signals:** Timing was fixed and did not reflect current conditions. - **Reactive management:** Congestion and incidents were addressed after they happened. - **Siloed data:** Traffic, transit, and emergency services had separate systems. - **No single view:** Hard to see citywide patterns or prioritize interventions. - **Delays for critical services:** First responders and transit were often caught in congestion. They wanted a system that could predict, optimize, and coordinate across agencies.',
-      approach:
-        'We delivered: - **Adaptive Signal Control —** Timings that respond to live traffic and special events. - **Congestion & Incident Prediction —** Models that forecast trouble spots with lead time. - **Unified Data Platform —** Traffic, transit, and event data in one place for analysis and control. - **Citywide Dashboards —** Real-time and historical views for operations and planning. - **Priority Routing —** Support for emergency and transit priority when needed.',
-      outcome:
-        'Cities can now treat traffic as a system. AI ingests sensors, cameras, and events to predict congestion and optimize signals and routes—improving flow for commuters, transit, and emergency services alike.',
-      stack: ['AI', 'Smart City'],
-      serviceSlug: 'website-app',
-      clientName: 'City of Metro',
-      cover: '/images/opai-img-486.jpg',
-      gallery: [],
-      date: '2025',
-      showHomepage: false,
-      placeholder: true,
-    },
-    {
-      slug: 'smart-healthcare-diagnostics',
-      title: 'Smart Healthcare Diagnostics',
-      summary: 'Leveraging machine learning to detect health risks faster and more accurately.',
-      problem:
-        'Our client, a healthcare network, faced: - **Backlogs and delays:** Manual review of scans and tests created bottlenecks. - **Missed early signals:** Subtle risk indicators were often caught too late. - **Uneven quality:** Interpretation varied by clinician and location. - **Reactive care:** Focus was on treating illness rather than preventing it. - **Capacity limits:** Staff could not scale to screen every at-risk patient. They needed ML-powered tools that could triage, flag anomalies, and support consistent decisions.',
-      approach:
-        'We implemented: - **Risk Detection Models —** Trained on validated data to flag anomalies and risk patterns. - **Triage Automation —** Prioritization of cases by urgency and likelihood. - **Explainable Outputs —** Clear reasoning so clinicians can validate and act. - **Integration with Workflows —** Fits into existing PACS, EMR, and lab systems.',
-      outcome:
-        'Healthcare organizations can now combine imaging, labs, and clinical notes into a single AI-powered view. Risks are identified earlier, triage is smarter, and clinicians are supported—not replaced—by consistent, explainable AI recommendations.',
-      stack: ['AI', 'Healthcare'],
-      serviceSlug: 'website-app',
-      clientName: 'MedTech Partners',
-      cover: '/images/opai-img-481.jpg',
-      gallery: [],
+      clientName: 'Taja Bazar',
+      cover: COVER['ai-agents-automation'],
       date: '2025',
       showHomepage: true,
       placeholder: true,

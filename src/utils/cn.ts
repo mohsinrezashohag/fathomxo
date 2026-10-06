@@ -33,6 +33,15 @@ const themeTextSizes = [
 ] as const;
 
 /**
+ * The brand type scale from src/styles/brand.css. These must be declared or
+ * tailwind-merge's fallback sends any unrecognised `text-*` to the colour group,
+ * so `cn('text-ink-muted', 'text-12')` silently drops the colour.
+ */
+const brandTextSizes = [
+  "12", "14", "16", "20", "24", "32", "44", "60", "84", "120",
+] as const;
+
+/**
  * Custom tailwind-merge extended with theme classes from src/styles/variable.css
  * so conflicting custom utilities (e.g. bg-background-1 vs bg-background-2) merge correctly.
  */
@@ -43,7 +52,7 @@ const twMerge = extendTailwindMerge({
       "text-color": [{ text: [...themeColors] }],
       "border-color": [{ border: [...themeColors] }],
       "font-family": [{ font: [...themeFonts] }],
-      "font-size": [{ text: [...themeTextSizes] }],
+      "font-size": [{ text: [...themeTextSizes, ...brandTextSizes] }],
       shadow: [{ shadow: ["1", "2", "3", "4", "5"] }],
     },
   },

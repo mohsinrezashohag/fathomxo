@@ -15,14 +15,14 @@ const Subscribe = () => {
         <div className="space-y-1.5 md:space-y-3">
           <TextReveal delay={0.1}>
             <h2 className="font-sora text-sora-heading-4 md:text-sora-heading-3 lg:text-sora-heading-2 font-normal max-md:leading-[110%]">
-              <span className="font-normal text-white/90"> Stay Informed with </span>
-              <span className="text-white/30"> Nexsas updates </span>
+              <span className="font-normal text-white/90"> Build notes from </span>
+              <span className="text-white/30"> the studio </span>
             </h2>
           </TextReveal>
           <TextReveal delay={0.2}>
             <p className="font-inter-tight text-tagline-2 text-white/60">
-              Subscribe to our newsletter for the latest trends, insights, and success stories in AI
-              technology.
+              Occasional notes on what we shipped and what it cost us to learn. No newsletter
+              cadence, no growth hacks.
             </p>
           </TextReveal>
         </div>

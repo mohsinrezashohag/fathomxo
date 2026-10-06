@@ -84,7 +84,7 @@ const ClientSatisfaction = () => {
                   cite="Akiko Tanaka, Chief Strategy Officer, Marketing Agency"
                 >
                   &quot;We tried other solutions, but nothing came close to the precision and
-                  intelligence that Nexsas brings.&quot;
+                  intelligence that FathomXO brings.&quot;
                 </blockquote>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2">
@@ -127,7 +127,7 @@ const ClientSatisfaction = () => {
                   cite="Akiko Tanaka, Chief Strategy Officer, Marketing Agency"
                 >
                   &quot;We tried other solutions, but nothing came close to the precision and
-                  intelligence that Nexsas brings.&quot;
+                  intelligence that FathomXO brings.&quot;
                 </blockquote>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2">
@@ -170,7 +170,7 @@ const ClientSatisfaction = () => {
                   cite="Akiko Tanaka, Chief Strategy Officer, Marketing Agency"
                 >
                   &quot;We tried other solutions, but nothing came close to the precision and
-                  intelligence that Nexsas brings.&quot;
+                  intelligence that FathomXO brings.&quot;
                 </blockquote>
               </div>
               <div className="flex flex-col items-center justify-center gap-y-2">

@@ -4,9 +4,9 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   ...generateMetadata(),
-  title: 'Contact us - AI Solutions || Nexsas',
+  title: 'Contact - FathomXO',
   description:
-    'Reach out to Nexsas. We’ll get back within 24 hours. Get in touch for AI solutions and support.',
+    'Tell us the scope, the budget band and the timeline. We reply with a real number inside 24 hours.',
 };
 
 const page = () => {

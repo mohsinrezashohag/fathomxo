@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="">
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#F2F0EE" fill-opacity="0.10"/>
+    </pattern>
+    <radialGradient id="bloom" cx="50%" cy="18%" r="52%">
+      <stop offset="0%" stop-color="#E2560A" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#E2560A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0C0C15"/>
+  <rect width="1200" height="900" fill="url(#dots)"/>
+  <rect width="1200" height="900" fill="url(#bloom)"/>
+  <g fill="none" stroke="#F2F0EE" stroke-opacity="0.22" stroke-width="2">
+    <rect x="420" y="130" width="360" height="640" rx="28"/>
+    <path d="M420 300 h360 M420 470 h360 M420 620 h360" stroke-opacity="0.14"/>
+    <rect x="470" y="180" width="200" height="22" rx="11" stroke-opacity="0.30"/>
+    <rect x="470" y="222" width="260" height="14" rx="7" stroke-opacity="0.16"/>
+  </g>
+  <rect x="470" y="510" width="150" height="46" rx="23" fill="#E2560A"/>
+  <path d="M600 660 v70 M600 730 l-22 -24 M600 730 l22 -24" fill="none" stroke="#E2560A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

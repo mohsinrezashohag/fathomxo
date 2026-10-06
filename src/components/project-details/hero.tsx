@@ -33,10 +33,10 @@ const ProjectDetailsHero = ({ project }: ProjectDetailsHeroProps) => {
           <figure className="mt-24 h-[380px] overflow-hidden rounded-[10px] md:h-[450px] lg:h-[650px] 2xl:mt-39">
             <Image
               src={project.cover}
-              alt="Project Details Hero"
+              alt={project.title}
               width={1200}
               height={600}
-              className="size-full object-center"
+              className="size-full object-cover object-top"
             />
           </figure>
         </RevealAnimation>

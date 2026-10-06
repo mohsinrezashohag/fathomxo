@@ -72,11 +72,43 @@ export const technologySchema = z
   .object({
     name: z.string().min(1),
     category: z.string().min(1),
+    /** Icon file stem under public/images/tech, also the CSS mask class suffix. */
+    slug: z.string().regex(/^[a-z0-9]+$/, 'lowercase letters and digits only'),
     order: z.number().int().min(0),
   })
   .strict();
 
 export type Technology = z.infer<typeof technologySchema>;
+
+/** How a client can engage the studio. Each one traces to project-plan section 6. */
+export const engagementSchema = z
+  .object({
+    name: z.string().min(1),
+    summary: z.string().min(1),
+    /** The one line that tells a reader whether this is their case. */
+    bestWhen: z.string().min(1),
+    order: z.number().int().min(0),
+  })
+  .strict();
+
+export type Engagement = z.infer<typeof engagementSchema>;
+
+/**
+ * A kind of system the studio builds. Not a product catalogue: FathomXO does
+ * custom work, so these describe shapes of build, not shipping software anyone
+ * can buy off a page.
+ */
+export const systemSchema = z
+  .object({
+    name: z.string().min(1),
+    summary: z.string().min(1),
+    /** Which of the four lines the work usually sits under. */
+    serviceSlug: z.enum(serviceSlugs),
+    order: z.number().int().min(0),
+  })
+  .strict();
+
+export type BuildSystem = z.infer<typeof systemSchema>;
 
 export const projectSchema = z
   .object({
@@ -185,4 +217,3 @@ export interface FooterSocialLink {
 }
 
 // pricing
-

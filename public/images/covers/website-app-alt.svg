@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="">
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#F2F0EE" fill-opacity="0.10"/>
+    </pattern>
+    <radialGradient id="bloom" cx="66%" cy="70%" r="55%">
+      <stop offset="0%" stop-color="#E2560A" stop-opacity="0.24"/>
+      <stop offset="100%" stop-color="#E2560A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" fill="#0C0C15"/>
+  <rect width="1200" height="900" fill="url(#dots)"/>
+  <rect width="1200" height="900" fill="url(#bloom)"/>
+  <g fill="none" stroke="#F2F0EE" stroke-opacity="0.22" stroke-width="2">
+    <rect x="180" y="230" width="280" height="440" rx="20"/>
+    <rect x="490" y="190" width="280" height="520" rx="20"/>
+    <rect x="800" y="230" width="280" height="440" rx="20"/>
+    <path d="M215 340 h150 M215 400 h210 M215 452 h180 M215 504 h140" stroke-opacity="0.14"/>
+    <path d="M835 340 h150 M835 400 h210 M835 452 h180 M835 504 h140" stroke-opacity="0.14"/>
+    <path d="M525 400 h210 M525 452 h180 M525 504 h210 M525 556 h150" stroke-opacity="0.18"/>
+  </g>
+  <rect x="490" y="190" width="280" height="520" rx="20" fill="none" stroke="#E2560A" stroke-width="2.5"/>
+  <rect x="525" y="300" width="120" height="34" rx="17" fill="#E2560A"/>
+  <rect x="525" y="620" width="210" height="48" rx="24" fill="none" stroke="#E2560A" stroke-width="2.5"/>
+</svg>

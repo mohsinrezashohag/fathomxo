@@ -1,8 +1,5 @@
 'use client';
 
-import ctaImage120 from '@/public/images/opai-img-120.jpg';
-import ctaImage121 from '@/public/images/opai-img-121.jpg';
-import ctaImage122 from '@/public/images/opai-img-122.jpg';
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { TextReveal } from '@/src/components/animation/text-reveal-animation';
 import { PrimaryLinkButton } from '@/src/components/shared/ui/button/primary-link-button';
@@ -81,24 +78,25 @@ const CTA = () => {
   );
 
   return (
-    <section className="bg-background-6 py-10 md:py-28 lg:py-30 xl:py-39">
+    <section className="bg-canvas py-10 md:py-28 lg:py-30 xl:py-39">
       <div className="main-container">
-        <div className="bg-background-5 relative flex items-center justify-between overflow-hidden rounded-lg p-7 lg:p-20 xl:p-[100px]">
+        <div className="bg-surface border-hairline relative flex items-center justify-between overflow-hidden rounded-lg border p-7 lg:p-20 xl:p-[100px]">
           <div className="space-y-1.5 sm:max-w-[400px] lg:max-w-[567px] lg:space-y-3">
             <TextReveal delay={0.3}>
               <h2 className="font-sora text-sora-heading-4 md:text-sora-heading-3 lg:text-sora-heading-2 font-normal max-md:leading-[110%]">
-                <span className="font-normal text-white/90"> Start Your AI </span>
-                <span className="text-white/30"> Transformation Today. </span>
+                <span className="font-normal text-white/90"> Got a wild idea? </span>
+                <span className="text-white/30"> Let&apos;s build it. </span>
               </h2>
             </TextReveal>
             <TextReveal delay={0.4}>
               <p className="font-inter-tight text-tagline-2 text-white/60">
-                Let&apos;s explore how Nexsas can drive success for your business.
+                Tell us what you are trying to build. We will help you work out the technology, the
+                scope, and the fastest way to get it into the real world.
               </p>
             </TextReveal>
             <RevealAnimation delay={0.5}>
               <div className="mt-6 md:mt-12" data-opai-animate>
-                <PrimaryLinkButton href="/contact">Learn more</PrimaryLinkButton>
+                <PrimaryLinkButton href="/contact">Let&apos;s talk</PrimaryLinkButton>
               </div>
             </RevealAnimation>
           </div>
@@ -109,21 +107,39 @@ const CTA = () => {
               className="absolute right-0 -bottom-1 z-3 max-h-[406px] max-w-[120px] overflow-hidden sm:max-w-[150px] md:max-w-[250px] md:rounded-xl lg:right-5 lg:max-w-[320px] xl:right-25 xl:max-w-[360px]"
               aria-hidden
             >
-              <Image src={ctaImage120} alt="cta-image-1" className="size-full object-cover" />
+              <Image
+                src="/images/work/boichitro-bd-marketplace.webp"
+                alt=""
+                width={720}
+                height={405}
+                className="border-hairline size-full rounded-[var(--radius-card)] border object-cover object-top"
+              />
             </figure>
             <figure
               ref={image2Ref}
               className="absolute right-26 -bottom-3 z-2 hidden max-h-[345px] max-w-[130px] -rotate-15 overflow-hidden sm:block md:max-w-[220px] md:rounded-xl lg:right-40 lg:max-w-[280px] xl:right-60 xl:max-w-[317px]"
               aria-hidden
             >
-              <Image src={ctaImage121} alt="cta-image-2" className="size-full object-cover" />
+              <Image
+                src="/images/work/x-factor-academic-platform.webp"
+                alt=""
+                width={720}
+                height={405}
+                className="border-hairline size-full rounded-[var(--radius-card)] border object-cover object-top"
+              />
             </figure>
             <figure
               ref={image3Ref}
               className="absolute right-50 bottom-0 z-1 hidden max-h-[261px] max-w-[190px] -rotate-30 overflow-hidden rounded-xl md:block lg:right-100 lg:max-w-[150px] xl:max-w-[226px]"
               aria-hidden
             >
-              <Image src={ctaImage122} alt="cta-image-3" className="size-full object-cover" />
+              <Image
+                src="/images/work/redwave-marketing-site.webp"
+                alt=""
+                width={720}
+                height={405}
+                className="border-hairline size-full rounded-[var(--radius-card)] border object-cover object-top"
+              />
             </figure>
           </div>
         </div>

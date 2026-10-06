@@ -2,6 +2,8 @@ export { AccentLinkButton } from './accent-link-button';
 export type { AccentLinkButtonProps } from './accent-link-button';
 export { DefaultLinkButton } from './default-link-button';
 export type { DefaultLinkButtonProps } from './default-link-button';
+export { GhostLinkButton } from './ghost-link-button';
+export type { GhostLinkButtonProps } from './ghost-link-button';
 export { HeroLinkButton } from './hero-link-button';
 export type { HeroLinkButtonProps } from './hero-link-button';
 export { PrimaryLinkButton } from './primary-link-button';

@@ -1,8 +1,7 @@
 import symbolMark from '@/src/assets/images/logos/svg/symbol-dark.svg';
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import BottomBar from '@/src/components/shared/layout/footer/bottom-bar';
-import Divider from '@/src/components/shared/layout/footer/divider';
-import ShuffledTitle from '@/src/components/shared/layout/footer/Shuffled-title';
+import Wordmark from '@/src/components/shared/wordmark';
 import { footerContact, footerGroups, footerTagline } from '@/src/data/footer';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -68,11 +67,10 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="mt-16">
-          <ShuffledTitle />
+        <div className="mt-10">
+          <Wordmark />
         </div>
 
-        <Divider />
         <BottomBar />
       </div>
     </footer>

@@ -11,16 +11,16 @@ import { useId, useRef } from 'react';
 /** Featured work shown beside the service list, so the menu sells rather than just routes. */
 const featured = [
   {
-    title: 'Transforming e-Commerce',
-    blurb: 'Recommendations engine that lifted conversion 40%.',
-    href: '/projects/ai-ecommerce-smart-shopping',
-    image: '/images/opai-img-488.jpg',
+    title: 'Two audiences, one site',
+    blurb: 'Brand partnerships and sales recruitment on one marketing site.',
+    href: '/projects/redwave-marketing-site',
+    image: '/images/covers/website-app.svg',
   },
   {
-    title: 'Automated customer support',
-    blurb: 'Context-aware virtual agents answering in seconds.',
-    href: '/projects/automated-ai-customer-support',
-    image: '/images/opai-img-487.jpg',
+    title: 'Pricing in the open',
+    blurb: 'An academic services platform that publishes what a check costs.',
+    href: '/projects/x-factor-academic-platform',
+    image: '/images/covers/website-app-alt.svg',
   },
 ];
 

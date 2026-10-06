@@ -7,51 +7,18 @@ import {
   AccordionContent,
   AccordionItem,
 } from '@/src/components/shared/ui/accordion';
+import { faqCategories, publishedFaqs } from '@/src/data/faqs';
 
-const faqData = [
-  {
-    value: 'item-one',
-    question: 'What AI solutions do you offer for businesses?',
-    answer:
-      'We deliver end-to-end AI solutions including intelligent automation, predictive analytics, natural language processing, and computer vision. Our offerings are tailored to your industry and goals—from process optimization and customer insights to AI-powered chatbots and decision support systems.',
-  },
-  {
-    value: 'item-two',
-    question: 'How long does it take to implement an AI solution?',
-    answer:
-      'Timeline depends on scope and complexity. A focused use case (e.g. chatbot or document automation) can go live in weeks. Larger initiatives like enterprise analytics or custom ML models typically run 2–6 months. We start with a discovery phase to define scope and a realistic rollout plan.',
-  },
-  {
-    value: 'item-three',
-    question: 'Is my data secure when using your AI services?',
-    answer:
-      'Yes. We follow industry best practices for data security and compliance. Data can be processed in your environment or in our secure cloud with encryption at rest and in transit. We support compliance requirements such as GDPR and SOC 2 and can work under your preferred data residency and governance rules.',
-  },
-  {
-    value: 'item-four',
-    question: 'Can your AI integrate with our existing systems?',
-    answer:
-      'Our solutions are built to integrate with your current tech stack via APIs, connectors, and standard protocols. We work with common ERP, CRM, databases, and cloud platforms so you can augment existing workflows with AI without a full replacement.',
-  },
-  {
-    value: 'item-five',
-    question: 'What kind of ROI can we expect from AI implementation?',
-    answer:
-      'ROI varies by use case: automation often cuts manual effort by 30–50%; predictive models improve forecasting and reduce waste; and AI-driven support can increase satisfaction and conversion. We help you define clear KPIs and measure impact from pilot through scale.',
-  },
-  {
-    value: 'item-six',
-    question: 'Do you offer custom AI development or only off-the-shelf tools?',
-    answer:
-      'We do both. We use proven platforms and frameworks where they fit, and build custom models and applications when your needs are unique. Many engagements combine pre-built components with tailored logic, training, and integration so you get speed and flexibility.',
-  },
-  {
-    value: 'item-seven',
-    question: 'What support and training do you provide after rollout?',
-    answer:
-      'We provide training for your teams, runbooks, and documentation so you can operate and iterate on the solution. Ongoing support options include monitoring, tuning, and enhancement as your data and requirements evolve. We aim for a smooth handover and long-term success.',
-  },
-];
+/* The home accordion shows one question from each category: a taste of the FAQ
+   page, not a duplicate of it. Content lives in faqs.ts. */
+const faqData = faqCategories
+  .map((category) => publishedFaqs.find((faq) => faq.category === category))
+  .filter((faq): faq is NonNullable<typeof faq> => Boolean(faq))
+  .map((faq, index) => ({
+    value: `home-faq-${index + 1}`,
+    question: faq.question,
+    answer: faq.answer,
+  }));
 
 const FAQ = () => {
   return (
@@ -59,14 +26,15 @@ const FAQ = () => {
       <div className="main-container space-y-10 md:space-y-19.5">
         <div className="space-y-1.5 text-center md:space-y-3">
           <TextReveal>
-            <h2 className="font-sora text-sora-heading-4 md:text-sora-heading-3 lg:text-sora-heading-2 max-md:-leading-[110%] mx-auto max-w-[700px] font-normal">
-              <span className="font-normal text-white/90"> Your questions, </span>
-              <span className="text-white/30"> answered </span>
+            <h2 className="font-display text-ink mx-auto max-w-[16ch] text-[clamp(var(--text-32),4.5vw,var(--text-60))] leading-[1.05] font-semibold tracking-[var(--tracking-display)]">
+              questions, meet answers.
+              <br />
+              <span className="text-ink-faint">no runaround.</span>
             </h2>
           </TextReveal>
           <TextReveal delay={0.2}>
-            <p className="font-inter-tight text-tagline-2 mx-auto max-w-[300px] text-white/60">
-              Explore our most frequently asked questions to get started.
+            <p className="text-ink-secondary text-20 mx-auto mt-5 max-w-[52ch] leading-[var(--leading-body)]">
+              The things people ask before they send a brief. If yours is not here, ask us directly.
             </p>
           </TextReveal>
         </div>

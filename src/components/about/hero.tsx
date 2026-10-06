@@ -16,7 +16,7 @@ const AboutHero = () => {
             </TextReveal>
             <TextReveal delay={0.2}>
               <p className="text-tagline-2 font-normal text-white/60">
-                Empowering businesses with cutting-edge AI solutions.
+                A small software studio in Dhaka, building what other people only pitch.
               </p>
             </TextReveal>
           </div>

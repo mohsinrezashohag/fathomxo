@@ -8,8 +8,8 @@ import type { Metadata } from 'next';
 const PROJECTS_PER_PAGE = 8;
 
 export const metadata: Metadata = {
-  title: 'Projects - AI Solutions || Nexsas',
-  description: 'See how our AI solutions have helped businesses succeed.',
+  title: 'Work - FathomXO',
+  description: 'Case studies: the problem, what we built, the stack and what changed.',
 };
 
 interface ProjectsPageProps {

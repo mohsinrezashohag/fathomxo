@@ -22,7 +22,7 @@ const Tool = ({ tools = DEFAULT_TOOLS }: ToolProps) => {
             <ServiceGradientIcon />
           </figure>
           <h3 className="text-sora-heading-5 relative z-10 font-normal text-white/90">
-            Nexsas tools
+            FathomXO tools
           </h3>
           <ul className="relative z-10 space-y-2">
             {tools.map((item) => (

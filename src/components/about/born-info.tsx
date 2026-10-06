@@ -22,12 +22,12 @@ const BornInfo = () => {
             <div className="space-y-3">
               <TextReveal>
                 <h2 className="font-sora text-sora-heading-4 lg:text-sora-heading-3 xl:text-sora-heading-2 inline-block font-normal text-white/90">
-                  How Nexsas <span className="text-white/30">was born</span>
+                  How FathomXO <span className="text-white/30">was born</span>
                 </h2>
               </TextReveal>
               <TextReveal delay={0.2}>
                 <p className="text-tagline-2 max-w-xl font-normal text-white/60">
-                  Nexsas was founded to make AI accessible for businesses. Our tools are trusted
+                  FathomXO was founded to make AI accessible for businesses. Our tools are trusted
                   globally for their simplicity, power, and real-world impact.
                 </p>
               </TextReveal>
@@ -162,15 +162,10 @@ const BornInfo = () => {
                             />
                           </AvatarItem>
                         ))}
-                        <AvatarItem>
-                          <div className="bg-background-13/50 z-5 flex size-9 shrink-0 items-center justify-center rounded-full ring-2 ring-white backdrop-blur-[5.5px]">
-                            <p className="text-tagline-4 font-normal text-white/80">99+</p>
-                          </div>
-                        </AvatarItem>
                       </AvatarReveal>
                     </div>
                     <p className="text-tagline-2 font-normal text-white/90">
-                      Timeless, sustainable creativity.
+                      Three people. No account managers.
                     </p>
                   </div>
                 </div>

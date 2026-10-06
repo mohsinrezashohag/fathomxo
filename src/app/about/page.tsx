@@ -10,9 +10,9 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   ...generateMetadata(),
-  title: 'About us - AI Solutions || Nexsas',
+  title: 'Studio - FathomXO',
   description:
-    'Learn how Nexsas revolutionizes workflows with AI. Our vision, mission, and team dedicated to empowering businesses with cutting-edge AI solutions.',
+    'Who FathomXO is: a small software studio in Dhaka building e-commerce, websites, apps and AI automation.',
 };
 
 const page = () => {

@@ -2,9 +2,15 @@ import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { PaginationNextIcon, PaginationPrevIcon } from '@/src/components/shared/icon';
 import { PaginationItem } from '@/src/components/shared/ui/pagination/pagination-item';
 import { PaginationWrapper } from '@/src/components/shared/ui/pagination/pagination-wrapper';
+import { services } from '@/src/data/services';
 import type { Project } from '@/src/interface';
 import Image from 'next/image';
 import Link from 'next/link';
+
+/** Service line names, keyed by slug, for the card's eyebrow. */
+const SERVICE_LABEL = Object.fromEntries(
+  services.map((service) => [service.slug, service.name])
+) as Record<Project['serviceSlug'], string>;
 
 function buildProjectPageUrl(page: number): string {
   if (page <= 1) return '/projects';
@@ -31,24 +37,49 @@ const ProjectsGrid = ({ projects, totalPages, currentPage }: ProjectsGridProps) 
               <div className="w-full">
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="border-stroke-1/11 group block overflow-hidden rounded-md border"
+                  className="border-hairline hover:border-hairline-strong focus-visible:outline-accent group bg-surface block overflow-hidden rounded-[var(--radius-card)] border transition-colors duration-[var(--dur-hover)] focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
-                  <figure className="h-[350px] w-full overflow-hidden rounded-t-md transition-all duration-500 ease-in-out group-hover:scale-105 md:h-100 lg:h-125">
+                  {/* Aspect ratio, not a fixed height: the columns alternate 5/7,
+                      so a fixed height cropped every other card to a different
+                      shape and the grid read as broken rather than editorial. */}
+                  <figure className="relative aspect-[16/10] w-full overflow-hidden">
                     <Image
                       src={project.cover}
                       alt={project.title}
-                      width={1260}
-                      height={500}
-                      className="size-full object-cover transition-all duration-500 ease-in-out group-hover:scale-105"
+                      width={1600}
+                      height={1000}
+                      className="ease-brand size-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                    />
+                    <span
+                      className="from-surface pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-linear-to-t to-transparent"
+                      aria-hidden
                     />
                   </figure>
-                  <div className="space-y-1 px-10.5 py-8 text-center">
-                    <h3 className="text-sora-heading-6 lg:text-sora-heading-5 line-clamp-1 font-normal text-white/90">
+
+                  <div className="space-y-3 p-7 md:p-9">
+                    <p className="text-ink-faint text-12 flex items-center gap-2 font-mono tracking-[var(--tracking-mono)] uppercase">
+                      <span>{SERVICE_LABEL[project.serviceSlug]}</span>
+                      <span aria-hidden>/</span>
+                      <span>{project.clientName}</span>
+                    </p>
+
+                    <h3 className="font-display text-ink text-24 lg:text-32 leading-[1.15] font-semibold tracking-[var(--tracking-display)]">
                       {project.title}
                     </h3>
-                    <p className="text-tagline-2 mx-auto line-clamp-2 w-full max-w-[416px] font-normal text-white/50">
+
+                    <p className="text-ink-muted line-clamp-2 text-sm leading-[var(--leading-body)]">
                       {project.summary}
                     </p>
+
+                    <span className="text-ink-secondary group-hover:text-accent text-12 inline-flex items-center gap-2 pt-2 font-mono tracking-[var(--tracking-mono)] uppercase transition-colors duration-[var(--dur-hover)]">
+                      View case study
+                      <span
+                        className="ease-brand inline-block transition-transform duration-300 group-hover:translate-x-1"
+                        aria-hidden
+                      >
+                        &#8594;
+                      </span>
+                    </span>
                   </div>
                 </Link>
               </div>

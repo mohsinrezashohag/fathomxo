@@ -31,22 +31,22 @@ const ContactHero = () => {
           <div
             className="overflow-hidden rounded-xl bg-cover bg-center bg-no-repeat p-2 bg-blend-lighten"
             style={{
-              backgroundImage: "url('/images/gradient/opai-37.jpg')",
+              backgroundImage: 'none',
             }}
           >
             <div className="flex items-stretch gap-y-2 max-[800px]:flex-col min-[800px]:gap-x-2">
               <div className="flex-1">
-                <div className="bg-background-6 h-full rounded-lg p-6 xl:p-8">
+                <div className="bg-surface border-hairline h-full rounded-[var(--radius-card)] border p-6 xl:p-8">
                   <span className="inline-block">
                     <ContactEmailIcon className="size-9" />
                   </span>
                   <div className="mt-6 mb-5 space-y-1">
                     <h2 className="text-sora-heading-6 font-normal text-white/90">Email</h2>
                     <a
-                      href="mailto:support@Nexsas.com"
+                      href="mailto:hello@fathomxo.com"
                       className="text-tagline-2 inline-block font-normal text-white/60 transition-all duration-300 ease-in-out hover:text-white"
                     >
-                      support@Nexsas.com
+                      hello@fathomxo.com
                     </a>
                   </div>
                   <p className="text-tagline-2 font-normal text-white/50 underline underline-offset-2">
@@ -55,7 +55,7 @@ const ContactHero = () => {
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-background-6 h-full rounded-lg p-6 xl:p-8">
+                <div className="bg-surface border-hairline h-full rounded-[var(--radius-card)] border p-6 xl:p-8">
                   <span className="inline-block">
                     <ContactPhoneIcon className="size-[27px]" />
                   </span>
@@ -74,7 +74,7 @@ const ContactHero = () => {
                 </div>
               </div>
               <div className="flex-1">
-                <div className="bg-background-6 h-full rounded-lg p-6 xl:p-8">
+                <div className="bg-surface border-hairline h-full rounded-[var(--radius-card)] border p-6 xl:p-8">
                   <span className="inline-block">
                     <ContactAddressIcon className="size-9" />
                   </span>

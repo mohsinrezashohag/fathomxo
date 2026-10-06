@@ -4,16 +4,8 @@ import whyChooseUsImage3 from '@/public/images/opai-img-510.png';
 import whyChooseUsImage4 from '@/public/images/opai-img-511.png';
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { TextReveal } from '@/src/components/animation/text-reveal-animation';
-import AvatarItem from '@/src/components/shared/ui/avatar-reveal/avatar-item';
-import AvatarReveal from '@/src/components/shared/ui/avatar-reveal/avatar-reveal';
 import { PrimaryLinkButton } from '@/src/components/shared/ui/button/primary-link-button';
 import Image from 'next/image';
-const AVATARS = [
-  { src: '/images/opai-avatar-img-09.png', alt: 'Avatar 2' },
-  { src: '/images/opai-avatar-img-10.png', alt: 'Avatar 3' },
-  { src: '/images/opai-avatar-img-11.png', alt: 'Avatar 4' },
-  { src: '/images/opai-avatar-img-12.png', alt: 'Avatar 5' },
-];
 
 const WhyChooseUs = () => {
   return (
@@ -23,38 +15,18 @@ const WhyChooseUs = () => {
           <div className="text-center">
             <TextReveal>
               <h2 className="xl:text-sora-heading-2 lg:text-sora-heading-3 text-sora-heading-4 inline-block text-center font-normal text-white/90">
-                Why <span className="text-white/30">Nexsas?</span>
+                Why <span className="text-white/30">FathomXO?</span>
               </h2>
             </TextReveal>
           </div>
-          <div className="flex items-center justify-center gap-x-4">
-            <AvatarReveal className="flex -space-x-3" stagger={0.1}>
-              {AVATARS.map((avatar) => (
-                <AvatarItem key={avatar.src} className="shrink-0">
-                  <Image
-                    src={avatar.src}
-                    alt={avatar.alt}
-                    width={36}
-                    height={36}
-                    className="inline-block size-9 rounded-full ring-2 ring-white"
-                  />
-                </AvatarItem>
-              ))}
-              <AvatarItem>
-                <div className="bg-background-13/50 z-5 flex size-9 shrink-0 items-center justify-center rounded-full ring-2 ring-white backdrop-blur-[5.5px]">
-                  <p className="text-tagline-4 font-normal text-white/80">99+</p>
-                </div>
-              </AvatarItem>
-            </AvatarReveal>
-            <RevealAnimation delay={0.3}>
-              <div>
-                <p className="text-tagline-3 block font-medium text-white/90">Trusted by 100+</p>
-                <p className="text-tagline-4 font-normal text-white/60">
-                  Customers across the globe
-                </p>
-              </div>
-            </RevealAnimation>
-          </div>
+          {/* The starter stacked customer avatars and a "99+" chip here. With three
+              clients on the roster that is a number nobody can back, so the proof
+              is the thing that is actually true and unusual in this market. */}
+          <RevealAnimation delay={0.3}>
+            <p className="text-ink-muted text-12 text-center font-mono tracking-[var(--tracking-mono)] uppercase">
+              Published prices on every service line
+            </p>
+          </RevealAnimation>
         </div>
 
         <div className="grid grid-cols-12 items-center gap-y-8 lg:gap-x-8">
@@ -73,7 +45,7 @@ const WhyChooseUs = () => {
                   aria-hidden
                 />
                 <h3 className="lg:text-sora-heading-5 text-sora-heading-6 relative z-10 font-normal text-white">
-                  Save hours of design and rendering time
+                  A real number before the first call, not after the third
                 </h3>
               </div>
             </div>
@@ -94,7 +66,7 @@ const WhyChooseUs = () => {
                   aria-hidden
                 />
                 <h3 className="lg:text-sora-heading-5 text-sora-heading-6 relative z-10 font-normal text-white">
-                  Scale visual content across formats, styles, and platforms
+                  Custom builds shaped around your operations, not a theme
                 </h3>
               </div>
             </RevealAnimation>
@@ -112,7 +84,7 @@ const WhyChooseUs = () => {
                   aria-hidden
                 />
                 <h3 className="lg:text-sora-heading-5 text-sora-heading-6 relative z-10 font-normal text-white">
-                  Customize outputs with ease—no design background required
+                  You own the code, the accounts and the domain on handover
                 </h3>
               </div>
             </RevealAnimation>
@@ -133,7 +105,7 @@ const WhyChooseUs = () => {
                   aria-hidden
                 />
                 <h3 className="lg:text-sora-heading-5 text-sora-heading-6 relative z-10 font-normal text-white">
-                  Save hours of design and rendering time
+                  A real number before the first call, not after the third
                 </h3>
               </div>
             </div>
@@ -142,7 +114,7 @@ const WhyChooseUs = () => {
 
         <RevealAnimation delay={0.1}>
           <div className="text-center">
-            <PrimaryLinkButton href="/contact">Talk to our AI experts</PrimaryLinkButton>
+            <PrimaryLinkButton href="/contact">Send the brief</PrimaryLinkButton>
           </div>
         </RevealAnimation>
       </div>

@@ -1,8 +1,6 @@
 'use client';
-import faqContactGradient from '@/public/images/gradient/opai-6.svg';
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { useButtonSplitText } from '@/src/hooks/use-button-split-text';
-import Image from 'next/image';
 import { useRef } from 'react';
 const FaqContact = () => {
   const contactButtonWrapperRef = useRef<HTMLDivElement>(null);
@@ -14,9 +12,7 @@ const FaqContact = () => {
         data-opai-animate
         data-delay="0.3"
       >
-        <figure className="absolute inset-0 -z-10 h-full w-full overflow-hidden rounded-lg">
-          <Image src={faqContactGradient} alt="faq-v7-contact" fill className="object-cover" />
-        </figure>
+        <figure className="border-hairline bg-surface absolute inset-0 -z-10 h-full w-full overflow-hidden rounded-[var(--radius-card)] border"></figure>
         <h4 className="font-inter-tight text-it-heading-5 mb-2 font-medium text-white/90">
           Still have questions?
         </h4>

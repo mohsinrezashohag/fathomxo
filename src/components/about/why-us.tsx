@@ -32,7 +32,7 @@ const WhyUs = () => {
           <div className="space-y-3 text-center">
             <TextReveal>
               <h2 className="font-sora text-sora-heading-4 lg:text-sora-heading-3 xl:text-sora-heading-2 inline-block font-normal text-white/90">
-                Why choose Nexsas?
+                Why choose FathomXO?
               </h2>
             </TextReveal>
             <TextReveal delay={0.2}>

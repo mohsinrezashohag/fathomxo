@@ -9,10 +9,10 @@ const NotFoundHero = () => {
           <div
             className="overflow-hidden rounded-xl bg-cover bg-center bg-no-repeat p-2 bg-blend-lighten"
             style={{
-              backgroundImage: "var(--color-gradient-20), url('/images/gradient/opai-37.jpg')",
+              backgroundImage: 'none',
             }}
           >
-            <div className="bg-background-6 rounded-lg px-3.5 py-20 lg:px-0 xl:py-39">
+            <div className="bg-surface border-hairline rounded-[var(--radius-card)] border px-3.5 py-20 lg:px-0 xl:py-28">
               <div className="text-center">
                 <div className="flex flex-col items-center justify-center">
                   <TextReveal>

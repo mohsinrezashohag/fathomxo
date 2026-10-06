@@ -26,7 +26,7 @@ export const testimonialsData = parseContent(
     },
     {
       quote:
-        'From day one, Nexsas felt like an extension of our internal team. Their tools and support are truly next-level.',
+        'From day one, FathomXO felt like an extension of our internal team. Their tools and support are truly next-level.',
       authorName: 'Derek Singh',
       authorRole: 'Head of Product, E-commerce Platform',
       avatar: '/images/opai-avatar-img-03.png',
@@ -42,7 +42,7 @@ export const testimonialsData = parseContent(
     },
     {
       quote:
-        'What impressed me most was the flexibility. Nexsas adapted to our workflow instead of forcing us to change.',
+        'What impressed me most was the flexibility. FathomXO adapted to our workflow instead of forcing us to change.',
       authorName: 'Jonas Müller',
       authorRole: 'Growth Manager, Logistics Startup',
       avatar: '/images/opai-avatar-img-05.png',

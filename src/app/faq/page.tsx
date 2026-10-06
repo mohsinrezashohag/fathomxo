@@ -12,9 +12,8 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   ...generateMetadata(),
-  title: 'FAQ - AI Solutions || Nexsas',
-  description:
-    'Frequently asked questions about Nexsas AI solutions. Find answers on pricing, security, features, and getting started.',
+  title: 'FAQ - FathomXO',
+  description: 'Timelines, pricing, ownership, support and what happens after launch.',
 };
 
 const page = () => {

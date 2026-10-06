@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Reference material, not application source: a captured competitor site
+    // (minified vendor JS) and the Figma plugin, which runs inside Figma rather
+    // than in this app and has its own globals.
+    "design/**",
   ]),
 ]);
 

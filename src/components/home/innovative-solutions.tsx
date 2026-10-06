@@ -20,30 +20,33 @@ const iconMap: Record<
 };
 
 const InnovativeSolutions = () => {
+  /* The four service lines, in the order they appear everywhere else. Icon ids
+     are the starter's and are reused rather than renamed; feature 7 maps real
+     icons to `Service.iconKey`. */
   const innovativeSolutionsCards = [
     {
-      id: 'retail-ecommerce',
+      id: 'e-commerce',
       iconId: 'RetailEcommerce',
-      title: 'Retail & E-commerce',
-      description: 'Personalize customer journeys and drive sales.',
+      title: 'E-commerce',
+      description: 'Storefronts that handle stock, courier and cash on delivery.',
     },
     {
-      id: 'healthcare',
+      id: 'website-app',
       iconId: 'Healthcare',
-      title: 'Healthcare',
-      description: 'Enable better outcomes with predictive diagnostics.',
+      title: 'Website / app',
+      description: 'Built around your business, not around a page builder.',
     },
     {
-      id: 'finance',
+      id: 'landing-page',
       iconId: 'Finance',
-      title: 'Finance',
-      description: 'Detect fraud and optimize financial strategies.',
+      title: 'Landing page',
+      description: 'One page, one job, live in five to ten days.',
     },
     {
-      id: 'legal-real-estate',
+      id: 'ai-agents-automation',
       iconId: 'LegalRealEstate',
-      title: 'Legal & real estate',
-      description: 'Automate research and streamline processes.',
+      title: 'AI agents / automation',
+      description: 'Assistants wired to your real data, not to a script.',
       gridClassName: 'lg:col-span-4 lg:col-start-5',
     },
   ];
@@ -62,9 +65,9 @@ const InnovativeSolutions = () => {
                 className="font-sora text-sora-heading-4 text-background-13/90 md:text-sora-heading-3 lg:text-sora-heading-2 font-normal max-md:leading-[110%] lg:mx-auto lg:max-w-[600px]"
                 itemProp="name"
               >
-                Innovative AI{' '}
+                we take your wildest ideas{' '}
                 <span className="text-background-13/50">
-                  solutions for <br className="hidden md:block" /> every industry
+                  and turn them into <br className="hidden md:block" /> working, scalable products
                 </span>
               </h2>
             </TextReveal>
@@ -73,7 +76,8 @@ const InnovativeSolutions = () => {
                 className="font-inter-tight text-tagline-2 text-background-13/60 font-normal lg:mx-auto lg:max-w-[350px]"
                 itemProp="description"
               >
-                We specialize in delivering AI-driven transformations across sectors.
+                Four lines of work, one way of working: scope it honestly, build it properly, hand
+                it over.
               </p>
             </TextReveal>
           </div>
@@ -116,11 +120,11 @@ const InnovativeSolutions = () => {
         <RevealAnimation delay={0.5}>
           <div className="inline-flex w-full justify-center md:flex">
             <SecondaryLinkButton
-              href="/about"
+              href="/services"
               displayClassName="max-md:w-[85%] max-md:mx-auto"
               className="w-full"
             >
-              Learn more about industries
+              See all services
             </SecondaryLinkButton>
           </div>
         </RevealAnimation>

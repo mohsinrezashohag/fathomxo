@@ -34,7 +34,7 @@ const ProjectCard = ({
               width={600}
               height={500}
               quality={100}
-              className="h-full w-full scale-100 object-cover transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:rotate-1"
+              className="h-full w-full scale-100 object-cover object-top transition-all duration-500 ease-in-out group-hover:scale-105 group-hover:rotate-1"
             />
           </figure>
         </CardReveal>

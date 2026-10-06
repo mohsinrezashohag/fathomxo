@@ -1,42 +1,32 @@
-import opai1 from '@/public/images/gradient/opai-1.png';
 import RevealAnimation from '@/src/components/animation/reveal-animation';
 import { TextReveal } from '@/src/components/animation/text-reveal-animation';
 import { PrimaryLinkButton } from '@/src/components/shared/ui/button/primary-link-button';
 import ProjectCard from '@/src/components/shared/ui/card/project-card';
 import { projects as allProjectEntries } from '@/src/data/projects';
-import Image from 'next/image';
 
 const HOME_PROJECTS_LIMIT = 3;
 
 const Projects = async () => {
   const allProjects = allProjectEntries;
-  const projects = allProjects
-    .filter((p) => p.showHomepage === true)
-    .slice(0, HOME_PROJECTS_LIMIT);
+  const projects = allProjects.filter((p) => p.showHomepage === true).slice(0, HOME_PROJECTS_LIMIT);
 
   return (
-    <section className="bg-background-6 relative overflow-hidden py-10 pt-20 sm:py-20 md:py-28 lg:py-36 xl:py-40 2xl:py-44">
-      <div className="absolute -top-1 left-0 z-4 h-[796px] w-full md:h-[760px] lg:-top-4 2xl:-top-12">
-        <Image src={opai1} alt="" aria-hidden className="h-full w-full object-cover" />
-      </div>
-
+    <section className="border-hairline bg-canvas relative border-t py-20 md:py-24 lg:py-28">
       <div className="main-container relative z-10">
-        <div className="space-y-10 md:space-y-14 lg:space-y-20">
+        <div className="space-y-10 md:space-y-12">
           <div className="space-y-2 pb-5 text-center md:space-y-3">
             <TextReveal>
               <h2
-                className="font-sora text-sora-heading-4 text-background-7 min-[500px]:text-background-13/90 md:text-sora-heading-3 lg:text-sora-heading-2 font-normal max-md:leading-[110%] lg:mx-auto lg:max-w-[600px]"
+                className="font-display text-ink text-[clamp(var(--text-32),4.5vw,var(--text-60))] leading-[1.05] font-semibold tracking-[var(--tracking-display)] lg:mx-auto lg:max-w-[16ch]"
                 id="projects-heading"
               >
-                Delivering{' '}
-                <span className="text-background-7/50 min-[500px]:text-background-13/50">
-                  real impact.
-                </span>
+                selected work.{' '}
+                <span className="text-ink-faint">the problem, and what changed.</span>
               </h2>
             </TextReveal>
             <TextReveal delay={0.2}>
-              <p className="font-inter-tight text-tagline-2 text-background-7 min-[500px]:text-background-13/50 font-normal lg:mx-auto lg:max-w-[350px]">
-                Explore how our solutions have helped clients succeed.
+              <p className="text-ink-secondary text-20 leading-[var(--leading-body)] lg:mx-auto lg:max-w-[54ch]">
+                Three studios, three different problems. Demo entries are labelled.
               </p>
             </TextReveal>
           </div>
